@@ -10,7 +10,11 @@ import { Router } from '@angular/router';
 export class SignupComponent implements OnInit {
 
 	newUser = {
+    name: '',
+    surname: '',
     email: '',
+    address: '',
+    role: '',
     password: ''
   };
 
