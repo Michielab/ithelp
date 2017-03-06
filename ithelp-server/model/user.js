@@ -3,6 +3,7 @@ const Schema   = mongoose.Schema;
 
 const userSchema = new Schema({
   name: String,
+  surname: String,
   email: String,
   password: String,
   profilePic: String,
@@ -14,7 +15,7 @@ const userSchema = new Schema({
      enum : ['CUSTOMER', 'HELPER'],
      default : 'CUSTOMER'
    },
-  speciality: String,
+  speciality: Array,
   description: String,
   slogan: String,
   price: String,

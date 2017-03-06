@@ -1,9 +1,10 @@
 {
-  "name": "phone-store",
+  "name": "it-helper",
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "nodemon ./bin/www",
+    "seed": "node ./bin/seeds"
   },
   "dependencies": {
     "bcrypt": "^1.0.2",
