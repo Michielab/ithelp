@@ -43,10 +43,15 @@ router.post("/login", function(req, res) {
 });
 
 router.post("/signup", (req, res, next) => {
+  var name = req.body.name;
+  var surname = req.body.surname;
   var email = req.body.email;
+  var address = req.body.address;
+  var role = req.body.role;
   var password = req.body.password;
 
-  if (!email || !password) {
+
+  if (!email || !password ) {
     res.status(400).json({ message: "Provide email and password" });
     return;
   }
@@ -61,10 +66,15 @@ router.post("/signup", (req, res, next) => {
     var hashPass = bcrypt.hashSync(password, salt);
 
     var newUser = User({
+      name,
+      surname,
       email,
+      address,
+      role,
       password: hashPass
     });
 
+console.log(newUser);
     newUser.save((err, user) => {
       if (err) {
         res.status(400).json({ message: err });

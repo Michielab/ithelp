@@ -3,15 +3,16 @@ const Schema   = mongoose.Schema;
 
 const userSchema = new Schema({
   name: String,
+  surname: String,
   email: String,
   password: String,
   profilePic: String,
   address: String,
-  location: { type: { type: String }, coordinates: [Number] },
+  // location: { type: { type: String }, coordinates: [Number] },
   phoneNumber: String,
   role: {
      type: String,
-     enum : ['CUSTOMER', 'HELPER'],
+     enum : ['CUSTOMER', 'HELPER', 'BOTH'],
      default : 'CUSTOMER'
    },
   speciality: String,
