@@ -12,19 +12,19 @@ const bcryptSalt     = 10;
 
 
 router.post("/login", function(req, res) {
-  
-  if(req.body.username && req.body.password){
-    var username = req.body.username;
+
+  if(req.body.email && req.body.password){
+    var email = req.body.email;
     var password = req.body.password;
   }
 
-  if (username === "" || password === "") {
+  if (email === "" || password === "") {
     res.status(401).json({message:"fill up the fields"});
     return;
   }
 
-  User.findOne({ "username": username }, (err, user)=> {
-  	
+  User.findOne({ "email": email }, (err, user)=> {
+
   	if( ! user ){
 	    res.status(401).json({message:"no such user found"});
 	  } else {
@@ -35,25 +35,25 @@ router.post("/login", function(req, res) {
         } else {
           var payload = {id: user._id};
           var token = jwt.sign(payload, jwtOptions.secretOrKey);
-          res.json({message: "ok", token: token});    
+          res.json({message: "ok", token: token});
         }
-      });  
+      });
     }
   })
 });
 
 router.post("/signup", (req, res, next) => {
-  var username = req.body.username;
+  var email = req.body.email;
   var password = req.body.password;
 
-  if (!username || !password) {
-    res.status(400).json({ message: "Provide username and password" });
+  if (!email || !password) {
+    res.status(400).json({ message: "Provide email and password" });
     return;
   }
 
-  User.findOne({ username }, "username", (err, user) => {
+  User.findOne({ email }, "email", (err, user) => {
     if (user !== null) {
-      res.status(400).json({ message: 'user exist' });
+      res.status(400).json({ message: 'email exist' });
       return;
     }
 
@@ -61,7 +61,7 @@ router.post("/signup", (req, res, next) => {
     var hashPass = bcrypt.hashSync(password, salt);
 
     var newUser = User({
-      username,
+      email,
       password: hashPass
     });
 
@@ -72,7 +72,7 @@ router.post("/signup", (req, res, next) => {
         var payload = {id: user._id};
         console.log('user', user);
         var token = jwt.sign(payload, jwtOptions.secretOrKey);
-        res.status(200).json({message: "ok", token: token});    
+        res.status(200).json({message: "ok", token: token});
       	// res.status(200).json(user);
       }
     });

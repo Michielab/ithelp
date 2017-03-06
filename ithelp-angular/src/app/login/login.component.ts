@@ -10,14 +10,14 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   user = {
-    username: '',
+    email: '',
     password: ''
   };
-  
+
   error: string;
 
   constructor(
-    private session: SessionService, 
+    private session: SessionService,
     private router: Router
   ) { }
 
@@ -32,10 +32,9 @@ export class LoginComponent implements OnInit {
 			                this.router.navigate(['/phone']);
 			         			} else {
 			                // login failed
-			                this.error = 'Username or password is incorrect';
+			                this.error = 'Email or password is incorrect';
 				            }
 				        });
   }
 
 }
- 
