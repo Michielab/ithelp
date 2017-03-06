@@ -9,11 +9,11 @@ import { HomeComponent } from './home/home.component';
 import { SessionService } from './session.service';
 
 export const routes: Routes = [
-    { path: '', component: HomeComponent },
-    { path: 'login', component: LoginComponent },
-    { path: 'signup', component: SignupComponent },
-    { path: 'add', component: AddPhoneComponent, canActivate: [SessionService] },
-    { path: 'phone', component: PhoneListComponent, canActivate: [SessionService] },
-    { path: 'phone/:id', component: PhoneDetailsComponent, canActivate: [SessionService] },
-    { path: '**', redirectTo: '' }
+  { path: '', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignupComponent },
+  { path: 'add', component: AddPhoneComponent, canActivate: [SessionService] },
+  { path: 'phone', component: PhoneListComponent, canActivate: [SessionService] },
+  { path: 'phone/:id', component: PhoneDetailsComponent, canActivate: [SessionService] },
+  { path: '**', redirectTo: '' }
 ];
