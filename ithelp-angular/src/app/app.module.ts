@@ -21,6 +21,8 @@ import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { InboxComponent } from './inbox/inbox.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
+import { FilterPipe } from './pipes/filter-search.pipe';
+
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import { SearchResultsComponent } from './search-results/search-results.componen
     HomeComponent,
     ProfileComponent,
     InboxComponent,
-    SearchResultsComponent
+    SearchResultsComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

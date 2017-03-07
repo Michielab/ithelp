@@ -2,7 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from './../user.service';
 
-// import { filterRolePipe } from '../pipes/filter-role.pipe';
+// import { FilterPipe } from './../pipes/filter-search.pipe';
 
 
 @Component({
@@ -12,10 +12,13 @@ import { UserService } from './../user.service';
   providers: [UserService]
 })
 export class SearchResultsComponent implements OnInit {
-	users;
+	users: Array<Object> = [];
   pattern: string="";
   searchMethod: string = "name";
-  filters = []
+  initialFilters = ["Computers", "Phones", "Iphone"];
+  customFilters = []
+  filterActive = false
+  filters: Array<Object>
 
   constructor(private user: UserService) { }
 
@@ -25,18 +28,26 @@ export class SearchResultsComponent implements OnInit {
       .subscribe((users) => {
         this.users = users;
       });
+
+      this.filters = this.initialFilters
+
   }
 
 
 
   addFilters(event){
-    this.filters.push(event.target.value)
+    this.filterActive = true
+    this.customFilters.push(event.target.value)
+    this.filters = this.customFilters
     console.log(this.filters)
   }
 
   removeFilters(event){
-    let index = event.target.value.indexOf(this.filters)
-    this.filters.splice(index, 1)
-    console.log(this.filters)
+    let index = event.target.value.indexOf(this.customFilters)
+    this.customFilters.splice(index, 1)
+    if(this.customFilters.length == 0){
+      this.filters = this.initialFilters
+    }
+
   }
 }
