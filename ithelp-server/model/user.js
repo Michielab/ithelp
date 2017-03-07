@@ -8,7 +8,7 @@ const userSchema = new Schema({
   password: String,
   profilePic: String,
   address: String,
-  // location: { type: { type: String }, coordinates: [Number] },
+  location: { type: { type: String }, coordinates: [Number] },
   phoneNumber: String,
   role: {
      type: String,

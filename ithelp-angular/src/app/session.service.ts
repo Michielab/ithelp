@@ -5,6 +5,7 @@ import 'rxjs/add/operator/catch';
 import { Router, CanActivate } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
 
+
 @Injectable()
 export class SessionService implements CanActivate {
   public token: string;
@@ -23,6 +24,10 @@ export class SessionService implements CanActivate {
       } else {
         this.isAuth.emit(false);
       }
+  }
+
+  test() {
+    this.http;
   }
 
   canActivate(): Observable<boolean> | Promise<boolean> | boolean {

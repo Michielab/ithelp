@@ -17,6 +17,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { HomeComponent } from './home/home.component';
+import { AgmCoreModule } from "angular2-google-maps/core";
 
 @NgModule({
   declarations: [
@@ -34,8 +35,14 @@ import { HomeComponent } from './home/home.component';
     BrowserModule,
     FormsModule,
     HttpModule,
+    AgmCoreModule.forRoot({
+      apiKey: "AIzaSyAKaMtajBkWNsRibGEZIMIY7AsQPmzBEuQ",
+      libraries: ["places"]
+    }),
     RouterModule.forRoot(routes)
   ],
+
+  
   providers: [PhoneService, SessionService],
   bootstrap: [AppComponent]
 })

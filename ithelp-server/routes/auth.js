@@ -50,6 +50,10 @@ router.post("/signup", (req, res, next) => {
   var role = req.body.role;
   var password = req.body.password;
 
+  var location = {
+  type: 'Point',
+  coordinates: [req.body.long, req.body.lat]
+};
 
   if (!email || !password ) {
     res.status(400).json({ message: "Provide email and password" });
@@ -70,6 +74,7 @@ router.post("/signup", (req, res, next) => {
       surname,
       email,
       address,
+      location,
       role,
       password: hashPass
     });
