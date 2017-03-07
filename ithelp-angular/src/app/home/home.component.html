@@ -1,5 +1,27 @@
-<div class="jumbotron">
-  <h1>Hello, world!</h1>
-  <p>Welcome to Phone Store</p>
-  <p><a class="btn btn-primary btn-lg" [routerLink]="['/login']" role="button">Login</a></p>
+<div class="container-fluid  container-home-custom">
+
+
+<div class="jumbotron banner">
+      <div class="row">
+        <div class="col-md-5 title">
+        <h1>
+          Find amazing people that will take care <br>of your pet
+        </h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3 center-form">
+          <div class="form-group form-inline"><br><br>
+            <h2>What do you need?</h2>
+            <input type="text" class="form-control" placeholder="">
+
+
+            <button class="btn btn-success"><a [routerLink]="['search']" style="text-decoration:none; color:white;">Search!</a></button><br><br>
+
+
+          </div>
+        </div>
+      </div>
+
+  </div>
 </div>

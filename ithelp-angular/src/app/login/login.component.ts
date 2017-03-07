@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
 				        .subscribe(result => {
 				            if (result === true) {
 			                // login successful
-			                this.router.navigate(['/phone']);
+			                this.router.navigate(['/']);
 			         			} else {
 			                // login failed
 			                this.error = 'Email or password is incorrect';

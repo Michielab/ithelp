@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { PhoneListComponent } from './phone-list/phone-list.component';
 import { PhoneDetailsComponent } from './phone-details/phone-details.component';
 import { PhoneService } from './phone.service';
+import { UserService } from './user.service';
 import { SessionService } from './session.service';
 import { FileSelectDirective } from "ng2-file-upload";
 import { AddPhoneComponent } from './add-phone/add-phone.component';
@@ -18,6 +19,11 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { HomeComponent } from './home/home.component';
 import { AgmCoreModule } from "angular2-google-maps/core";
+
+import { ProfileComponent } from './profile/profile.component';
+import { InboxComponent } from './inbox/inbox.component';
+import { SearchResultsComponent } from './search-results/search-results.component';
+
 
 @NgModule({
   declarations: [
@@ -29,7 +35,10 @@ import { AgmCoreModule } from "angular2-google-maps/core";
     NavbarComponent,
     LoginComponent,
     SignupComponent,
-    HomeComponent
+    HomeComponent,
+    ProfileComponent,
+    InboxComponent,
+    SearchResultsComponent
   ],
   imports: [
     BrowserModule,
@@ -42,8 +51,7 @@ import { AgmCoreModule } from "angular2-google-maps/core";
     RouterModule.forRoot(routes)
   ],
 
-  
-  providers: [PhoneService, SessionService],
+  providers: [PhoneService, UserService, SessionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

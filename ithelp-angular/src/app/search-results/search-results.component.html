@@ -1,0 +1,55 @@
+<h1> User list </h1>
+<div>
+  <div class="form-group" style="float:right">
+
+    <label for="user_speciality"> Search for: </label><br>
+
+      <label>
+        <input value="hardware" type="checkbox"
+          (click)="$event.target.checked? addFilters($event) : removeFilters($event)"> Hardware
+      </label>
+      <label>
+        <input value="software" type="checkbox"
+          (click)="$event.target.checked? addFilters($event) : removeFilters($event)"> Software
+      </label>
+      <label>
+        <input value="internet" type="checkbox"
+          (click)="$event.target.checked? addFilters($event) : removeFilters($event)"> Internet
+      </label>
+      <label>
+        <input value="phones" type="checkbox"
+          (click)="$event.target.checked? addFilters($event) : removeFilters($event)"> Phones
+      </label>
+      <label>
+        <input value="services" type="checkbox"
+          (click)="$event.target.checked? addFilters($event) : removeFilters($event)"> Services
+      </label>
+      <label>
+        <input value="teaching" type="checkbox"
+          (click)="$event.target.checked? addFilters($event) : removeFilters($event)"> Teaching
+      </label>
+
+
+    <select [(ngModel)]="searchMethod" id="search-method">
+      <option *ngFor="let field of ['name', 'email', 'phoneNumber']" [ngValue]="field">{{field}}</option>
+    </select>
+    <input id="user_speciality" placeholder="Search" type="text" [(ngModel)]="pattern">
+  </div>
+
+  <div *ngFor="let user of users">
+    <div *ngIf="user.role == 'HELPER'">
+      <h3> {{ user.name }} </h3>
+      <p> {{ user.email }} </p>
+      <h4> {{ user.slogan }} </h4>
+      <p> {{ user.description }} </p>
+      <p> {{ user.speciality }} </p>
+
+      <p> {{ user.role }} </p>
+
+      <hr>
+    </div>
+
+
+  </div>
+
+</div>
