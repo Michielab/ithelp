@@ -8,16 +8,16 @@ const User = require('../model/user');
 // });
 
 
-
-router.get('/', (req, res, next) => {
-  User.find({})
-    .exec((err, Users) => {
-      if (err) {
-        return res.send(err);
-      }
-      return res.json(Users);
-    });
-});
+router.get('/:format?', (req, res, next) => {
+  User.where('location')
+  .near({ center: { coordinates: [req.query.long, req.query.lat], type: 'Point' }, maxDistance: 2000 })
+      .exec((err, Users) => {
+        if (err) {
+          return res.send(err);
+        }
+        return res.json(Users);
+      });
+  });
 
 
 module.exports = router;

@@ -14,13 +14,21 @@ export class UserService {
 
   }
 
-  getList() {
-
+  getUsers(lat,long) {
+    let locationLat = lat;
+    let locationLng = long;
     let headers = new Headers({ 'Authorization': 'JWT ' + this.SessionService.token });
-    let options = new RequestOptions({ headers: headers });
-    return this.http.get(`${this.BASE_URL}/users`, options)
+    let options = new RequestOptions({ headers: headers});
+    return this.http.get("http://localhost:3000/api/users?lat=" + locationLat + "&long=" + locationLng,options)
       .map((res) => res.json());
   }
+
+  // getList() {
+  //   let headers = new Headers({ 'Authorization': 'JWT ' + this.SessionService.token });
+  //   let options = new RequestOptions({ headers: headers });
+  //   return this.http.get(`${this.BASE_URL}/users`, options)
+  //     .map((res) => res.json());
+  // }
 
   // get(id) {
   //   let headers = new Headers({ 'Authorization': 'JWT ' + this.SessionService.token });
