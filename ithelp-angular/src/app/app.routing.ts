@@ -9,13 +9,16 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { HomeComponent } from './home/home.component';
+import { HelperDetailsComponent } from './helper-details/helper-details.component';
 import { SessionService } from './session.service';
+
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'search', component: SearchResultsComponent },
+  { path: 'search/:id', component: HelperDetailsComponent, canActivate: [SessionService] },
   { path: 'profile', component: ProfileComponent, canActivate: [SessionService] },
   { path: 'inbox', component: InboxComponent, canActivate: [SessionService] },
   { path: 'add', component: AddPhoneComponent, canActivate: [SessionService] },

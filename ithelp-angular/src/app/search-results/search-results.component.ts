@@ -15,7 +15,7 @@ export class SearchResultsComponent implements OnInit {
 	users: Array<Object> = [];
   pattern: string="";
   searchMethod: string = "name";
-  initialFilters = ["Computers", "Phones", "Iphone"];
+  initialFilters = ["Hardware", "Software", "Internet", "Phones", "Services", "Teaching"];
   customFilters = []
   filterActive = false
   filters: Array<Object>
@@ -43,6 +43,7 @@ export class SearchResultsComponent implements OnInit {
   }
 
   removeFilters(event){
+    this.filterActive = false;
     let index = event.target.value.indexOf(this.customFilters)
     this.customFilters.splice(index, 1)
     if(this.customFilters.length == 0){

@@ -1,7 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'filter'
+  name: 'filter',
+  pure: false
 })
 export class FilterPipe implements PipeTransform {
 
@@ -19,14 +20,12 @@ export class FilterPipe implements PipeTransform {
       filters.forEach(function(filter){
         (user.speciality).forEach(function(speciality){
           if(speciality === filter){
-            console.log(user.name)
             firstUsers.push(user)
           }
         })
       })
     })
 
-    console.log(firstUsers)
 
     uniqueUsers = firstUsers.filter(function(item, pos) {
         return firstUsers.indexOf(item) == pos;

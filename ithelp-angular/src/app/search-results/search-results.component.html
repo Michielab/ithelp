@@ -41,7 +41,7 @@
       <p> {{ user.speciality }} </p>
 
       <p> {{ user.role }} </p>
-      <p><button class="btn btn-success">Contact</button></p>
+      <p><button class="btn btn-success"><a [routerLink]="['/search', user._id]">Contact</a></button></p>
 
       <hr>
     </div>

@@ -22,6 +22,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { InboxComponent } from './inbox/inbox.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { FilterPipe } from './pipes/filter-search.pipe';
+import { HelperDetailsComponent } from './helper-details/helper-details.component';
+import { TabsModule } from 'ng2-bootstrap/tabs';
 
 
 @NgModule({
@@ -38,13 +40,15 @@ import { FilterPipe } from './pipes/filter-search.pipe';
     ProfileComponent,
     InboxComponent,
     SearchResultsComponent,
-    FilterPipe
+    FilterPipe,
+    HelperDetailsComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    TabsModule.forRoot()
   ],
   providers: [PhoneService, UserService, SessionService],
   bootstrap: [AppComponent]
