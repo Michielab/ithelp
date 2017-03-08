@@ -14,7 +14,7 @@ declare var google: any;
   changeDetection: ChangeDetectionStrategy.Default
 })
 export class SearchResultsComponent implements OnInit {
-	users: Array<Object> = [];
+  users: Array<Object> = [];
   pattern: string="";
   searchMethod: string = "name";
   initialFilters = ["Hardware", "Software", "Internet", "Phones", "Services", "Teaching"];
@@ -27,60 +27,70 @@ export class SearchResultsComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private ngZone: NgZone
+    private ngZone: NgZone,
   ) { }
 
   ngOnInit() {
-      this.getUsers();
-      this.filters = this.initialFilters
-      let input = document.getElementById('searchLocation');
-      let autocomplete = new google.maps.places.Autocomplete(input);
+    this.getUsers();
+    this.filters = this.initialFilters
+    let input = document.getElementById('searchLocation');
+    let autocomplete = new google.maps.places.Autocomplete(input);
 
-      autocomplete.addListener("place_changed", ()=>{
-        this.ngZone.run(()=>{
-          this.lat = autocomplete.getPlace().geometry.location.lat()
-          this.lng = autocomplete.getPlace().geometry.location.lng();
+    autocomplete.addListener("place_changed", ()=>{
+      this.ngZone.run(()=>{
+        this.lat = autocomplete.getPlace().geometry.location.lat()
+        this.lng = autocomplete.getPlace().geometry.location.lng();
 
-          this.getUsers()
-        })
+        this.getUsers()
       })
-}
+    })
+  }
 
   getUsers() {
     this.userService.getUsers(this.lat, this.lng)
-      .subscribe((users) => {
-        this.users = users;
+    .subscribe((users) => {
+      this.users = users;
 
       let map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 14,
-          center: {lat: this.lat, lng: this.lng},
-          scrollwheel:false,
-        });
+        zoom: 14,
+        center: {lat: this.lat, lng: this.lng},
+        scrollwheel:false,
+      });
 
       map.addListener('dragend', ()=> {
-       this.lat = map.center.lat()
-       this.lng = map.center.lng();
-       this.getUsers()
-     })
+        this.ngZone.run(()=>{
+        this.lat = map.center.lat()
+        this.lng = map.center.lng();
+        this.getUsers()
+          })
+      })
 
-      users.forEach(function(marker){
-        if (marker.role === "HELPER") {
-          let title = marker.name
-          let position = {
-             lat: marker.location.coordinates[1],
-             lng: marker.location.coordinates[0]
-           };
 
-           var pin = new google.maps.Marker({ position, map, title  });
-         }
-       });
+    users.forEach((marker) => {
+      if (marker.role === "HELPER") {
+        this.filters.forEach(function(filter){
+          (marker.speciality).forEach(function(speciality){
+            if(speciality === filter){
+              let title = marker.name
+              let position = {
+                lat: marker.location.coordinates[1],
+                lng: marker.location.coordinates[0]
+              };
+
+              var pin = new google.maps.Marker({ position, map, title  });
+            }
+          })
+        })
+      }
     });
-  };
+  });
+};
 
   addFilters(event){
     this.filterActive = true
     this.customFilters.push(event.target.value)
     this.filters = this.customFilters
+    this.getUsers()
     console.log(this.filters)
   }
 
@@ -91,5 +101,6 @@ export class SearchResultsComponent implements OnInit {
     if(this.customFilters.length == 0){
       this.filters = this.initialFilters
     }
+    this.getUsers()
   }
 }
