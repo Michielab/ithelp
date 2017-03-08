@@ -18,12 +18,15 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { HomeComponent } from './home/home.component';
+import { AgmCoreModule } from "angular2-google-maps/core";
+
 import { ProfileComponent } from './profile/profile.component';
 import { InboxComponent } from './inbox/inbox.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { FilterPipe } from './pipes/filter-search.pipe';
 import { HelperDetailsComponent } from './helper-details/helper-details.component';
 import { TabsModule } from 'ng2-bootstrap/tabs';
+
 
 
 @NgModule({
@@ -47,9 +50,14 @@ import { TabsModule } from 'ng2-bootstrap/tabs';
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(routes),
-    TabsModule.forRoot()
+    TabsModule.forRoot(),
+    AgmCoreModule.forRoot({
+      apiKey: "AIzaSyAKaMtajBkWNsRibGEZIMIY7AsQPmzBEuQ",
+      libraries: ["places"]
+    }),
+    RouterModule.forRoot(routes)
   ],
+
   providers: [PhoneService, UserService, SessionService],
   bootstrap: [AppComponent]
 })

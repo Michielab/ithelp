@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { SessionService } from '../session.service';
 import { Router } from '@angular/router';
+
+
+declare var google: any;
 
 @Component({
   selector: 'app-signup',
@@ -8,13 +11,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-
-	newUser = {
+  newUser = {
     name: '',
     surname: '',
     email: '',
     address: '',
     role: '',
+    lat: 0,
+    long: 0,
     password: ''
   };
 
@@ -22,12 +26,25 @@ export class SignupComponent implements OnInit {
   error: string;
 
 
+
   constructor(
   	private session: SessionService,
     private router: Router
-  ) { }
+
+  ) {}
 
   ngOnInit() {
+    let input = document.getElementById('searchTextField');
+    let autocomplete = new google.maps.places.Autocomplete(input);
+
+    autocomplete.addListener("place_changed", ()=> {
+
+    this.newUser.lat =  autocomplete.getPlace().geometry.location.lat()
+    this.newUser.long   = autocomplete.getPlace().geometry.location.lng();
+
+    })
+
+
   }
 
   signup() {
@@ -44,4 +61,5 @@ export class SignupComponent implements OnInit {
           }
       });
   }
+
 }
