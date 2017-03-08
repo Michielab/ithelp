@@ -23,6 +23,10 @@ import { AgmCoreModule } from "angular2-google-maps/core";
 import { ProfileComponent } from './profile/profile.component';
 import { InboxComponent } from './inbox/inbox.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
+import { FilterPipe } from './pipes/filter-search.pipe';
+import { HelperDetailsComponent } from './helper-details/helper-details.component';
+import { TabsModule } from 'ng2-bootstrap/tabs';
+
 
 
 @NgModule({
@@ -38,12 +42,15 @@ import { SearchResultsComponent } from './search-results/search-results.componen
     HomeComponent,
     ProfileComponent,
     InboxComponent,
-    SearchResultsComponent
+    SearchResultsComponent,
+    FilterPipe,
+    HelperDetailsComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
+    TabsModule.forRoot(),
     AgmCoreModule.forRoot({
       apiKey: "AIzaSyAKaMtajBkWNsRibGEZIMIY7AsQPmzBEuQ",
       libraries: ["places"]

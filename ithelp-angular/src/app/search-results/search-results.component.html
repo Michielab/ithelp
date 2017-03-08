@@ -14,38 +14,35 @@
     <label for="user_speciality"> Search for: </label><br>
 
       <label>
-        <input value="hardware" type="checkbox"
+        <input value="Hardware" type="checkbox"
           (click)="$event.target.checked? addFilters($event) : removeFilters($event)"> Hardware
       </label>
       <label>
-        <input value="software" type="checkbox"
+        <input value="Software" type="checkbox"
           (click)="$event.target.checked? addFilters($event) : removeFilters($event)"> Software
       </label>
       <label>
-        <input value="internet" type="checkbox"
+        <input value="Internet" type="checkbox"
           (click)="$event.target.checked? addFilters($event) : removeFilters($event)"> Internet
       </label>
       <label>
-        <input value="phones" type="checkbox"
+        <input value="Phones" type="checkbox"
           (click)="$event.target.checked? addFilters($event) : removeFilters($event)"> Phones
       </label>
       <label>
-        <input value="services" type="checkbox"
+        <input value="Services" type="checkbox"
           (click)="$event.target.checked? addFilters($event) : removeFilters($event)"> Services
       </label>
       <label>
-        <input value="teaching" type="checkbox"
+        <input value="Teaching" type="checkbox"
           (click)="$event.target.checked? addFilters($event) : removeFilters($event)"> Teaching
       </label>
 
 
-    <select [(ngModel)]="searchMethod" id="search-method">
-      <option *ngFor="let field of ['name', 'email', 'phoneNumber']" [ngValue]="field">{{field}}</option>
-    </select>
-    <input id="user_speciality" placeholder="Search" type="text" [(ngModel)]="pattern">
   </div>
 
-  <div  *ngFor="let user of users">
+
+  <div *ngFor="let user of users | filter:filters">
     <div *ngIf="user.role == 'HELPER'">
       <h3> {{ user.name }} </h3>
       <p> {{ user.email }} </p>
@@ -54,6 +51,7 @@
       <p> {{ user.speciality }} </p>
 
       <p> {{ user.role }} </p>
+      <p><button class="btn btn-success"><a [routerLink]="['/search', user._id]">Contact</a></button></p>
 
       <hr>
     </div>

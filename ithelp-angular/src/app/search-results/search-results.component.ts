@@ -3,7 +3,7 @@ import { Component, OnInit, Input, ChangeDetectionStrategy, NgZone } from '@angu
 import { UserService } from './../user.service';
 
 declare var google: any;
-// import { filterRolePipe } from '../pipes/filter-role.pipe';
+
 
 
 @Component({
@@ -14,14 +14,16 @@ declare var google: any;
   changeDetection: ChangeDetectionStrategy.Default
 })
 export class SearchResultsComponent implements OnInit {
-  users;
-  map: any;
-  autocomplete: any;
-  pattern: string = "";
+	users: Array<Object> = [];
+  pattern: string="";
   searchMethod: string = "name";
-  filters = []
+  initialFilters = ["Hardware", "Software", "Internet", "Phones", "Services", "Teaching"];
+  customFilters = []
+  filterActive = false
+  filters: Array<Object>
   lat: number = 41.38506389999999;
   lng: number = 2.1734034999999494;
+
 
   constructor(
     private userService: UserService,
@@ -30,6 +32,7 @@ export class SearchResultsComponent implements OnInit {
 
   ngOnInit() {
       this.getUsers();
+      this.filters = this.initialFilters
       let input = document.getElementById('searchLocation');
       let autocomplete = new google.maps.places.Autocomplete(input);
 
@@ -72,15 +75,21 @@ export class SearchResultsComponent implements OnInit {
          }
        });
     });
-
-  }
+  };
 
   addFilters(event){
-    this.filters.push(event.target.value)
+    this.filterActive = true
+    this.customFilters.push(event.target.value)
+    this.filters = this.customFilters
+    console.log(this.filters)
   }
 
   removeFilters(event){
-    let index = event.target.value.indexOf(this.filters)
-    this.filters.splice(index, 1)
+    this.filterActive = false;
+    let index = event.target.value.indexOf(this.customFilters)
+    this.customFilters.splice(index, 1)
+    if(this.customFilters.length == 0){
+      this.filters = this.initialFilters
+    }
   }
 }
