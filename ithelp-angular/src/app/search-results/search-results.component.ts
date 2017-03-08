@@ -78,6 +78,7 @@ export class SearchResultsComponent implements OnInit {
   };
 
   addFilters(event){
+
     this.filterActive = true
     this.customFilters.push(event.target.value)
     this.filters = this.customFilters
