@@ -1,6 +1,7 @@
 
 import { Component, OnInit, Input, ChangeDetectionStrategy, NgZone } from '@angular/core';
-import { UserService } from './../user.service';
+import { UserService } from '../user.service';
+import { Router, ActivatedRoute,Params } from '@angular/router';
 
 declare var google: any;
 
@@ -17,22 +18,67 @@ export class SearchResultsComponent implements OnInit {
   users: Array<Object> = [];
   pattern: string="";
   searchMethod: string = "name";
-  initialFilters = ["Hardware", "Software", "Internet", "Phones", "Services", "Teaching"];
+  initialFilters = ["Computer", "Internet", "Phone", "TV", "Printer", "Other"];
   customFilters = []
   filterActive = false
-  filters: Array<Object>
-  lat: number = 41.38506389999999;
-  lng: number = 2.1734034999999494;
+  computerActive = false
+  internetActive = false
+  phoneActive = false
+  tvActive = false
+  printerActive = false
+  otherActive = false
+  filters: Array<String> = []
+  place: Object;
+  lat: any;
+  lng: any;
 
 
   constructor(
     private userService: UserService,
     private ngZone: NgZone,
+    private route: Router,
+    private router: ActivatedRoute
+
+
   ) { }
 
   ngOnInit() {
+    this.router.queryParams.subscribe((queryParams)=> {
+      this.lat = parseFloat(queryParams['lat']);
+      this.lng = parseFloat(queryParams['lng']);
+      let homefilters = queryParams['filters'].split(",");
+      if(homefilters.length != 0 &&  homefilters[0] != ''){
+        this.filters = homefilters;
+        this.customFilters = this.filters
+        console.log("init",this.filters);
+        this.filters.forEach((checkbox)=>{
+          if(checkbox === 'Computer'){
+            this.computerActive = true;
+          }
+          else if(checkbox === 'Internet'){
+            this.internetActive = true;
+          }
+          else if(checkbox === 'Phone'){
+            this.phoneActive = true;
+          }
+          else if(checkbox === 'TV'){
+            this.tvActive = true;
+          }
+          else if(checkbox === 'Printer'){
+            this.printerActive = true;
+          }
+          else if(checkbox === 'Other') {
+            this.otherActive = true;
+          }
+        })
+
+      } else {
+          this.filters = this.initialFilters;
+      }
+    })
+
     this.getUsers();
-    this.filters = this.initialFilters
+  console.log("undergetusers",this.filters);
     let input = document.getElementById('searchLocation');
     let autocomplete = new google.maps.places.Autocomplete(input);
 
@@ -40,8 +86,9 @@ export class SearchResultsComponent implements OnInit {
       this.ngZone.run(()=>{
         this.lat = autocomplete.getPlace().geometry.location.lat()
         this.lng = autocomplete.getPlace().geometry.location.lng();
-
+  console.log("drag",this.filters);
         this.getUsers()
+          console.log("drag",this.filters);
       })
     })
   }
@@ -50,7 +97,7 @@ export class SearchResultsComponent implements OnInit {
     this.userService.getUsers(this.lat, this.lng)
     .subscribe((users) => {
       this.users = users;
-
+      // this.route.navigate(['search'], {queryParams: {lat: this.lat, lng: this.lng, filters: this.filters}})
       let map = new google.maps.Map(document.getElementById('map'), {
         zoom: 14,
         center: {lat: this.lat, lng: this.lng},
@@ -64,7 +111,6 @@ export class SearchResultsComponent implements OnInit {
         this.getUsers()
           })
       })
-
 
     users.forEach((marker) => {
       if (marker.role === "HELPER") {
@@ -91,15 +137,21 @@ export class SearchResultsComponent implements OnInit {
     this.customFilters.push(event.target.value)
     this.filters = this.customFilters
     this.getUsers()
-    console.log(this.filters)
+      console.log("addfilters",this.filters);
   }
 
+
   removeFilters(event){
+      console.log("remove",this.filters);
+      console.log(event.target.value)
     this.filterActive = false;
-    let index = event.target.value.indexOf(this.customFilters)
-    this.customFilters.splice(index, 1)
+    let index = this.filters.indexOf(event.target.value)
+    console.log(index)
+    this.filters.splice(index, 1)
+        console.log("remove2",this.filters);
     if(this.customFilters.length == 0){
       this.filters = this.initialFilters
+        console.log(this.filters);
     }
     this.getUsers()
   }

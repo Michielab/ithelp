@@ -17,9 +17,11 @@ export class UserService {
   getUsers(lat,long) {
     let locationLat = lat;
     let locationLng = long;
+    // let filter = filters
+    // + "&filters=" + filter
     let headers = new Headers({ 'Authorization': 'JWT ' + this.SessionService.token });
     let options = new RequestOptions({ headers: headers});
-    return this.http.get("http://localhost:3000/api/users?lat=" + locationLat + "&long=" + locationLng,options)
+    return this.http.get("http://localhost:3000/api/users?lat=" + locationLat + "&long=" + locationLng ,options)
       .map((res) => res.json());
   }
 

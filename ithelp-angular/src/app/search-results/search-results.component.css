@@ -1,4 +1,23 @@
 #map {
-  height: 200px;
-  width: 50%;
+  height: 100%;
+  width: 100%;
  }
+
+ .map-view{
+   height: 82vh;
+   background-color: white;
+ }
+
+ .scrolling-custom{
+   height: 100vh;
+   overflow:auto;
+ }
+
+.marg-tocenter-custom{
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.lenght-input-custom{
+  width: 90%;
+}

@@ -1,62 +1,69 @@
-<h1> User list </h1>
-<div>
-  <div class="form-group">
-    <label for="addressInput">Location</label>
-    <input type="text"  id="searchLocation" class="form-control" placeholder="Location" name="location">
-  </div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-7">
+      <!-- Users part -->
+      <div class="row marg-tocenter-custom">
+        <!-- Filters checkbox -->
 
-    <div id="map" style="position:absolute; height:100%; padding:0; margin:0;"></div>
-</div>
+        <div class="form-group">
+          <label>
+            <input value="Computer"  [checked]="computerActive" type="checkbox"
+              (click)="$event.target.checked? addFilters($event) : removeFilters($event)"> Computer
+          </label>
+          <label>
+            <input value="Internet" [checked]="internetActive" type="checkbox"
+              (click)="$event.target.checked? addFilters($event) : removeFilters($event)"> Internet
+          </label>
+          <label>
+            <input value="Phone" [checked]="phoneActive" type="checkbox"
+              (click)="$event.target.checked? addFilters($event) : removeFilters($event)"> Phone
+          </label>
+          <label>
+            <input value="Printer" [checked]="printerActive" type="checkbox"
+              (click)="$event.target.checked? addFilters($event) : removeFilters($event)"> Printer
+          </label>
+          <label>
+            <input value="TV" [checked]="tvActive" type="checkbox"
+              (click)="$event.target.checked? addFilters($event) : removeFilters($event)"> TV
+          </label>
+          <label>
+            <input value="Other" [checked]="otherActive" type="checkbox"
+              (click)="$event.target.checked? addFilters($event) : removeFilters($event)"> Other
+          </label>
 
-<div>
-  <div class="form-group" style="float:right">
+        </div>
+      </div>
+      <div class="row scrolling-custom marg-tocenter-custom">
+        <!-- List of Users -->
 
-    <label for="user_speciality"> Search for: </label><br>
+        <div *ngFor="let user of users | filter:filters">
+          <div *ngIf="user.role == 'HELPER'">
+            <h3> {{ user.name }} </h3>
+            <p> {{ user.email }} </p>
+            <h4> {{ user.slogan }} </h4>
+            <p> {{ user.description }} </p>
+            <p> {{ user.speciality }} </p>
+            <p> {{ user.role }} </p>
+            <p><button class="btn btn-success"><a [routerLink]="['/search', user._id]">Contact</a></button></p>
 
-      <label>
-        <input value="Hardware" type="checkbox"
-          (click)="$event.target.checked? addFilters($event) : removeFilters($event)"> Hardware
-      </label>
-      <label>
-        <input value="Software" type="checkbox"
-          (click)="$event.target.checked? addFilters($event) : removeFilters($event)"> Software
-      </label>
-      <label>
-        <input value="Internet" type="checkbox"
-          (click)="$event.target.checked? addFilters($event) : removeFilters($event)"> Internet
-      </label>
-      <label>
-        <input value="Phones" type="checkbox"
-          (click)="$event.target.checked? addFilters($event) : removeFilters($event)"> Phones
-      </label>
-      <label>
-        <input value="Services" type="checkbox"
-          (click)="$event.target.checked? addFilters($event) : removeFilters($event)"> Services
-      </label>
-      <label>
-        <input value="Teaching" type="checkbox"
-          (click)="$event.target.checked? addFilters($event) : removeFilters($event)"> Teaching
-      </label>
+            <hr>
+          </div>
+        </div>
 
-
-  </div>
-
-
-  <div *ngFor="let user of users | filter:filters">
-    <div *ngIf="user.role == 'HELPER'">
-      <h3> {{ user.name }} </h3>
-      <p> {{ user.email }} </p>
-      <h4> {{ user.slogan }} </h4>
-      <p> {{ user.description }} </p>
-      <p> {{ user.speciality }} </p>
-
-      <p> {{ user.role }} </p>
-      <p><button class="btn btn-success"><a [routerLink]="['/search', user._id]">Contact</a></button></p>
-
-      <hr>
+      </div>
     </div>
 
+    <div class="col-md-5">
+      <!-- Map part -->
+      <div class="row">
+        <!-- Input field for search -->
 
-  </div>
+        <div class="form-group">
+          <input type="text"  id="searchLocation" class="form-control lenght-input-custom" placeholder="Where do you want to search?" name="location">
+        </div>
 
-</div>
+      </div>
+
+      <div class="row map-view">
+        <!-- Map -->
+        <div id="map" style="position:absolute; height:100%; padding:0; margin:0;"></div>
