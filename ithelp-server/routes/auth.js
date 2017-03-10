@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var jwt = require('jsonwebtoken');
 var jwtOptions = require('../config/jwtOptions');
+const upload = require('../config/multer');
 
 // Our user model
 const User           = require("../model/user");
@@ -49,7 +50,7 @@ router.post("/signup", (req, res, next) => {
   var address = req.body.address;
   var role = req.body.role;
   var password = req.body.password;
-  var profilePic = req.body.image;
+  var profilePic =  '';
 
   var location = {
   type: 'Point',
@@ -81,7 +82,7 @@ router.post("/signup", (req, res, next) => {
       password: hashPass
     });
 
-console.log(newUser);
+
     newUser.save((err, user) => {
       if (err) {
         res.status(400).json({ message: err });
@@ -96,6 +97,24 @@ console.log(newUser);
   });
 });
 
+//
+// router.post('/', (req, res) => {
+// 	console.log(req.body);
+//   const phone = new Phone({
+//   	brand: req.body.brand,
+//     name: req.body.name,
+//     specs: req.body.specs,
+//     image: req.body.image || ''
+//   });
+//
+//   user.save((err) => {
+//     if (err) {
+//       return res.send(err);
+//     }
+//
+//     return res.json({ message: 'New Phone created!' });
+//   });
+// });
 
 
 module.exports = router;
