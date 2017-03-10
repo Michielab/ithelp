@@ -6,30 +6,31 @@
         <!-- Filters checkbox -->
 
         <div class="form-group">
-            <label>
-              <input value="Hardware" type="checkbox"
-                (click)="$event.target.checked? addFilters($event) : removeFilters($event)"> Hardware
-            </label>
-            <label>
-              <input value="Software" type="checkbox"
-                (click)="$event.target.checked? addFilters($event) : removeFilters($event)"> Software
-            </label>
-            <label>
-              <input value="Internet" type="checkbox"
-                (click)="$event.target.checked? addFilters($event) : removeFilters($event)"> Internet
-            </label>
-            <label>
-              <input value="Phones" type="checkbox"
-                (click)="$event.target.checked? addFilters($event) : removeFilters($event)"> Phones
-            </label>
-            <label>
-              <input value="Services" type="checkbox"
-                (click)="$event.target.checked? addFilters($event) : removeFilters($event)"> Services
-            </label>
-            <label>
-              <input value="Teaching" type="checkbox"
-                (click)="$event.target.checked? addFilters($event) : removeFilters($event)"> Teaching
-            </label>
+
+          <label>
+            <input value="Computer"  [checked]="computerActive" type="checkbox"
+              (click)="$event.target.checked? addFilters($event) : removeFilters($event)"> Computer
+          </label>
+          <label>
+            <input value="Internet" [checked]="internetActive" type="checkbox"
+              (click)="$event.target.checked? addFilters($event) : removeFilters($event)"> Internet
+          </label>
+          <label>
+            <input value="Phone" [checked]="phoneActive" type="checkbox"
+              (click)="$event.target.checked? addFilters($event) : removeFilters($event)"> Phone
+          </label>
+          <label>
+            <input value="Printer" [checked]="printerActive" type="checkbox"
+              (click)="$event.target.checked? addFilters($event) : removeFilters($event)"> Printer
+          </label>
+          <label>
+            <input value="TV" [checked]="tvActive" type="checkbox"
+              (click)="$event.target.checked? addFilters($event) : removeFilters($event)"> TV
+          </label>
+          <label>
+            <input value="Other" [checked]="otherActive" type="checkbox"
+              (click)="$event.target.checked? addFilters($event) : removeFilters($event)"> Other
+          </label>
 
         </div>
       </div>

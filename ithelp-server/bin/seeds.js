@@ -36,7 +36,7 @@ const helpers = [
     price: 15,
     slogan: 'I can fix anything',
     status: 'morning time',
-    speciality: ['Computer', 'Internet', 'Phones'],
+    speciality: ['Computer', 'Internet', 'Phone'],
   },
   {
     name: 'Batman',
@@ -52,9 +52,9 @@ const helpers = [
     phoneNumber: '+34677798451',
     description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     price: 15,
-    slogan: 'Master of phones',
+    slogan: 'Master of Phone',
     status: 'all day',
-    speciality: ['Phones'],
+    speciality: ['Phone'],
   },
   {
     name: 'Superman',
@@ -91,7 +91,7 @@ const helpers = [
     price: 15,
     slogan: 'All about hardware',
     status: 'only weekend',
-    speciality: ['Other', 'Phones'],
+    speciality: ['Other', 'Phone'],
 
   },
   {
@@ -186,7 +186,7 @@ const helpers = [
     price: 15,
     slogan: 'Graphic design expert',
     status: 'only weekend',
-    speciality: ['Other', 'Phones'],
+    speciality: ['Other', 'Phone'],
 
   },
   {
@@ -205,7 +205,7 @@ const helpers = [
     price: 15,
     slogan: 'Software Expert',
     status: 'only weekend',
-    speciality: ['Computer', 'Phones'],
+    speciality: ['Computer', 'Phone'],
 
   },
   {
@@ -224,7 +224,7 @@ const helpers = [
     price: 15,
     slogan: 'Smartphone Expert',
     status: 'only weekend',
-    speciality: ['Phones', 'TV', 'Other'],
+    speciality: ['Phone', 'TV', 'Other'],
 
   },
   {
@@ -243,7 +243,7 @@ const helpers = [
     price: 15,
     slogan: 'I can solve all internet problems',
     status: 'only weekend',
-    speciality: ['Computers', 'Internet', 'Phones'],
+    speciality: ['Computers', 'Internet', 'Phone'],
 
   },
   {
@@ -286,6 +286,7 @@ const helpers = [
   },
 
 ];
+
 
 
 

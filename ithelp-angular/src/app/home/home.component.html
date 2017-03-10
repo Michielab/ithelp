@@ -13,12 +13,37 @@
         <div class="col-md-3 center-form">
           <div class="form-group form-inline"><br><br>
             <h2>What do you need?</h2>
-            <input type="text" class="form-control" placeholder="">
+            <div class="form-group" style="float:right">
 
+              <label for="user_speciality"> Search for: </label><br>
 
-            <button class="btn btn-success"><a [routerLink]="['search']" style="text-decoration:none; color:white;">Search!</a></button><br><br>
-
-
+                <label>
+                  <input value="Computer" type="checkbox"
+                    (click)="$event.target.checked? addFilters($event) : removeFilters($event)"> Computer
+                </label>
+                <label>
+                  <input value="Internet" type="checkbox"
+                    (click)="$event.target.checked? addFilters($event) : removeFilters($event)"> Internet
+                </label>
+                <label>
+                  <input value="Phone" type="checkbox"
+                    (click)="$event.target.checked? addFilters($event) : removeFilters($event)"> Phone
+                </label>
+                <label>
+                  <input value="Printer" type="checkbox"
+                    (click)="$event.target.checked? addFilters($event) : removeFilters($event)"> Printer
+                </label>
+                <label>
+                  <input value="TV" type="checkbox"
+                    (click)="$event.target.checked? addFilters($event) : removeFilters($event)"> TV
+                </label>
+                <label>
+                  <input value="Other" type="checkbox"
+                    (click)="$event.target.checked? addFilters($event) : removeFilters($event)"> Other
+                </label>
+            </div>
+            <input type="text" id="search" class="form-control" placeholder="">
+            <button class="btn btn-success"><a (click)="goToSearch()" style="text-decoration:none; color:white;">Search!</a></button><br><br>
           </div>
         </div>
       </div>

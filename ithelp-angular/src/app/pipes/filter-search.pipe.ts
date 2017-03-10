@@ -30,7 +30,7 @@ export class FilterPipe implements PipeTransform {
     uniqueUsers = firstUsers.filter(function(item, pos) {
         return firstUsers.indexOf(item) == pos;
     })
-    console.log("RESULT FROM THE PIPE", uniqueUsers)
+
     return uniqueUsers
 }
 }

@@ -49,6 +49,7 @@ router.post("/signup", (req, res, next) => {
   var address = req.body.address;
   var role = req.body.role;
   var password = req.body.password;
+  var profilePic = req.body.image;
 
   var location = {
   type: 'Point',
@@ -76,6 +77,7 @@ router.post("/signup", (req, res, next) => {
       address,
       location,
       role,
+      profilePic,
       password: hashPass
     });
 

@@ -1,6 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { SessionService } from '../session.service';
 import { Router } from '@angular/router';
+import { FileUploader } from "ng2-file-upload";
 
 
 declare var google: any;
@@ -11,6 +12,9 @@ declare var google: any;
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
+  uploader: FileUploader = new FileUploader({
+  });
+
   newUser = {
     name: '',
     surname: '',
@@ -48,6 +52,7 @@ export class SignupComponent implements OnInit {
   }
 
   signup() {
+    console.log(this.uploader)
   	this.session.signup(this.newUser)
       .subscribe(result => {
           if (result === true) {
