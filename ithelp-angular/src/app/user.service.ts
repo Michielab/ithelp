@@ -32,12 +32,12 @@ export class UserService {
       .map((res) => res.json());
   }
 
-  edit(user) {
-    let headers = new Headers({ 'Authorization': 'JWT ' + this.SessionService.token });
-    let options = new RequestOptions({ headers: headers });
-    return this.http.put(`${this.BASE_URL}/users/${user.id}`, user, options )
-      .map((res) => res.json());
-  }
+  // edit(user) {
+  //   let headers = new Headers({ 'Authorization': 'JWT ' + this.SessionService.token });
+  //   let options = new RequestOptions({ headers: headers });
+  //   return this.http.put(`${this.BASE_URL}/users/${user.id}`, user, options )
+  //     .map((res) => res.json());
+  // }
   //
   // remove(id) {
   //   let headers = new Headers({ 'Authorization': 'JWT ' + this.SessionService.token });

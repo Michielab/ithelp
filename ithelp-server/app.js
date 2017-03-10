@@ -38,6 +38,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // app.use('/users', users);
 app.use('/', auth);
+app.use('/edit', users);
 // app.use('/api/phones', passport.authenticate('jwt', { session: false }), phones);
 app.use('/api/users', users);
 

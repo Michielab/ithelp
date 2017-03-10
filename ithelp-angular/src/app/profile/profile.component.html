@@ -3,6 +3,9 @@
   <!-- Costumer information -->
 {{user.name}}
 {{user.role}}
+{{user.profilePic}}
+
+<img [src]='user.profilePic'>
       <tabset>
 
         <tab heading="Your Information">
@@ -30,9 +33,9 @@
               <label> Phone Number </label>
               <input type="text" [(ngModel)]="newUser.phoneNumber" name="phoneNumber" />
 
-
+              <input value="user._id" name="id" />
               <input type="file" name="file" ng2FileSelect [uploader]="uploader" />
-
+              <input [(ngModel)]="newUser._id" name="id" />
             </fieldset>
             <button (click)="submit()"> Edit </button>
           </form>

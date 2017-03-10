@@ -12,8 +12,9 @@ declare var google: any;
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-  uploader: FileUploader = new FileUploader({
-  });
+  // uploader: FileUploader = new FileUploader({
+  //   url: `http://localhost:3000/signup`
+  // });
 
   newUser = {
     name: '',
@@ -28,6 +29,7 @@ export class SignupComponent implements OnInit {
 
   user: any;
   error: string;
+  feedback: string;
 
 
 
@@ -48,11 +50,9 @@ export class SignupComponent implements OnInit {
 
     })
 
-
   }
 
   signup() {
-    console.log(this.uploader)
   	this.session.signup(this.newUser)
       .subscribe(result => {
           if (result === true) {
@@ -65,6 +65,7 @@ export class SignupComponent implements OnInit {
               // this.error = 'Username or password is incorrect';
           }
       });
+
   }
 
 }
