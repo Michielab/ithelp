@@ -24,6 +24,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { InboxComponent } from './inbox/inbox.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { FilterPipe } from './pipes/filter-search.pipe';
+import { FilterRolePipe } from './pipes/filter-role.pipe';
 import { HelperDetailsComponent } from './helper-details/helper-details.component';
 import { TabsModule } from 'ng2-bootstrap/tabs';
 
@@ -44,6 +45,7 @@ import { TabsModule } from 'ng2-bootstrap/tabs';
     InboxComponent,
     SearchResultsComponent,
     FilterPipe,
+    FilterRolePipe,
     HelperDetailsComponent
   ],
   imports: [

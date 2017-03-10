@@ -36,7 +36,7 @@ const helpers = [
     price: 15,
     slogan: 'I can fix anything',
     status: 'morning time',
-    speciality: ['Computers', 'Internet', 'Phones'],
+    speciality: ['Computer', 'Internet', 'Phones'],
   },
   {
     name: 'Batman',
@@ -72,7 +72,7 @@ const helpers = [
     price: 15,
     slogan: 'Photography master',
     status: 'only weekends',
-    speciality: ['Photography', 'Design', 'Edition'],
+    speciality: ['Printer', 'Computer', 'Other'],
 
   },
   {
@@ -91,7 +91,7 @@ const helpers = [
     price: 15,
     slogan: 'All about hardware',
     status: 'only weekend',
-    speciality: ['Hardware', 'Printers', 'Periferics'],
+    speciality: ['Other', 'Phones'],
 
   },
   {
@@ -110,7 +110,7 @@ const helpers = [
     price: 15,
     slogan: 'All your software problems will be solved',
     status: 'only weekend',
-    speciality: ['Software', 'Windows', 'Office'],
+    speciality: ['Computer', 'Internet', 'TV'],
 
   },
   {
@@ -129,7 +129,7 @@ const helpers = [
     price: 15,
     slogan: 'Apple Genius',
     status: 'only weekend',
-    speciality: ['Apple', 'Iphone', 'Macbook'],
+    speciality: ['TV', 'Internet'],
 
   },
   {
@@ -148,7 +148,7 @@ const helpers = [
     price: 15,
     slogan: 'Code teacher',
     status: 'only weekend',
-    speciality: ['Teacher', 'Code'],
+    speciality: ['Other', 'TV'],
 
   },
   {
@@ -167,7 +167,7 @@ const helpers = [
     price: 15,
     slogan: 'Fix all hardware',
     status: 'only weekend',
-    speciality: ['Hardware', 'Hard Disk', 'Computers'],
+    speciality: ['Printer'],
 
   },
   {
@@ -186,7 +186,7 @@ const helpers = [
     price: 15,
     slogan: 'Graphic design expert',
     status: 'only weekend',
-    speciality: ['Graphic Design', 'Multimedia'],
+    speciality: ['Other', 'Phones'],
 
   },
   {
@@ -205,7 +205,7 @@ const helpers = [
     price: 15,
     slogan: 'Software Expert',
     status: 'only weekend',
-    speciality: ['Software', 'Office', 'Windows'],
+    speciality: ['Computer', 'Phones'],
 
   },
   {
@@ -224,7 +224,7 @@ const helpers = [
     price: 15,
     slogan: 'Smartphone Expert',
     status: 'only weekend',
-    speciality: ['Phones', 'Android', 'Iphone'],
+    speciality: ['Phones', 'TV', 'Other'],
 
   },
   {
@@ -243,7 +243,7 @@ const helpers = [
     price: 15,
     slogan: 'I can solve all internet problems',
     status: 'only weekend',
-    speciality: ['Computers', 'Internet', 'Router'],
+    speciality: ['Computers', 'Internet', 'Phones'],
 
   },
   {
@@ -262,7 +262,7 @@ const helpers = [
     price: 15,
     slogan: 'Code Instructor',
     status: 'only weekend',
-    speciality: ['Teacher', 'Code'],
+    speciality: ['TV', 'Other'],
 
   },
   {
@@ -281,7 +281,7 @@ const helpers = [
     price: 15,
     slogan: 'Hardware fixer',
     status: 'only weekend',
-    speciality: ['Computers', 'Printer', 'Hardware'],
+    speciality: ['Computers', 'Printer'],
 
   },
 

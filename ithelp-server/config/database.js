@@ -4,6 +4,8 @@ const mongoose = require('mongoose');
 const dbName = 'it-help';
 
 // connect to the database
+mongoose.Promise = global.Promise;
+
 mongoose.connect(`mongodb://localhost/${dbName}`);
 
 const db = mongoose.connection;

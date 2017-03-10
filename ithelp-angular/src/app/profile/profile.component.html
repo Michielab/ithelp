@@ -1,25 +1,51 @@
 <div class="container-fluid">
 
-  <tabset>
+  <!-- Costumer information -->
+{{user.name}}
+{{user.role}}
+      <tabset>
 
-    <tab heading="Your Information">
+        <tab heading="Your Information">
 
-      <h4>Here is your information</h4>
+          <h4>Here is your information</h4>
+          <h5>{{user.name}}</h5>
+          <h5>{{user.surname}}</h5>
+          <h5>{{user.email}}</h5>
+          <h5>{{user.address}}</h5>
 
-    </tab>
-    <tab heading="Edit Profile">
+        </tab>
+        <tab heading="Edit Profile">
 
-      <h4>Edit your information</h4>
+          <h4>Edit your information</h4>
 
-    </tab>
+          <form>
+            <fieldset>
+              <legend> User info </legend>
+              <label> Name </label>
+              <input type="text" [(ngModel)]="newUser.name" name="name" />
 
-    <tab heading="Change your status">
-      {{user.name}}
+              <label> Surname </label>
+              <input type="text" [(ngModel)]="newUser.surname" name="surname" />
 
-      <h4>Change</h4>
+              <label> Phone Number </label>
+              <input type="text" [(ngModel)]="newUser.phoneNumber" name="phoneNumber" />
 
-    </tab>
 
-  </tabset>
+              <input type="file" name="file" ng2FileSelect [uploader]="uploader" />
+
+            </fieldset>
+            <button (click)="submit()"> Edit </button>
+          </form>
+
+        </tab>
+
+        <tab heading="Change your status">
+
+          <h4>Change</h4>
+
+        </tab>
+
+      </tabset>
+
 
 </div>

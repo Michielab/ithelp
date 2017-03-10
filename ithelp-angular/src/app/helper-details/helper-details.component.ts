@@ -17,6 +17,7 @@ export class HelperDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    console.log(this.route)
   	this.route.params.subscribe(params => {
       this.getUserDetails(params['id']);
     });
@@ -26,7 +27,7 @@ export class HelperDetailsComponent implements OnInit {
     this.userService.get(id)
       .subscribe((user) => {
         this.user = user;
-        console.log("user in getDetails: ", this.user)
+        console.log("user in getDetails: ", user)
       });
   }
 
