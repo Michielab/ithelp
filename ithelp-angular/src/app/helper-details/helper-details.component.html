@@ -10,4 +10,74 @@
 <h3>{{ user.speciality }}</h3>
 
 <br>
-<button class="btn btn-success">Contact {{ user.name }}</button>
+<button class="btn btn-primary" (click)="lgModal.show()">Contact {{ user.name }}</button>
+
+
+<div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Contact {{ user.name }}</h4>
+        <button type="button" class="close pull-right" (click)="lgModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <label> Select the field where you need help: </label>
+        <select (change)="showField($event.target.value)" class="form-control" id="search-method">
+          <option>Select Option</option>
+          <option *ngFor="let field of user.speciality" [ngValue]="field">{{field}}</option>
+        </select><br>
+
+        <div *ngIf="field === undefined">
+          <alert type="info">
+            You need to select a field of specialization
+          </alert>
+        </div>
+
+        <div *ngIf="field === 'Computer'">
+          <label> Choose a specialization: </label>
+          <select class="form-control" id="search-method">
+            <option *ngFor="let field of ['Hardware', 'Software', 'Windows', 'Apple', 'Peripherals', 'Hard Drive']" [ngValue]="field">{{field}}</option>
+          </select><br>
+        </div>
+        <div *ngIf="field === 'Internet'">
+          <label> Choose a specialization: </label>
+          <select class="form-control" id="search-method">
+            <option *ngFor="let field of ['Wi-fi', 'Ethernet', 'Router']" [ngValue]="field">{{field}}</option>
+          </select><br>
+        </div>
+        <div *ngIf="field === 'Phone'">
+          <label> Choose a specialization: </label>
+          <select class="form-control" id="search-method">
+            <option *ngFor="let field of ['Android', 'Iphone']" [ngValue]="field">{{field}}</option>
+          </select><br>
+        </div>
+        <div *ngIf="field === 'TV'">
+          <label> Choose a specialization: </label>
+          <select class="form-control" id="search-method">
+            <option *ngFor="let field of ['Channel tunning', 'Pay-per-view Services', 'Smart TV']" [ngValue]="field">{{field}}</option>
+          </select><br>
+        </div>
+
+        <label> Explain your problem <span class="small">(Please provide as many details as you can)</span> </label>
+        <textarea class="form-control" rows="9"></textarea><br>
+
+        <label> Upload a picture of your problem if needed: </label>
+        <input type="file" name="file" ng2FileSelect [uploader]="uploader" />
+        <br>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox"> Urgent service <span class=small>(+10% of price)</span>
+          </label>
+        </div>
+        <br>
+
+        <button type="submit" class="btn btn-primary">Contact</button>
+
+
+      </div>
+    </div>
+  </div>
+</div>

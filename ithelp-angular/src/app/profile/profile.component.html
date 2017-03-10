@@ -3,6 +3,8 @@
   <!-- Costumer information -->
 {{user.name}}
 {{user.role}}
+{{user._id}}
+
       <tabset>
 
         <tab heading="Your Information">
@@ -29,7 +31,6 @@
 
               <label> Phone Number </label>
               <input type="text" [(ngModel)]="newUser.phoneNumber" name="phoneNumber" />
-
 
               <input type="file" name="file" ng2FileSelect [uploader]="uploader" />
 

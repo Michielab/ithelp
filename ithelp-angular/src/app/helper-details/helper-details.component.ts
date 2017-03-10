@@ -10,6 +10,7 @@ import { UserService } from '../user.service';
 })
 export class HelperDetailsComponent implements OnInit {
 	user: any = {};
+  field: any;
   constructor(
   	private router: Router,
   	private route: ActivatedRoute,
@@ -29,6 +30,15 @@ export class HelperDetailsComponent implements OnInit {
         this.user = user;
         console.log("user in getDetails: ", user)
       });
+  }
+
+  showField(field){
+    this.field = field
+  }
+
+  alert(){
+    console.log("hello")
+    alert("Choose a field first")
   }
 
 }

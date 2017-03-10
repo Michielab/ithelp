@@ -1,4 +1,4 @@
-import { Injectable, EventEmitter } from '@angular/core';
+import { Injectable, EventEmitter, NgZone } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -15,6 +15,7 @@ export class SessionService implements CanActivate {
 
   constructor(
     private router: Router,
+    private ngZone: NgZone,
     private http: Http
   ) {
       // set token if saved in local storage
@@ -92,9 +93,13 @@ export class SessionService implements CanActivate {
 
   logout() {
       // clear token remove user from local storage to log user out
-      this.token = null;
-      this.isAuth.emit(false);
-      localStorage.removeItem('token');
-      this.router.navigate(['/login']);
+      this.ngZone.run(()=>{
+        this.token = null;
+        this.isAuth.emit(false);
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        this.router.navigate(['/login']);
+      })
+
   }
 }

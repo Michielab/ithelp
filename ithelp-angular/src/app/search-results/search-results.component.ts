@@ -50,7 +50,6 @@ export class SearchResultsComponent implements OnInit {
       if(homefilters.length != 0 &&  homefilters[0] != ''){
         this.filters = homefilters;
         this.customFilters = this.filters
-        console.log("init",this.filters);
         this.filters.forEach((checkbox)=>{
           if(checkbox === 'Computer'){
             this.computerActive = true;
@@ -78,7 +77,6 @@ export class SearchResultsComponent implements OnInit {
     })
 
     this.getUsers();
-  console.log("undergetusers",this.filters);
     let input = document.getElementById('searchLocation');
     let autocomplete = new google.maps.places.Autocomplete(input);
 
@@ -86,9 +84,7 @@ export class SearchResultsComponent implements OnInit {
       this.ngZone.run(()=>{
         this.lat = autocomplete.getPlace().geometry.location.lat()
         this.lng = autocomplete.getPlace().geometry.location.lng();
-  console.log("drag",this.filters);
         this.getUsers()
-          console.log("drag",this.filters);
       })
     })
   }
@@ -138,21 +134,16 @@ export class SearchResultsComponent implements OnInit {
     this.customFilters.push(event.target.value)
     this.filters = this.customFilters
     this.getUsers()
-      console.log("addfilters",this.filters);
   }
 
 
   removeFilters(event){
-      console.log("remove",this.filters);
-      console.log(event.target.value)
+
     this.filterActive = false;
     let index = this.filters.indexOf(event.target.value)
-    console.log(index)
     this.filters.splice(index, 1)
-        console.log("remove2",this.filters);
     if(this.customFilters.length == 0){
       this.filters = this.initialFilters
-        console.log(this.filters);
     }
     this.getUsers()
   }

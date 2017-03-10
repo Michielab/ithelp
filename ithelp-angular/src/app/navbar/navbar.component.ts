@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
   isAuth: boolean;
+  user: Object;
+
 
   constructor(
   	private session: SessionService,
@@ -29,6 +31,10 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(this.user)
+    this.user = JSON.parse(localStorage.getItem("user"))
+    console.log(this.user)
+
   }
 
   logout() {
