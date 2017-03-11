@@ -53,6 +53,7 @@ export class HelperDetailsComponent implements OnInit {
   }
 
   getUserDetails(id) {
+
     this.userService.get(id)
       .subscribe((user) => {
         this.user = user;
@@ -67,6 +68,7 @@ export class HelperDetailsComponent implements OnInit {
 
 
     booking() {
+      this.newBooking.helper = this.user._id
     	this.userService.booking(this.newBooking)
         .subscribe(result => {
             if (result === true) {
@@ -75,6 +77,7 @@ export class HelperDetailsComponent implements OnInit {
                 this.router.navigate(['/inbox']);
             } else {
             		console.log('result ko', result);
+                  this.router.navigate(['/inbox']);
                 // login failed
                 // this.error = 'Username or password is incorrect';
             }

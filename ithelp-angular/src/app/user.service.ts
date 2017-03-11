@@ -34,7 +34,15 @@ export class UserService {
 
   booking(booking) {
     console.log(booking)
-    return this.http.post(`${this.BASE_URL}/booking`, booking)
+    return this.http.post("http://localhost:3000/booking", booking)
+      .map((response) => response.json())
+
+  }
+
+  inbox() {
+    let headers = new Headers({ 'Authorization': 'JWT ' + this.SessionService.token });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.get("http://localhost:3000/inbox", options)
       .map((response) => response.json())
 
   }

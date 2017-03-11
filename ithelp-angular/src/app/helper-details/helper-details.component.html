@@ -8,6 +8,7 @@
 <h3>{{ user.price }}</h3>
 <h3>{{ user.status }}</h3>
 <h3>{{ user.speciality }}</h3>
+<h3>{{ user._id }}</h3>
 
 <br>
 <button class="btn btn-primary" (click)="lgModal.show()">Contact {{ user.name }}</button>
@@ -26,15 +27,15 @@
         <form>
           <label>When do you need help</label><br>
           <div class="form-inline">
-            Date: <input class="form-control" type="date" name="date">
-            Time: <input class="form-control" type="time" name="starttime"><br>
+            Date: <input class="form-control" [(ngModel)]="newBooking.date" type="date" name="date">
+            Time: <input class="form-control" [(ngModel)]="newBooking.starttime" type="time" name="starttime"><br>
           </div><br>
           <label> Select the field where you need help: </label>
-          <select (change)="showField($event.target.value)" class="form-control" id="search-method">
+          <select (change)="showField($event.target.value)" [(ngModel)]="newBooking.mainSubject" class="form-control" name="mainSubject"id="search-method">
             <option>Select Option</option>
-            <option *ngFor="let field of user.speciality" [ngValue]="field" name="mainSubject">{{field}}</option>
+            <option *ngFor="let field of user.speciality"  [ngValue]="field" >{{field}}</option>
           </select><br>
-
+<!--
           <div *ngIf="field === undefined">
             <alert type="info">
               You need to select a field of specialization
@@ -43,39 +44,39 @@
 
           <div *ngIf="field === 'Computer'">
             <label> Choose a specialization: </label>
-            <select class="form-control" id="search-method">
-              <option *ngFor="let field of ['Hardware', 'Software', 'Windows', 'Apple', 'Peripherals', 'Hard Drive']" [ngValue]="field" name="subSubject">{{field}}</option>
+            <select class="form-control" id="search-method" [(ngModel)]="newBooking.subSubject" name="subSubject">
+              <option *ngFor="let field of ['Hardware', 'Software', 'Windows', 'Apple', 'Peripherals', 'Hard Drive']" [ngValue]="field" >{{field}}</option>
             </select><br>
           </div>
           <div *ngIf="field === 'Internet'">
             <label> Choose a specialization: </label>
-            <select class="form-control" id="search-method">
-              <option *ngFor="let field of ['Wi-fi', 'Ethernet', 'Router']" [ngValue]="field" name="subSubject">{{field}}</option>
+            <select class="form-control" id="search-method" [(ngModel)]="newBooking.subSubject" name="subSubject">
+              <option *ngFor="let field of ['Wi-fi', 'Ethernet', 'Router']" [ngValue]="field" >{{field}}</option>
             </select><br>
           </div>
           <div *ngIf="field === 'Phone'">
             <label> Choose a specialization: </label>
-            <select class="form-control" id="search-method">
-              <option *ngFor="let field of ['Android', 'Iphone']" [ngValue]="field" name="subSubject">{{field}}</option>
+            <select class="form-control" id="search-method" [(ngModel)]="newBooking.subSubject" name="subSubject">
+              <option *ngFor="let field of ['Android', 'Iphone']"  [ngValue]="field" >{{field}}</option>
             </select><br>
           </div>
           <div *ngIf="field === 'TV'">
             <label> Choose a specialization: </label>
-            <select class="form-control" id="search-method">
-              <option *ngFor="let field of ['Channel tunning', 'Pay-per-view Services', 'Smart TV']" [ngValue]="field" name="subSubject">{{field}}</option>
+            <select class="form-control" id="search-method" [(ngModel)]="newBooking.subSubject" name="subSubject">
+              <option *ngFor="let field of ['Channel tunning', 'Pay-per-view Services', 'Smart TV']" [ngValue]="field" >{{field}}</option>
             </select><br>
-          </div>
+          </div> -->
 
           <label> Subject</label>
-          <input type="text" class="form-control" name="issue"><br>
+          <input type="text" class="form-control" [(ngModel)]="newBooking.issue" name="issue"><br>
 
           <label> Explain your problem <span class="small">(Please provide as many details as possible)</span> </label>
-          <textarea class="form-control" rows="9" name="message"></textarea><br>
+          <textarea class="form-control" rows="9" [(ngModel)]="newBooking.message" name="message"></textarea><br>
 
           <!-- <label> Upload a picture of your problem if needed: </label>
           <input type="file" name="file" ng2FileSelect [uploader]="uploader" /> -->
           <br>
-
+          <input  class="form-control"  [(ngModel)]="newBooking.helper" name="helper"><br>
           <button type="submit" class="btn btn-primary" (click)="booking()">Book {{ user.name }}</button>
 
         </form>
