@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FileUploader } from "ng2-file-upload";
 import { SessionService } from '../session.service';
 import { Router } from '@angular/router';
+declare var google: any;
 
 @Component({
   selector: 'app-profile',
@@ -21,10 +22,9 @@ export class ProfileComponent implements OnInit {
     surname: '',
     email: '',
     address: '',
-    role: '',
-    lat: 0,
-    long: 0,
-    password: ''
+    lat: Number,
+    long: Number,
+    role: ''
   };
 
   feedback: string;
@@ -50,12 +50,27 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit() {
+    let input = document.getElementById('searchTextField');
+    let autocomplete = new google.maps.places.Autocomplete(input);
+
+    autocomplete.addListener("place_changed", ()=> {
+
+    this.newUser.lat =  autocomplete.getPlace().geometry.location.lat()
+    this.newUser.long   = autocomplete.getPlace().geometry.location.lng();
+
+    })
 
     this.user = JSON.parse(localStorage.getItem("user"))
     let user = JSON.parse(localStorage.getItem("user"))
-    console.log(this.newUser._id)
     this.newUser._id = user._id
-    console.log(this.newUser._id)
+    this.newUser.name = user.name
+    this.newUser.surname = user.surname
+    this.newUser.email = user.email
+    this.newUser.address = user.address
+    this.newUser.role = user.role
+
+
+
     this.uploader.onSuccessItem = (item, user) => {
       localStorage.removeItem("user")
       localStorage.setItem("user", user)
@@ -79,7 +94,6 @@ export class ProfileComponent implements OnInit {
       form.append('role', this.newUser.role);
       form.append('lat', this.newUser.lat);
       form.append('long', this.newUser.long);
-      form.append('password', this.newUser.password);
       form.append('_id', this.newUser._id);
         console.log('profile2')
     };

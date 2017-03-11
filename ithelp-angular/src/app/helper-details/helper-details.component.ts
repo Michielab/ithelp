@@ -10,7 +10,20 @@ import { UserService } from '../user.service';
 })
 export class HelperDetailsComponent implements OnInit {
 	user: any = {};
+  costumer: any ={};
   field: any;
+
+  newBooking = {
+     date: '',
+     starttime: '',
+     mainSubject: '',
+     subSubject: '',
+     issue: '',
+     message: '',
+     customer: '',
+     helper: ''
+   };
+
   constructor(
   	private router: Router,
   	private route: ActivatedRoute,
@@ -22,6 +35,21 @@ export class HelperDetailsComponent implements OnInit {
   	this.route.params.subscribe(params => {
       this.getUserDetails(params['id']);
     });
+
+    this.costumer = JSON.parse(localStorage.getItem("user"))
+    let user = JSON.parse(localStorage.getItem("user"))
+    this.newBooking.customer = this.costumer._id
+    this.newBooking.helper = this.user._id
+
+
+
+    console.log("On ngInit",this.costumer.name,this.costumer._id)
+
+    console.log("----------")
+    console.log("customer",this.newBooking.customer)
+    console.log("helper",this.newBooking.helper)
+    console.log("----------")
+
   }
 
   getUserDetails(id) {
@@ -30,15 +58,28 @@ export class HelperDetailsComponent implements OnInit {
         this.user = user;
         console.log("user in getDetails: ", user)
       });
+
   }
 
   showField(field){
     this.field = field
   }
 
-  alert(){
-    console.log("hello")
-    alert("Choose a field first")
-  }
+
+    booking() {
+    	this.userService.booking(this.newBooking)
+        .subscribe(result => {
+            if (result === true) {
+                // login successful
+                console.log('result ok', result);
+                this.router.navigate(['/inbox']);
+            } else {
+            		console.log('result ko', result);
+                // login failed
+                // this.error = 'Username or password is incorrect';
+            }
+        });
+
+    }
 
 }

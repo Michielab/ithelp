@@ -8,29 +8,37 @@ const upload = require('../config/multer');
 
 
 /* GET users listing. */
-// router.get('/', function(req, res, next) {
-//   res.json(User);
-// });
+router.get('/:format?', (req, res, next) => {
+  if (req.query.long && req.query.lat) {
+    User.where('location')
+    .near({ center: { coordinates: [req.query.long, req.query.lat], type: 'Point' }, maxDistance: 2000 })
+        .exec((err, Users) => {
+          if (err) {
+            return res.send(err);
+          }
+          return res.json(Users);
+        });
+  } else {
+    next()
+  }
 
-
-// router.get('/:format?', (req, res, next) => {
-//   if (req.query.long && req.query.lat) {
-//     User.where('location')
-//     .near({ center: { coordinates: [req.query.long, req.query.lat], type: 'Point' }, maxDistance: 2000 })
-//         .exec((err, Users) => {
-//           if (err) {
-//             return res.send(err);
-//           }
-//           return res.json(Users);
-//         });
-//   } else {
-//     next()
-//   }
-//
-//   });
+  });
 
 /* GET a single User. */
+router.get('/:id', (req, res) => {
+ console.log("hello")
+ if(!mongoose.Types.ObjectId.isValid(req.params.id)) {
+   return res.status(400).json({ message: 'Specified id is not valid' });
+ }
 
+ User.findById(req.params.id, (err, Users) => {
+     if (err) {
+       return res.send(err);
+     }
+
+     return res.json(Users);
+   });
+});
 
 
 
