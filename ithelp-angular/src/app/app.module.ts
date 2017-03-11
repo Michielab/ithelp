@@ -27,6 +27,8 @@ import { FilterPipe } from './pipes/filter-search.pipe';
 import { FilterRolePipe } from './pipes/filter-role.pipe';
 import { HelperDetailsComponent } from './helper-details/helper-details.component';
 import { TabsModule } from 'ng2-bootstrap/tabs';
+import { ModalModule } from 'ng2-bootstrap/modal';
+import { AlertModule } from 'ng2-bootstrap/alert';
 
 
 
@@ -53,6 +55,8 @@ import { TabsModule } from 'ng2-bootstrap/tabs';
     FormsModule,
     HttpModule,
     TabsModule.forRoot(),
+    ModalModule.forRoot(),
+    AlertModule.forRoot(),
     AgmCoreModule.forRoot({
       apiKey: "AIzaSyAKaMtajBkWNsRibGEZIMIY7AsQPmzBEuQ",
       libraries: ["places"]

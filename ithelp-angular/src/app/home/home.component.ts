@@ -23,8 +23,7 @@ export class HomeComponent implements OnInit {
     private session: SessionService,
     private router: Router,
     private testService: TestservService
-  ) {
-}
+  ) {}
 
   ngOnInit() {
     let input = document.getElementById('search');

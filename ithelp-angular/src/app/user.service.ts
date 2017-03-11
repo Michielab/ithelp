@@ -32,6 +32,13 @@ export class UserService {
       .map((res) => res.json());
   }
 
+  booking(booking) {
+    console.log(booking)
+    return this.http.post(`${this.BASE_URL}/booking`, booking)
+      .map((response) => response.json())
+
+  }
+
   // edit(user) {
   //   let headers = new Headers({ 'Authorization': 'JWT ' + this.SessionService.token });
   //   let options = new RequestOptions({ headers: headers });

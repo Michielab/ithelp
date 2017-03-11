@@ -2,6 +2,17 @@
 
   <!-- Costumer information -->
 
+{{user.name}}
+{{user.role}}
+{{user._id}}
+
+<div *ngIf="user.role === 'HELPER'">HELPEEEER</div>
+
+<div *ngIf="user.role === 'CUSTOMER'">CUSTOMERRRRRR</div>
+
+
+<img [src]='user.profilePic'>
+
       <tabset>
 
         <tab heading="Your Information">
@@ -15,6 +26,7 @@
 
         </tab>
         <tab heading="Edit Profile">
+
           <div class="col-md-3 col-md-offset-4">
           	<div class="panel panel-default">
           	  <div class="panel-body">
