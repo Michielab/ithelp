@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SessionService } from '../session.service';
 import { TestservService } from '../services/testserv.service';
 import { Router } from '@angular/router';
+
 declare var google: any;
 
 @Component({
@@ -64,7 +65,5 @@ export class HomeComponent implements OnInit {
   }
     this.router.navigate(['search'], {queryParams: {lat: lat, lng: lng, filters: filters}})
   }
-
-
 
 }

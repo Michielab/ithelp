@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FileUploader } from "ng2-file-upload";
 import { SessionService } from '../session.service';
 import { Router } from '@angular/router';
-declare var google: any;
+declare const google: any;
 
 @Component({
   selector: 'app-profile',
@@ -22,9 +22,14 @@ export class ProfileComponent implements OnInit {
     surname: '',
     email: '',
     address: '',
-    lat: Number,
-    long: Number,
-    role: ''
+    lat: '',
+    long: '',
+    role: '',
+    phoneNumber: '',
+    description: '',
+    slogan: '',
+    status: '',
+    speciality: ''
   };
 
   feedback: string;
@@ -36,6 +41,7 @@ export class ProfileComponent implements OnInit {
     private session: SessionService,
     private router:  Router
   ) {
+
     this.session.isAuth
         .subscribe((isAuth: boolean) => {
         // user will be false if logged out
@@ -57,6 +63,7 @@ export class ProfileComponent implements OnInit {
 
     this.newUser.lat =  autocomplete.getPlace().geometry.location.lat()
     this.newUser.long   = autocomplete.getPlace().geometry.location.lng();
+    this.newUser.address = autocomplete.getPlace().formatted_address
 
     })
 
@@ -67,6 +74,8 @@ export class ProfileComponent implements OnInit {
     this.newUser.surname = user.surname
     this.newUser.email = user.email
     this.newUser.address = user.address
+    this.newUser.long = user.location.coordinates[0]
+    this.newUser.lat = user.location.coordinates[1]
     this.newUser.role = user.role
 
 
@@ -85,7 +94,6 @@ export class ProfileComponent implements OnInit {
   }
 
   submit() {
-    console.log('profile')
     this.uploader.onBuildItemForm = (item, form) => {
       form.append('name', this.newUser.name);
       form.append('surname', this.newUser.surname);
@@ -95,6 +103,11 @@ export class ProfileComponent implements OnInit {
       form.append('lat', this.newUser.lat);
       form.append('long', this.newUser.long);
       form.append('_id', this.newUser._id);
+      form.append('phoneNumber', this.newUser.phoneNumber);
+      form.append('slogan', this.newUser.slogan);
+      form.append('description', this.newUser.description);
+      form.append('status', this.newUser.status);
+      form.append('speciality', this.newUser.speciality);
         console.log('profile2')
     };
 

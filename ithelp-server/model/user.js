@@ -9,7 +9,7 @@ const userSchema = new Schema({
   profilePic: String, default: '',
   address: String,
   location: { type: { type: String }, coordinates: [Number] },
-  phoneNumber: String,
+  phoneNumber: Number,
   role: {
      type: String,
      enum : ['CUSTOMER', 'HELPER', 'BOTH'],

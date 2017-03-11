@@ -27,6 +27,8 @@ export class SignupComponent implements OnInit {
     password: ''
   };
 
+
+
   user: any;
   error: string;
   feedback: string;
@@ -47,6 +49,7 @@ export class SignupComponent implements OnInit {
 
     this.newUser.lat =  autocomplete.getPlace().geometry.location.lat()
     this.newUser.long   = autocomplete.getPlace().geometry.location.lng();
+    this.newUser.address = autocomplete.getPlace().formatted_address
 
     })
 

@@ -8,6 +8,7 @@ const passport   = require('./config/passport');
 var auth         = require('./routes/auth');
 var users        = require('./routes/users');
 var phones       = require('./routes/phones');
+var bookings     = require('./routes/bookings');
 var cors         = require('cors');
 
 
@@ -38,6 +39,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // app.use('/users', users);
 app.use('/', auth);
+app.use('/booking', bookings);
 app.use('/edit', users);
 // app.use('/api/phones', passport.authenticate('jwt', { session: false }), phones);
 app.use('/api/users', users);

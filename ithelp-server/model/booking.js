@@ -3,10 +3,15 @@ const Schema   = mongoose.Schema;
 
 const bookingSchema = new Schema({
   date: Date,
-  time: String,
-  subject: String,
-  comment: String,
+  starttime: String,
+  hours: Number,
+  mainSubject: String,
+  subSubject: String,
+  issue: String,
+  message: String,
   accepted: Boolean,
+  declined: Boolean,
+  price: Number,
   helper: { type: Schema.Types.ObjectId, ref: 'User' },
   customer: { type: Schema.Types.ObjectId, ref: 'User' }
 

@@ -41,13 +41,20 @@ router.get('/:id', (req, res) => {
 });
 
 
-
 /* EDIT a User. */
 router.post('/', upload.single('file'), (req, res, next) => {
-console.log(req)
   let userToUpdate = {
     name: req.body.name,
     surname: req.body.surname,
+    email : req.body.email,
+    address : req.body.address,
+    location: {type: 'Point', coordinates: [req.body.long, req.body.lat]},
+    description : req.body.description,
+    slogan : req.body.slogan,
+    role : req.body.role,
+    phoneNumber : req.body.phoneNumber,
+    status : req.body.status,
+    speciality : req.body.speciality,
     profilePic:  `http://localhost:3000/uploads/${req.file.filename}`
   }
 
