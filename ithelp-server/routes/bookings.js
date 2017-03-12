@@ -10,62 +10,62 @@ const upload = require('../config/multer');
 //   res.render('booking/booktaker');
 // });
 
-// router.post('/', (req, res, next) => {
-//   var  date = req.body.date;
-//   var  starttime = req.body.starttime;
-//   var  mainSubject = req.body.mainSubject;
-//   var  subSubject = req.body.subSubject;
-//   var  issue = req.body.issue;
-//   var  message = req.body.message;
-//   var  customer = req.body.customer;
-//   var  helper = req.body.helper;
-//   // var starttimeNumber = parseInt(starttime);\
-//
-//   var newBooking = Booking({
-//     date,
-//     starttime,
-//     mainSubject,
-//     subSubject,
-//     issue,
-//     message,
-//     customer,
-//     helper,
-//   });
-//
-//   newBooking.save((err, booking) => {
-//     if (err) {
-//       req.flash('error', 'Unable to save');
-//       res.render("auth/signup", {
-//         message: req.flash('error')
-//       });
-//     } else {
-//       User.findByIdAndUpdate({_id: customer},{$push: { bookings: booking._id }}, (err) => {
-//         if (err) {
-//           console.log("GOT AN ERROR1");
-//           next(err);
-//         } else {  User.findByIdAndUpdate({_id: helper},{$push: { bookings: booking._id }}, (err) => {
-//           if (err) {
-//             console.log("GOT AN ERROR2");
-//             next(err);
-//           } else {
-//             Booking
-//             .findOne({_id: booking._id})
-//             .populate("customer")
-//             .populate("helper")
-//             .exec((err, booking) => {
-//               if (err) {
-//                 next(err);
-//                 return;
-//               }
-//               res.json(booking);
-//             });}
-//           });
-//         }
-//       });
-//     }
-//   });
-//
-// })
+router.post('/', (req, res, next) => {
+  var  date = req.body.date;
+  var  starttime = req.body.starttime;
+  var  mainSubject = req.body.mainSubject;
+  var  subSubject = req.body.subSubject;
+  var  issue = req.body.issue;
+  var  message = req.body.message;
+  var  customer = req.body.customer;
+  var  helper = req.body.helper;
+  // var starttimeNumber = parseInt(starttime);\
+
+  var newBooking = Booking({
+    date,
+    starttime,
+    mainSubject,
+    subSubject,
+    issue,
+    message,
+    customer,
+    helper,
+  });
+console.log(newBooking);
+  newBooking.save((err, booking) => {
+    if (err) {
+      req.flash('error', 'Unable to save');
+      res.render("auth/signup", {
+        message: req.flash('error')
+      });
+    } else {
+      User.findByIdAndUpdate({_id: customer},{$push: { bookings: booking._id }}, (err) => {
+        if (err) {
+          console.log("GOT AN ERROR1");
+          next(err);
+        } else {  User.findByIdAndUpdate({_id: helper},{$push: { bookings: booking._id }}, (err) => {
+          if (err) {
+            console.log("GOT AN ERROR2");
+            next(err);
+          } else {
+            Booking
+            .findOne({_id: booking._id})
+            .populate("customer")
+            .populate("helper")
+            .exec((err, booking) => {
+              if (err) {
+                next(err);
+                return;
+              }
+              res.json(booking);
+            });}
+          });
+        }
+      });
+    }
+  });
+
+})
 
 router.get('/inbox'), (req, res, next) => {
   console.log(req)

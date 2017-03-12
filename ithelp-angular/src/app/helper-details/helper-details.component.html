@@ -35,7 +35,7 @@
             <option>Select Option</option>
             <option *ngFor="let field of user.speciality"  [ngValue]="field" >{{field}}</option>
           </select><br>
-<!--
+
           <div *ngIf="field === undefined">
             <alert type="info">
               You need to select a field of specialization
@@ -65,7 +65,7 @@
             <select class="form-control" id="search-method" [(ngModel)]="newBooking.subSubject" name="subSubject">
               <option *ngFor="let field of ['Channel tunning', 'Pay-per-view Services', 'Smart TV']" [ngValue]="field" >{{field}}</option>
             </select><br>
-          </div> -->
+          </div>
 
           <label> Subject</label>
           <input type="text" class="form-control" [(ngModel)]="newBooking.issue" name="issue"><br>
