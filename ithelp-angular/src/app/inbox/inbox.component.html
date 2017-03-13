@@ -1,11 +1,11 @@
 <div class="container-fluid">
-  {{user | json}}
+
 
   <tabset>
 
     <tab heading="Pending Messages">
 
-      <table class="table table-hover">
+      <table class="table-custom">
         <thead>
           <tr>
             <td>
@@ -13,46 +13,38 @@
             </td>
           </tr>
         </thead>
-        <tr>
-          <td class="cursor-change-custom" (click)="lgModal.show()">
-            From: <b> UserName </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Subject: <b>Wathever about this.</b> <span class="small">Lorem ipsum dolor sit amet, consectetur adipisicing elit...</span><span style="float:right">at: <b>20:45h 23/02/2017</b> </span>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            From: <b> UserName </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Subject: <b>Wathever about this.</b> <span class="small">Lorem ipsum dolor sit amet, consectetur adipisicing elit...</span><span style="float:right">at: <b>20:45h 23/02/2017</b></span>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            From: <b> UserName </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Subject: <b>Wathever about this.</b> <span class="small">Lorem ipsum dolor sit amet, consectetur adipisicing elit...</span><span style="float:right">at: <b>20:45h 23/02/2017</b></span>
-          </td>
-        </tr>
-      </table>
-      <div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title pull-left">Subject: Whatever bla bla bla</h4>
-              <button type="button" class="close pull-right" (click)="lgModal.hide()" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <h4>Message from: UserName</h4>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat nobis, saepe cumque commodi laudantium ipsum asperiores alias nulla, assumenda culpa vero et possimus voluptatibus neque recusandae necessitatibus distinctio hic ducimus?
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis, atque hic exercitationem fugit eum optio amet excepturi obcaecati, velit, sunt recusandae iure ducimus labore eligendi? Suscipit molestias porro, quaerat officia.
-              <br>
-              <div style="float:right;">at: <b>20:45h 23/02/2017</b></div><br><br>
-              <hr><br>
-              <textarea class="form-control" placeholder="Your response" rows="8"></textarea><br>
+        <div class="table table-hover" *ngFor="let booking of booking.bookingCustomer">
 
-              <button class="btn btn-primary">Reply</button>
-              <button (click)="updateBooking(booking._id)" class="btn btn-primary">Accept</button>
+          <tr>
+            <td class="cell-table-custom" (click)="lgModal.show()">
+              From: <b> {{ booking.customer.name }} </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Subject: <b>{{ booking.issue }}</b> <span class="small">{{ booking.message }}</span><span style="float:right">at: <b>{{ booking.created_at }}</b> </span>
+            </td>
+          </tr>
+          <div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title pull-left">Subject: {{ booking.issue }}</h4>
+                  <button type="button" class="close pull-right" (click)="lgModal.hide()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <h4>Message from: {{ booking.customer.name }}</h4>
+                  {{ booking.message }}
+                  <br>
+                  <div style="float:right;">at: <b>{{ booking.created_at }}</b></div><br><br>
+                  <hr><br>
+                  <textarea class="form-control" placeholder="Your response" rows="8"></textarea><br>
+                  <button class="btn btn-primary">Reply</button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+
+      </table>
+
 
 
     </tab>
