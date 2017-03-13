@@ -5,7 +5,7 @@
 
     <tab heading="Pending Messages">
 
-      <table class="table-custom">
+      <table class="table table-hover">
         <thead>
           <tr>
             <td>
@@ -13,11 +13,11 @@
             </td>
           </tr>
         </thead>
-        <div class="table table-hover" *ngFor="let booking of booking.bookingCustomer">
+        <div class="table table-hover table-custom" *ngFor="let booking of booking.bookingCustomer">
 
           <tr>
-            <td class="cell-table-custom" (click)="lgModal.show()">
-              From: <b> {{ booking.customer.name }} </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Subject: <b>{{ booking.issue }}</b> <span class="small">{{ booking.message }}</span><span style="float:right">at: <b>{{ booking.created_at }}</b> </span>
+            <td class="cursor-change-custom" (click)="lgModal.show()">
+              From: <b> {{ booking.customer.name }} </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;About: {{ booking.mainSubject }} - {{ booking.subSubject }} &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; Subject: <b>{{ booking.issue }}</b> <span class="small"> - &nbsp;&nbsp;&nbsp;{{ booking.message.substring(0,50) }}</span><span style="float:right">at: <b>{{ booking.created_at }}</b> </span>
             </td>
           </tr>
           <div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -30,6 +30,7 @@
                   </button>
                 </div>
                 <div class="modal-body">
+                  <h4 style="float:right;">About: {{ booking.mainSubject }} - {{ booking.subSubject }}</h4>
                   <h4>Message from: {{ booking.customer.name }}</h4>
                   {{ booking.message }}
                   <br>
