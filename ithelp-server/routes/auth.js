@@ -97,24 +97,5 @@ router.post("/signup", (req, res, next) => {
   });
 });
 
-//
-// router.post('/', (req, res) => {
-// 	console.log(req.body);
-//   const phone = new Phone({
-//   	brand: req.body.brand,
-//     name: req.body.name,
-//     specs: req.body.specs,
-//     image: req.body.image || ''
-//   });
-//
-//   user.save((err) => {
-//     if (err) {
-//       return res.send(err);
-//     }
-//
-//     return res.json({ message: 'New Phone created!' });
-//   });
-// });
-
 
 module.exports = router;

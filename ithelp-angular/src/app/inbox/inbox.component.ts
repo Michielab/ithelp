@@ -15,6 +15,7 @@ import { UserService } from '../user.service';
 })
 export class InboxComponent implements OnInit {
   user: Object;
+  booking: Object;
 
   constructor(
   private session: SessionService,
@@ -24,24 +25,13 @@ export class InboxComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.user)
-    console.log(localStorage)
+    let user = JSON.parse(localStorage.getItem("user"))
+    this.userService.inbox(user._id)
+        .subscribe((response) => {
+            this.booking = response;
+            console.log(this.booking)
+        })
 
-
-    this.userService.inbox()
-        .subscribe(result => {
-            if (result === true) {
-                // login successful
-                console.log('result ok', result);
-
-            } else {
-                console.log('result ko', result);
-              
-                // login failed
-                // this.error = 'Username or password is incorrect';
-            }
-        });
-
-    }
 
   }
+}

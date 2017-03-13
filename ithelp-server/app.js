@@ -40,7 +40,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // app.use('/users', users);
 app.use('/', auth);
 app.use('/booking', bookings);
-app.use('/inbox', bookings);
+app.use('/api/inbox', bookings);
 app.use('/edit', users);
 // app.use('/api/phones', passport.authenticate('jwt', { session: false }), phones);
 app.use('/api/users', users);

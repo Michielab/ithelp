@@ -4,73 +4,76 @@ const User = require('../model/user');
 const Booking = require('../model/booking');
 const mongoose = require('mongoose');
 const upload = require('../config/multer');
+var jwt = require('jsonwebtoken');
+var jwtOptions = require('../config/jwtOptions');
 
 
 // router.get('/users/book'), function(req, res, next) {
 //   res.render('booking/booktaker');
 // });
 
-// router.post('/', (req, res, next) => {
-//   var  date = req.body.date;
-//   var  starttime = req.body.starttime;
-//   var  mainSubject = req.body.mainSubject;
-//   var  subSubject = req.body.subSubject;
-//   var  issue = req.body.issue;
-//   var  message = req.body.message;
-//   var  customer = req.body.customer;
-//   var  helper = req.body.helper;
-//   // var starttimeNumber = parseInt(starttime);\
-//
-//   var newBooking = Booking({
-//     date,
-//     starttime,
-//     mainSubject,
-//     subSubject,
-//     issue,
-//     message,
-//     customer,
-//     helper,
-//   });
-//
-//   newBooking.save((err, booking) => {
-//     if (err) {
-//       req.flash('error', 'Unable to save');
-//       res.render("auth/signup", {
-//         message: req.flash('error')
-//       });
-//     } else {
-//       User.findByIdAndUpdate({_id: customer},{$push: { bookings: booking._id }}, (err) => {
-//         if (err) {
-//           console.log("GOT AN ERROR1");
-//           next(err);
-//         } else {  User.findByIdAndUpdate({_id: helper},{$push: { bookings: booking._id }}, (err) => {
-//           if (err) {
-//             console.log("GOT AN ERROR2");
-//             next(err);
-//           } else {
-//             Booking
-//             .findOne({_id: booking._id})
-//             .populate("customer")
-//             .populate("helper")
-//             .exec((err, booking) => {
-//               if (err) {
-//                 next(err);
-//                 return;
-//               }
-//               res.json(booking);
-//             });}
-//           });
-//         }
-//       });
-//     }
-//   });
-//
-// })
+router.post('/', (req, res, next) => {
+console.log('testserver')
 
-router.get('/inbox'), (req, res, next) => {
-  console.log(req)
+  var  date = req.body.date;
+  var  starttime = req.body.starttime;
+  var  mainSubject = req.body.mainSubject;
+  var  subSubject = req.body.subSubject;
+  var  issue = req.body.issue;
+  var  message = req.body.message;
+  var  customer = req.body.customer;
+  var  helper = req.body.helper;
+  // var starttimeNumber = parseInt(starttime);\
+
+  var newBooking = Booking({
+    date,
+    starttime,
+    mainSubject,
+    subSubject,
+    issue,
+    message,
+    customer,
+    helper,
+  });
+
+  newBooking.save((err, booking) => {
+    if (err) {
+      res.render("auth/signup", {
+      });
+    } else {
+      User.findByIdAndUpdate({_id: customer},{$push: { bookings: booking._id }}, (err) => {
+        if (err) {
+          console.log("GOT AN ERROR1");
+          next(err);
+        } else {  User.findByIdAndUpdate({_id: helper},{$push: { bookings: booking._id }}, (err) => {
+          if (err) {
+            console.log("GOT AN ERROR2");
+            next(err);
+          } else {
+            Booking
+            .findOne({_id: booking._id})
+            .populate("customer")
+            .populate("helper")
+            .exec((err, booking) => {
+              if (err) {
+                next(err);
+                return;
+              }
+              res.json(booking);
+            });}
+          });
+        }
+      });
+    }
+  });
+
+})
+
+
+router.get('/:id', (req, res, next) => {
+  console.log(req.params.id)
        User
-      .findOne({_id: req.user._id})
+      .findOne({_id: req.params.id})
       .populate("bookings")
       .exec((err, users) => {
         if (err) {
@@ -79,33 +82,35 @@ router.get('/inbox'), (req, res, next) => {
           }
 
           Booking
-          .find({customer: req.user._id})
+          .find({customer: req.params.id})
           .populate("helper")
           .populate("customer")
-          .exec((err, booking) => {
+          .exec((err, bookingCustomer) => {
             if (err) {
               next(err);
               return;
             }
 
             Booking
-            .find({helper: req.user._id})
+            .find({helper: req.params.id})
             .populate("helper")
             .populate("customer")
-            .exec((err, helper) => {
+            .exec((err, bookingHelper) => {
               if (err) {
                 next(err);
                 return;
               }
 
 
-              console.log(bookingtaker);
-              console.log(review);
-            res.json(users, booking,helper);
+            console.log("users", users)
+            console.log("booking", bookingCustomer)
+            console.log("helper", bookingHelper)
+            res.json({bookingHelper,bookingCustomer, users});
+
           });
       });
     });
-}
+})
 //
 // router.get('/booking/:bookingId', auth.checkLoggedIn('You must be login', '/login'), (req, res, next) => {
 //   let bookingId = req.params.bookingId;

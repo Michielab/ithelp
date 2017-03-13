@@ -39,10 +39,11 @@ export class UserService {
 
   }
 
-  inbox() {
+  inbox(userId) {
+    console.log(userId)
     let headers = new Headers({ 'Authorization': 'JWT ' + this.SessionService.token });
     let options = new RequestOptions({ headers: headers });
-    return this.http.get("http://localhost:3000/inbox", options)
+    return this.http.get(`${this.BASE_URL}/inbox/${userId}`, options)
       .map((response) => response.json())
 
   }

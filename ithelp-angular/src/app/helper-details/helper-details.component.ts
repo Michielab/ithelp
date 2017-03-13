@@ -10,7 +10,7 @@ import { UserService } from '../user.service';
 })
 export class HelperDetailsComponent implements OnInit {
 	user: any = {};
-  costumer: any ={};
+  customer: any ={};
   field: any;
 
   newBooking = {
@@ -28,38 +28,26 @@ export class HelperDetailsComponent implements OnInit {
   	private router: Router,
   	private route: ActivatedRoute,
     private userService: UserService
-  ) {}
+  ) {
+
+  }
 
   ngOnInit() {
-    console.log(this.route)
+    console.log("route", this.route)
   	this.route.params.subscribe(params => {
       this.getUserDetails(params['id']);
     });
-
-    this.costumer = JSON.parse(localStorage.getItem("user"))
-    let user = JSON.parse(localStorage.getItem("user"))
-    this.newBooking.customer = this.costumer._id
-    this.newBooking.helper = this.user._id
-
-
-
-    console.log("On ngInit",this.costumer.name,this.costumer._id)
-
-    console.log("----------")
-    console.log("customer",this.newBooking.customer)
-    console.log("helper",this.newBooking.helper)
-    console.log("----------")
 
   }
 
   getUserDetails(id) {
 
+    // this.newBooking.customer = this.customer
     this.userService.get(id)
       .subscribe((user) => {
         this.user = user;
         console.log("user in getDetails: ", user)
       });
-
   }
 
   showField(field){
@@ -68,7 +56,9 @@ export class HelperDetailsComponent implements OnInit {
 
 
     booking() {
+      this.customer = JSON.parse(localStorage.getItem("user"))
       this.newBooking.helper = this.user._id
+      this.newBooking.customer = this.customer._id
     	this.userService.booking(this.newBooking)
         .subscribe(result => {
             if (result === true) {

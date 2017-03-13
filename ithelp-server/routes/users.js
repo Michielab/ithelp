@@ -6,7 +6,6 @@ const upload = require('../config/multer');
 
 
 
-
 /* GET users listing. */
 router.get('/:format?', (req, res, next) => {
   if (req.query.long && req.query.lat) {
