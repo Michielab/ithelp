@@ -23,6 +23,8 @@ console.log('testserver')
   var  message = req.body.message;
   var  customer = req.body.customer;
   var  helper = req.body.helper;
+  var  accepted = false;
+  var  declined = false;
   // var starttimeNumber = parseInt(starttime);\
 
   var newBooking = Booking({
@@ -34,6 +36,8 @@ console.log('testserver')
     message,
     customer,
     helper,
+    accepted,
+    declined,
   });
 
   newBooking.save((err, booking) => {

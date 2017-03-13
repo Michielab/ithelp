@@ -49,9 +49,11 @@ export class InboxComponent implements OnInit {
           if (result === true) {
               // login successful
               console.log('result ok', result);
-              this.router.navigate(['/inbox']);
+              window.location.reload()
           } else {
               console.log('result ko', result);
+              window.location.reload()
+
               // login failed
               // this.error = 'Username or password is incorrect';
           }
@@ -65,9 +67,11 @@ export class InboxComponent implements OnInit {
           if (result === true) {
               // login successful
               console.log('result ok', result);
-              this.router.navigate(['/inbox']);
+              window.location.reload()
           } else {
               console.log('result ko', result);
+              window.location.reload()
+
               // login failed
               // this.error = 'Username or password is incorrect';
           }
