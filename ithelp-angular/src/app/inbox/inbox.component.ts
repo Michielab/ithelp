@@ -43,6 +43,7 @@ export class InboxComponent implements OnInit {
   }
 
   confirmBooking(id) {
+      console.log(id)
     this.userService.confirmBooking(this.acceptBooking, id)
       .subscribe(result => {
           if (result === true) {
@@ -58,6 +59,7 @@ export class InboxComponent implements OnInit {
   }
 
   declineBooking(id) {
+    console.log(id)
     this.userService.declineBooking(this.rejectBooking, id)
       .subscribe(result => {
           if (result === true) {

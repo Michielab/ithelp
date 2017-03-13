@@ -148,32 +148,26 @@ router.get('/:id', (req, res, next) => {
 //
 
 
-router.post('/inbox/:bookingId', (req, res, next) => {
-  console.log(req)
+router.post('/:bookingId', (req, res, next) => {
 
   let bookingId = req.params.bookingId;
-  console.log("testeeeeee");
-  console.log(bookingId);
-  console.log("testeeeeee");
-
 
   let bookingToUpdate = {
-    accepted: req.body.confirm
+    accepted: req.body.accepted,
+    declined: req.body.declined
 
   }
 
-  Request.findByIdAndUpdate(bookingId, bookingToUpdate, (err, booking)=>{
+  Booking.findByIdAndUpdate(bookingId, bookingToUpdate, (err, booking)=>{
     if (err) {
       console.log("GOT AN ERROR");
       next(err)
     } else {
-      console.log(booking);
       console.log("GOT UPDATED");
-      res.redirect('/profile');
+      res.json(booking);
     }
   })
 });
-
 
 
 module.exports = router;

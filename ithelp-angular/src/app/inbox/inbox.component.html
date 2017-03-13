@@ -37,6 +37,8 @@
                   <hr><br>
                   <textarea class="form-control" placeholder="Your response" rows="8"></textarea><br>
                   <button class="btn btn-primary">Reply</button>
+                  <button (click)="confirmBooking(booking._id)" class="btn btn-primary">Accept booking</button>
+                  <button (click)="declineBooking(booking._id)" class="btn btn-primary">Decline booking</button>
                 </div>
               </div>
             </div>

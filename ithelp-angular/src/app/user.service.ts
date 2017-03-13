@@ -38,6 +38,7 @@ export class UserService {
   }
 
   confirmBooking(accept, bookingId) {
+    console.log(accept, bookingId)
     return this.http.post(`${this.BASE_URL}/inbox/${bookingId}`,accept)
       .map((response) => response.json())
   }
