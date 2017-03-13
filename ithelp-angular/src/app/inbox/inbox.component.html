@@ -68,10 +68,33 @@
           <div class="table table-hover table-custom" *ngFor="let booking of booking.bookingCustomer">
             <div class="table table-hover table-custom" *ngIf="booking.accepted === true">
               <tr>
-                <td class="cursor-change-custom" (click)="lgModal.show()">
-                  From: <b> {{ booking.helper.name }} </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;About: {{ booking.mainSubject }} - {{ booking.subSubject }} &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; Subject: <b>{{ booking.issue }}</b> <span class="small"> - &nbsp;&nbsp;&nbsp;{{ booking.message.substring(0,50) }}</span><span style="float:right;"> at: <b>{{ booking.created_at }}</b> </span>
+                <td class="cursor-change-custom"><button style="float:right;" class="btn btn-primary" (click)="revModal.show()">Write a review</button>
+                  <span (click)="lgModal.show()">
+                    From: <b> {{ booking.helper.name }} </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;About: {{ booking.mainSubject }} - {{ booking.subSubject }} &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; Subject: <b>{{ booking.issue }}</b> </span>
+                    <span class="small" (click)="lgModal.show()"> - &nbsp;&nbsp;&nbsp;{{ booking.message.substring(0,50) }}</span>
+                    <span style="float:right;"> at: <b>{{ booking.created_at }}</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+
+                  <div bsModal #revModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h4 class="modal-title pull-left">REVIEW</h4>
+                          <button type="button" class="close pull-right" (click)="revModal.hide()" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <h4>WRITE</h4>
+                          <textarea class="form-control" [(ngModel)]="newReview.evaluation" name="evaluation" placeholder="Your response" rows="8"></textarea><br>
+                          <label for="">Rating</label>&nbsp;&nbsp;&nbsp;<input [(ngModel)]="newReview.rating" type="number" name="rating" value="">
+                          <button style="float:right" class="btn btn-primary">Review</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </td>
               </tr>
+
               <div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
                   <div class="modal-content">
