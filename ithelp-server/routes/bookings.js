@@ -111,6 +111,7 @@ router.get('/:id', (req, res, next) => {
       });
     });
 })
+
 //
 // router.get('/booking/:bookingId', auth.checkLoggedIn('You must be login', '/login'), (req, res, next) => {
 //   let bookingId = req.params.bookingId;
@@ -145,32 +146,34 @@ router.get('/:id', (req, res, next) => {
 //   });
 // });
 //
-//
-//
-// router.post('/bookingconfirm/:bookingId', (req, res, next) => {
-//
-//   let bookingId = req.params.bookingId;
-//   console.log("testeeeeee");
-//   console.log(bookingId);
-//   console.log("testeeeeee");
-//
-//   let bookingToUpdate = {
-//     accepted: req.body.confirm
-//
-//   }
-//
-//   Request.findByIdAndUpdate(bookingId, bookingToUpdate, (err, booking)=>{
-//     if (err) {
-//       console.log("GOT AN ERROR");
-//       next(err)
-//     } else {
-//       console.log(booking);
-//       console.log("GOT UPDATED");
-//       res.redirect('/profile');
-//     }
-//   })
-// });
-//
+
+
+router.post('/inbox/:bookingId', (req, res, next) => {
+  console.log(req)
+
+  let bookingId = req.params.bookingId;
+  console.log("testeeeeee");
+  console.log(bookingId);
+  console.log("testeeeeee");
+
+
+  let bookingToUpdate = {
+    accepted: req.body.confirm
+
+  }
+
+  Request.findByIdAndUpdate(bookingId, bookingToUpdate, (err, booking)=>{
+    if (err) {
+      console.log("GOT AN ERROR");
+      next(err)
+    } else {
+      console.log(booking);
+      console.log("GOT UPDATED");
+      res.redirect('/profile');
+    }
+  })
+});
+
 
 
 module.exports = router;

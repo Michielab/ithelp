@@ -33,20 +33,28 @@ export class UserService {
   }
 
   booking(booking) {
-    console.log(booking)
     return this.http.post("http://localhost:3000/booking", booking)
       .map((response) => response.json())
+  }
 
+  confirmBooking(accept, bookingId) {
+    return this.http.post(`${this.BASE_URL}/inbox/${bookingId}`,accept)
+      .map((response) => response.json())
+  }
+
+  declineBooking(decline, bookingId) {
+    return this.http.post(`${this.BASE_URL}/inbox/${bookingId}`,decline)
+      .map((response) => response.json())
   }
 
   inbox(userId) {
-    console.log(userId)
     let headers = new Headers({ 'Authorization': 'JWT ' + this.SessionService.token });
     let options = new RequestOptions({ headers: headers });
     return this.http.get(`${this.BASE_URL}/inbox/${userId}`, options)
       .map((response) => response.json())
-
   }
+
+
 
   // edit(user) {
   //   let headers = new Headers({ 'Authorization': 'JWT ' + this.SessionService.token });
