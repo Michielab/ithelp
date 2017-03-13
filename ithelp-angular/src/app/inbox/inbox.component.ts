@@ -85,22 +85,21 @@ newReview = {
       });
   }
 
-  createReview(helperId, bookingId) {
+  createReview(helperId, bookingId, mainSubject) {
     let user = JSON.parse(localStorage.getItem("user"))
     this.newReview.customer = user._id
     this.newReview.helper = helperId
     this.newReview.booking = bookingId
-    this.newReview.subject = 'subject'
-    this.newReview.rating = '5'
-    this.newReview.evaluation = 'fjldkjslkfsdlk'
+    this.newReview.subject = mainSubject
     this.userService.createReview(this.newReview)
       .subscribe(result => {
           if (result === true) {
               // login successful
               console.log('result ok', result);
-              this.router.navigate(['/inbox']);
+              window.location.reload()
           } else {
               console.log('result ko', result);
+              window.location.reload()
               // login failed
               // this.error = 'Username or password is incorrect';
           }

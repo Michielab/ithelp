@@ -87,7 +87,7 @@
                           <h4>WRITE</h4>
                           <textarea class="form-control" [(ngModel)]="newReview.evaluation" name="evaluation" placeholder="Your response" rows="8"></textarea><br>
                           <label for="">Rating</label>&nbsp;&nbsp;&nbsp;<input [(ngModel)]="newReview.rating" type="number" name="rating" value="">
-                          <button style="float:right" class="btn btn-primary">Review</button>
+                          <button style="float:right" (click)="createReview(booking.helper._id, booking._id, booking.mainSubject)" class="btn btn-primary">Review</button>
                         </div>
                       </div>
                     </div>

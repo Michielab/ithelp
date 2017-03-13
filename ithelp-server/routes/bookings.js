@@ -23,8 +23,8 @@ console.log('testserver')
   var  message = req.body.message;
   var  customer = req.body.customer;
   var  helper = req.body.helper;
-  var  accepted = false;
-  var  declined = false;
+  var  acceptedByHelper = false;
+  var  declinedByHelper = false;
   // var starttimeNumber = parseInt(starttime);\
 
   var newBooking = Booking({
@@ -36,8 +36,8 @@ console.log('testserver')
     message,
     customer,
     helper,
-    accepted,
-    declined,
+    acceptedByHelper,
+    declinedByHelper,
   });
 
   newBooking.save((err, booking) => {
@@ -157,8 +157,8 @@ router.post('/:bookingId', (req, res, next) => {
   let bookingId = req.params.bookingId;
 
   let bookingToUpdate = {
-    accepted: req.body.accepted,
-    declined: req.body.declined
+    acceptedByHelper: req.body.accepted,
+    declinedByHelper: req.body.declined
 
   }
 
