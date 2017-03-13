@@ -15,7 +15,7 @@ import { UserService } from '../user.service';
 })
 export class InboxComponent implements OnInit {
   user: Object;
-  booking: Object;
+  booking: any = {};
 
   constructor(
   private session: SessionService,
@@ -30,6 +30,7 @@ export class InboxComponent implements OnInit {
         .subscribe((response) => {
             this.booking = response;
             console.log(this.booking)
+            console.log(this.booking.bookingCustomer[0].mainSubject)
         })
 
 

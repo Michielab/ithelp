@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../user.service';
 
@@ -27,7 +27,8 @@ export class HelperDetailsComponent implements OnInit {
   constructor(
   	private router: Router,
   	private route: ActivatedRoute,
-    private userService: UserService
+    private userService: UserService,
+    private ngZone: NgZone
   ) {
 
   }
@@ -52,6 +53,7 @@ export class HelperDetailsComponent implements OnInit {
 
   showField(field){
     this.field = field
+    this.ngZone.run(()=>{})
   }
 
 
