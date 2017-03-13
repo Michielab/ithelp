@@ -1,52 +1,93 @@
 <div class="container-fluid  container-home-custom">
 
 
-<div class="jumbotron banner">
-      <div class="row">
-        <div class="col-md-5 title">
-        <h1>
-          Find amazing people that will take care <br>of your pet
-        </h1>
-        </div>
+  <div class="jumbotron banner">
+    <div class="row">
+      <div class="col-md-12 title text-center">
+        <h1>You don't need to know how to fix everything</h1>
+        <h2>Find people around you that will fix all your stuff</h2>
       </div>
-      <div class="row">
-        <div class="col-md-3 center-form">
-          <div class="form-group form-inline"><br><br>
-            <h2>What do you need?</h2>
-            <div class="form-group" style="float:right">
+    </div>
+    <div class="row">
+      <div style="text-align: center;" class="col-md-12 center-form">
+        <div class="form-group form-inline"><br><br><br><br>
+          <h2>Where, when and what do you need?</h2><br>
 
-              <label for="user_speciality"> Search for: </label><br>
+          <div class="form-group" style="display:inline-block;">
+            <input type="text" id="search" class="form-control input-lg-custom" placeholder="Where do you need it?"><br><br>
 
-                <label>
-                  <input value="Computer" type="checkbox"
-                    (click)="$event.target.checked? addFilters($event) : removeFilters($event)"> Computer
-                </label>
-                <label>
-                  <input value="Internet" type="checkbox"
-                    (click)="$event.target.checked? addFilters($event) : removeFilters($event)"> Internet
-                </label>
-                <label>
-                  <input value="Phone" type="checkbox"
-                    (click)="$event.target.checked? addFilters($event) : removeFilters($event)"> Phone
-                </label>
-                <label>
-                  <input value="Printer" type="checkbox"
-                    (click)="$event.target.checked? addFilters($event) : removeFilters($event)"> Printer
-                </label>
-                <label>
-                  <input value="TV" type="checkbox"
-                    (click)="$event.target.checked? addFilters($event) : removeFilters($event)"> TV
-                </label>
-                <label>
-                  <input value="Other" type="checkbox"
-                    (click)="$event.target.checked? addFilters($event) : removeFilters($event)"> Other
-                </label>
+            <div style="display:inline-block;">
+              <label><img class="icon-custom" src="http://localhost:3000/icons/computer.png" alt="computer">&nbsp;&nbsp;&nbsp;
+                <input value="Computer" type="checkbox"
+                (click)="$event.target.checked? addFilters($event) : removeFilters($event)">&nbsp;&nbsp;&nbsp; Computer
+              </label>&nbsp;&nbsp;&nbsp;
             </div>
-            <input type="text" id="search" class="form-control" placeholder="">
-            <button class="btn btn-success"><a (click)="goToSearch()" style="text-decoration:none; color:white;">Search!</a></button><br><br>
+            <div style="display:inline-block;">
+              <label><img class="icon-custom" src="http://localhost:3000/icons/internet.png" alt="computer">&nbsp;&nbsp;&nbsp;
+                <input value="Internet" type="checkbox"
+                (click)="$event.target.checked? addFilters($event) : removeFilters($event)">&nbsp;&nbsp;&nbsp; Internet
+              </label>&nbsp;&nbsp;&nbsp;
+            </div>
+            <div style="display:inline-block;">
+
+              <label><img class="icon-custom" src="http://localhost:3000/icons/phone.png" alt="computer">&nbsp;&nbsp;&nbsp;
+                <input value="Phone" type="checkbox"
+                (click)="$event.target.checked? addFilters($event) : removeFilters($event)">&nbsp;&nbsp;&nbsp; Phone
+              </label>&nbsp;&nbsp;&nbsp;
+            </div>
+            <div style="display:inline-block;">
+
+              <label><img class="icon-custom" src="http://localhost:3000/icons/tv.png" alt="computer">&nbsp;&nbsp;&nbsp;
+                <input value="TV" type="checkbox"
+                (click)="$event.target.checked? addFilters($event) : removeFilters($event)">&nbsp;&nbsp;&nbsp; TV
+              </label>
+            </div>
+            <div style="display:inline-block;">
+
+              <label>&nbsp;&nbsp;&nbsp;
+                <input value="Other" type="checkbox"
+                (click)="$event.target.checked? addFilters($event) : removeFilters($event)">&nbsp;&nbsp;&nbsp; Other
+              </label>
+
+            </div><br><br>
+            <button class="btn btn-success btn-custom"><a (click)="goToSearch()" style="text-decoration:none; color:white;">Search!</a></button><br><br>
           </div>
         </div>
       </div>
+    </div>
+  </div>
 
+  <div class="row"><br>
+    <div class="col-md-12 back-grey">
+      <h2 class="text-center">HOW IT WORKS</h2>
+    </div>
+  </div>
+</div>
+
+<div class="content-fluid back-grey">
+  <div class="row">
+    <div class="col-xs-2"></div>
+    <div class="col-xs-8">
+        <div class="row">
+          <div class="col-md-4">
+
+            <h3 class="text-center">Set up your profile</h3>
+            <hr>
+            <p class="text-justify">Sign up on our platform and set up your profile. Include all the information about you and everything you know about your pets! People that will take care of you pets will appreciate every detail you give them.</p>
+          </div>
+          <div class="col-md-4">
+            <h3 class="text-center" >Find people around you</h3>
+            <hr>
+              <p class="text-justify">Check who is around your location in our map. The map will show you users that fits your search criteria and dates. You could also check the reviews that other users gave them. Don't worry, you will find your perfect company for your buddy!</p>
+          </div>
+          <div class="col-md-4">
+
+            <h3 class="text-center">Book the service you need</h3>
+            <hr>
+            <p class="text-justify">Once you find your perfect match for your pets, you are one click away from booking him! Set the date and the hours and let him know all the details about the booking. He will receive your message and after it's done, you can rate how it was!</p>
+          </div>
+        </div>
+    </div>
+    <div class="col-xs-2"></div>
   </div>
 </div>

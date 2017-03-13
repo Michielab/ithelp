@@ -30,12 +30,24 @@
             Date: <input class="form-control" [(ngModel)]="newBooking.date" type="date" name="date">
             Time: <input class="form-control" [(ngModel)]="newBooking.starttime" type="time" name="starttime"><br>
           </div><br>
+
+
+          <!-- First field of subject -->
           <label> Select the field where you need help: </label>
-          <select (change)="showField($event.target.value)" [(ngModel)]="newBooking.mainSubject" class="form-control" name="mainSubject"id="search-method">
+          <select (change)="showField($event.target.value)" [(ngModel)]="newBooking.mainSubject" class="form-control" name="mainSubject">
             <option>Select Option</option>
             <option *ngFor="let field of user.speciality"  [ngValue]="field" >{{field}}</option>
           </select><br>
-<!--
+
+
+                  <!-- <label> Select the field where you need help: </label>
+                  <select (change)="showField($event.target.value)" class="form-control" [(ngModel)]="newBooking.mainSubject">
+                    <option>Select Option</option>
+                    <option *ngFor="let field of user.speciality" [ngValue]="field">{{field}}</option>
+                  </select><br> -->
+
+
+          <!-- Fields of the sub-subject -->
           <div *ngIf="field === undefined">
             <alert type="info">
               You need to select a field of specialization
@@ -65,7 +77,47 @@
             <select class="form-control" id="search-method" [(ngModel)]="newBooking.subSubject" name="subSubject">
               <option *ngFor="let field of ['Channel tunning', 'Pay-per-view Services', 'Smart TV']" [ngValue]="field" >{{field}}</option>
             </select><br>
-          </div> -->
+          </div>
+
+
+          <!-- END OF THE SUB-SUBJECTS -->
+
+
+<!--
+
+                  <div *ngIf="field === undefined">
+                    <alert type="info">
+                      You need to select a field of specialization
+                    </alert>
+                  </div>
+
+                  <div *ngIf="field === 'Computer'">
+                    <label> Choose a specialization: </label>
+                    <select class="form-control" id="search-method">
+                      <option *ngFor="let field of ['Hardware', 'Software', 'Windows', 'Apple', 'Peripherals', 'Hard Drive']" [ngValue]="field">{{field}}</option>
+                    </select><br>
+                  </div>
+                  <div *ngIf="field === 'Internet'">
+                    <label> Choose a specialization: </label>
+                    <select class="form-control" id="search-method">
+                      <option *ngFor="let field of ['Wi-fi', 'Ethernet', 'Router']" [ngValue]="field">{{field}}</option>
+                    </select><br>
+                  </div>
+                  <div *ngIf="field === 'Phone'">
+                    <label> Choose a specialization: </label>
+                    <select class="form-control" id="search-method">
+                      <option *ngFor="let field of ['Android', 'Iphone']" [ngValue]="field">{{field}}</option>
+                    </select><br>
+                  </div>
+                  <div *ngIf="field === 'TV'">
+                    <label> Choose a specialization: </label>
+                    <select class="form-control" id="search-method">
+                      <option *ngFor="let field of ['Channel tunning', 'Pay-per-view Services', 'Smart TV']" [ngValue]="field">{{field}}</option>
+                    </select><br>
+                  </div> -->
+
+
+
 
           <label> Subject</label>
           <input type="text" class="form-control" [(ngModel)]="newBooking.issue" name="issue"><br>
