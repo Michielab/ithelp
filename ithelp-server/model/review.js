@@ -6,7 +6,7 @@ const reviewSchema = new Schema({
   evaluation: String,
   date: Date,
   subject: String,
-  bookings: { type: Schema.Types.ObjectId, ref: 'Booking' },
+  booking: { type: Schema.Types.ObjectId, ref: 'Booking' },
   customer: { type: Schema.Types.ObjectId, ref: 'User' },
   helper: { type: Schema.Types.ObjectId, ref: 'User' }
 

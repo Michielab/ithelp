@@ -9,7 +9,7 @@ var auth         = require('./routes/auth');
 var users        = require('./routes/users');
 var phones       = require('./routes/phones');
 var bookings     = require('./routes/bookings');
-var reviews     = require('./routes/reviews');
+var reviews      = require('./routes/reviews');
 var cors         = require('cors');
 
 

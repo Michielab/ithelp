@@ -85,10 +85,14 @@ newReview = {
       });
   }
 
-  createReview(helperId) {
+  createReview(helperId, bookingId) {
     let user = JSON.parse(localStorage.getItem("user"))
     this.newReview.customer = user._id
     this.newReview.helper = helperId
+    this.newReview.booking = bookingId
+    this.newReview.subject = 'subject'
+    this.newReview.rating = '5'
+    this.newReview.evaluation = 'fjldkjslkfsdlk'
     this.userService.createReview(this.newReview)
       .subscribe(result => {
           if (result === true) {
