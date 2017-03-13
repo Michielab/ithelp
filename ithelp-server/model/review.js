@@ -2,11 +2,11 @@ const mongoose = require("mongoose");
 const Schema   = mongoose.Schema;
 
 const reviewSchema = new Schema({
-  stars: Number,
+  rating: Number,
   evaluation: String,
   date: Date,
   subject: String,
-  bookings: { type: Schema.Types.ObjectId, ref: 'Booking' },
+  booking: { type: Schema.Types.ObjectId, ref: 'Booking' },
   customer: { type: Schema.Types.ObjectId, ref: 'User' },
   helper: { type: Schema.Types.ObjectId, ref: 'User' }
 
