@@ -32,7 +32,7 @@ const Review          =  require("../model/review");
 router.get('/:id', (req, res, next) => {
   User
   .findOne({_id: req.params.id})
-  .populate("bookings")
+  .populate("reviews")
   .exec((err, users) => {
     if (err) {
       next(err);
@@ -43,7 +43,7 @@ router.get('/:id', (req, res, next) => {
     .find({customer: req.params.id})
     .populate("helper")
     .populate("customer")
-    .exec((err, bookingCustomer) => {
+    .exec((err, reviewCustomer) => {
       if (err) {
         next(err);
         return;
@@ -53,23 +53,19 @@ router.get('/:id', (req, res, next) => {
       .find({helper: req.params.id})
       .populate("helper")
       .populate("customer")
-      .exec((err, bookingHelper) => {
+      .exec((err, reviewHelper) => {
         if (err) {
           next(err);
           return;
         }
 
 
-        console.log("users", users)
-        console.log("booking", bookingCustomer)
-        console.log("helper", bookingHelper)
-        res.json({bookingHelper,bookingCustomer, users});
+        res.json({reviewHelper,reviewCustomer, users});
 
       });
     });
   });
 })
-
 
 
 router.post('/', (req, res, next) => {
