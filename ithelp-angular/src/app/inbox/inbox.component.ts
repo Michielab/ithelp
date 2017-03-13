@@ -25,6 +25,15 @@ export class InboxComponent implements OnInit {
      declined: true
     };
 
+newReview = {
+  rating: '',
+  evaluation: '',
+  subject: '',
+  customer: '',
+  helper: '',
+  booking: ''
+}
+
   constructor(
   private session: SessionService,
   private router:  Router,
@@ -43,7 +52,6 @@ export class InboxComponent implements OnInit {
   }
 
   confirmBooking(id) {
-      console.log(id)
     this.userService.confirmBooking(this.acceptBooking, id)
       .subscribe(result => {
           if (result === true) {
@@ -59,7 +67,6 @@ export class InboxComponent implements OnInit {
   }
 
   declineBooking(id) {
-    console.log(id)
     this.userService.declineBooking(this.rejectBooking, id)
       .subscribe(result => {
           if (result === true) {
@@ -73,5 +80,24 @@ export class InboxComponent implements OnInit {
           }
       });
   }
+
+  createReview(helperId) {
+    let user = JSON.parse(localStorage.getItem("user"))
+    this.newReview.customer = user._id
+    this.newReview.helper = helperId
+    this.userService.createReview(this.newReview)
+      .subscribe(result => {
+          if (result === true) {
+              // login successful
+              console.log('result ok', result);
+              this.router.navigate(['/inbox']);
+          } else {
+              console.log('result ko', result);
+              // login failed
+              // this.error = 'Username or password is incorrect';
+          }
+      });
+  }
+
 
   }

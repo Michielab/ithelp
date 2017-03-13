@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema   = mongoose.Schema;
 
 const reviewSchema = new Schema({
-  stars: Number,
+  rating: Number,
   evaluation: String,
   date: Date,
   subject: String,

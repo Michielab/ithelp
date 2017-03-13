@@ -48,6 +48,25 @@ export class UserService {
       .map((response) => response.json())
   }
 
+  createReview(review) {
+    return this.http.post(`${this.BASE_URL}/reviews`,review)
+      .map((response) => response.json())
+  }
+
+  getReviews(userId) {
+    let headers = new Headers({ 'Authorization': 'JWT ' + this.SessionService.token });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.post(`${this.BASE_URL}/reviews/${userId}`,options)
+      .map((response) => response.json())
+  }
+
+  getReview(reviewId) {
+    let headers = new Headers({ 'Authorization': 'JWT ' + this.SessionService.token });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.post(`${this.BASE_URL}/reviews/${reviewId}`,options)
+      .map((response) => response.json())
+  }
+
   inbox(userId) {
     let headers = new Headers({ 'Authorization': 'JWT ' + this.SessionService.token });
     let options = new RequestOptions({ headers: headers });
