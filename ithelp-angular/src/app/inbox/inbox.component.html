@@ -1,135 +1,324 @@
 <div class="container-fluid">
 
 
-  <tabset>
+  <div *ngIf="user.role === 'CUSTOMER'">CUSTOMEEERRR
 
-    <tab heading="Pending Messages">
+    <tabset>
 
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <td>
-              <b>Messages to Read</b>
-            </td>
-          </tr>
-        </thead>
-        <div class="table table-hover table-custom" *ngFor="let booking of booking.bookingCustomer">
+      <tab heading="Pending Messages">
 
-          <tr>
-            <td class="cursor-change-custom" (click)="lgModal.show()">
-              From: <b> {{ booking.customer.name }} </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;About: {{ booking.mainSubject }} - {{ booking.subSubject }} &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; Subject: <b>{{ booking.issue }}</b> <span class="small"> - &nbsp;&nbsp;&nbsp;{{ booking.message.substring(0,50) }}</span><span style="float:right">at: <b>{{ booking.created_at }}</b> </span>
-            </td>
-          </tr>
-          <div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h4 class="modal-title pull-left">Subject: {{ booking.issue }}</h4>
-                  <button type="button" class="close pull-right" (click)="lgModal.hide()" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <h4 style="float:right;">About: {{ booking.mainSubject }} - {{ booking.subSubject }}</h4>
-                  <h4>Message from: {{ booking.customer.name }}</h4>
-                  {{ booking.message }}
-                  <br>
-                  <div style="float:right;">at: <b>{{ booking.created_at }}</b></div><br><br>
-                  <hr><br>
-                  <textarea class="form-control" placeholder="Your response" rows="8"></textarea><br>
-                  <button class="btn btn-primary">Reply</button>
-                  <button (click)="confirmBooking(booking._id)" class="btn btn-primary">Accept booking</button>
-                  <button (click)="declineBooking(booking._id)" class="btn btn-primary">Decline booking</button>
+
+
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <td>
+                <b>Messages to Read</b>
+              </td>
+            </tr>
+          </thead>
+          <div class="table table-hover table-custom" *ngFor="let booking of booking.bookingCustomer">
+            <div class="table table-hover table-custom" *ngIf="booking.accepted === false && booking.declined === false">
+              <tr>
+                <td class="cursor-change-custom" (click)="lgModal.show()">
+                  From: <b> {{ booking.helper.name }} </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;About: {{ booking.mainSubject }} - {{ booking.subSubject }} &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; Subject: <b>{{ booking.issue }}</b> <span class="small"> - &nbsp;&nbsp;&nbsp;{{ booking.message.substring(0,50) }}</span><span style="float:right;"> at: <b>{{ booking.created_at }}</b> </span>
+                </td>
+              </tr>
+              <div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h4 class="modal-title pull-left">Subject: {{ booking.issue }}</h4>
+                      <button type="button" class="close pull-right" (click)="lgModal.hide()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <h4 style="float:right;">About: {{ booking.mainSubject }} - {{ booking.subSubject }}</h4>
+                      <h4>Message from: {{ booking.helper.name }}</h4>
+                      {{ booking.message }}
+                      <br>
+                      <div style="float:right;">at: <b>{{ booking.created_at }}</b></div><br><br>
+                      <hr><br>
+                      <textarea class="form-control" placeholder="Your response" rows="8"></textarea><br>
+                      <button class="btn btn-primary">Reply</button>
+                      <button  class="btn btn-primary">Write a review</button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
 
-      </table>
-
+        </table>
 
 
-    </tab>
-    <tab heading="Accepted messages">
 
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <td>
-              <b>Accepted Messages</b>
-            </td>
-          </tr>
-        </thead>
-        <tr>
-          <td>
-            From: <b> UserName </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Subject: <b>Wathever about this.</b> <span class="small">Lorem ipsum dolor sit amet, consectetur adipisicing elit...</span><span style="float:right">at: <b>20:45h 23/02/2017</b></span>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            From: <b> UserName </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Subject: <b>Wathever about this.</b> <span class="small">Lorem ipsum dolor sit amet, consectetur adipisicing elit...</span><span style="float:right">at: <b>20:45h 23/02/2017</b></span>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            From: <b> UserName </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Subject: <b>Wathever about this.</b> <span class="small">Lorem ipsum dolor sit amet, consectetur adipisicing elit...</span><span style="float:right">at: <b>20:45h 23/02/2017</b></span>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            From: <b> UserName </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Subject: <b>Wathever about this.</b> <span class="small">Lorem ipsum dolor sit amet, consectetur adipisicing elit...</span><span style="float:right">at: <b>20:45h 23/02/2017</b></span>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            From: <b> UserName </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Subject: <b>Wathever about this.</b> <span class="small">Lorem ipsum dolor sit amet, consectetur adipisicing elit...</span><span style="float:right">at: <b>20:45h 23/02/2017</b></span>
-          </td>
-        </tr>
-      </table>
-
-    </tab>
-
-    <tab heading="Declined messages">
-
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <td>
-              <b>Declined Messages</b>
-            </td>
-          </tr>
-        </thead>
-        <tr>
-          <td>
-            From: <b> UserName </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Subject: <b>Wathever about this.</b> <span class="small">Lorem ipsum dolor sit amet, consectetur adipisicing elit...</span><span style="float:right">at: <b>20:45h 23/02/2017</b></span>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            From: <b> UserName </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Subject: <b>Wathever about this.</b> <span class="small">Lorem ipsum dolor sit amet, consectetur adipisicing elit...</span><span style="float:right">at: <b>20:45h 23/02/2017</b></span>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            From: <b> UserName </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Subject: <b>Wathever about this.</b> <span class="small">Lorem ipsum dolor sit amet, consectetur adipisicing elit...</span><span style="float:right">at: <b>20:45h 23/02/2017</b></span>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            From: <b> UserName </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Subject: <b>Wathever about this.</b> <span class="small">Lorem ipsum dolor sit amet, consectetur adipisicing elit...</span><span style="float:right">at: <b>20:45h 23/02/2017</b></span>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            From: <b> UserName </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Subject: <b>Wathever about this.</b> <span class="small">Lorem ipsum dolor sit amet, consectetur adipisicing elit...</span><span style="float:right">at: <b>20:45h 23/02/2017</b></span>
-          </td>
-        </tr>
-      </table>
-
-    </tab>
+      </tab>
+      <tab heading="Accepted messages">
 
 
-  </tabset>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <td>
+                <b>Messages to Read</b>
+              </td>
+            </tr>
+          </thead>
+          <div class="table table-hover table-custom" *ngFor="let booking of booking.bookingCustomer">
+            <div class="table table-hover table-custom" *ngIf="booking.accepted === true">
+              <tr>
+                <td class="cursor-change-custom" (click)="lgModal.show()">
+                  From: <b> {{ booking.helper.name }} </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;About: {{ booking.mainSubject }} - {{ booking.subSubject }} &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; Subject: <b>{{ booking.issue }}</b> <span class="small"> - &nbsp;&nbsp;&nbsp;{{ booking.message.substring(0,50) }}</span><span style="float:right;"> at: <b>{{ booking.created_at }}</b> </span>
+                </td>
+              </tr>
+              <div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h4 class="modal-title pull-left">Subject: {{ booking.issue }}</h4>
+                      <button type="button" class="close pull-right" (click)="lgModal.hide()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <h4 style="float:right;">About: {{ booking.mainSubject }} - {{ booking.subSubject }}</h4>
+                      <h4>Message from: {{ booking.helper.name }}</h4>
+                      {{ booking.message }}
+                      <br>
+                      <div style="float:right;">at: <b>{{ booking.created_at }}</b></div><br><br>
+                      <hr><br>
+                      <textarea class="form-control" placeholder="Your response" rows="8"></textarea><br>
+                      <button class="btn btn-primary">Reply</button>
+                      <button  class="btn btn-primary">Write a review</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </table>
+
+      </tab>
+
+      <tab heading="Declined messages">
+
+
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <td>
+                <b>Messages to Read</b>
+              </td>
+            </tr>
+          </thead>
+          <div class="table table-hover table-custom" *ngFor="let booking of booking.bookingCustomer">
+            <div class="table table-hover table-custom" *ngIf="booking.declined === true">
+              <tr>
+                <td class="cursor-change-custom" (click)="lgModal.show()">
+                  From: <b> {{ booking.helper.name }} </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;About: {{ booking.mainSubject }} - {{ booking.subSubject }} &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; Subject: <b>{{ booking.issue }}</b> <span class="small"> - &nbsp;&nbsp;&nbsp;{{ booking.message.substring(0,50) }}</span><span style="float:right;"> at: <b>{{ booking.created_at }}</b> </span>
+                </td>
+              </tr>
+              <div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h4 class="modal-title pull-left">Subject: {{ booking.issue }}</h4>
+                      <button type="button" class="close pull-right" (click)="lgModal.hide()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <h4 style="float:right;">About: {{ booking.mainSubject }} - {{ booking.subSubject }}</h4>
+                      <h4>Message from: {{ booking.helper.name }}</h4>
+                      {{ booking.message }}
+                      <br>
+                      <div style="float:right;">at: <b>{{ booking.created_at }}</b></div><br><br>
+                      <hr><br>
+                      <textarea class="form-control" placeholder="Your response" rows="8"></textarea><br>
+                      <button class="btn btn-primary">Reply</button>
+                      <button  class="btn btn-primary">Write a review</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </table>
+      </tab>
+
+
+    </tabset>
+
+
+
+  </div>
+
+
+
+  <div *ngIf="user.role === 'HELPER'">HELPEEERRRR
+
+    <tabset>
+
+      <tab heading="Pending Messages">
+
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <td>
+                <b>Messages to Read</b>
+              </td>
+            </tr>
+          </thead>
+          <div class="table table-hover table-custom" *ngFor="let booking of booking.bookingHelper">
+            <div class="table table-hover table-custom" *ngIf="booking.accepted === false && booking.declined === false">
+
+              <tr>
+                <td class="cursor-change-custom" (click)="lgModal.show()">
+                  From: <b> {{ booking.customer.name }} </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;About: {{ booking.mainSubject }} - {{ booking.subSubject }} &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; Subject: <b>{{ booking.issue }}</b> <span class="small"> - &nbsp;&nbsp;&nbsp;{{ booking.message.substring(0,50) }}...</span><span style="float:right">at: <b>{{ booking.created_at }}</b> </span>
+                </td>
+              </tr>
+              <div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h4 class="modal-title pull-left">Subject: {{ booking.issue }}</h4>
+                      <button type="button" class="close pull-right" (click)="lgModal.hide()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <h4 style="float:right;">About: {{ booking.mainSubject }} - {{ booking.subSubject }}</h4><br><br>
+                      <h4>Message from: {{ booking.customer.name }}</h4><br>
+                      {{ booking.message }}
+                      <br><br>
+                      <div style="float:right;">at: <b>{{ booking.created_at }}</b></div><br><br>
+                      <hr><br>
+                      <textarea class="form-control" placeholder="Your response" rows="8"></textarea><br>
+                      <button class="btn btn-primary">Reply</button>
+                      <button (click)="confirmBooking(booking._id)" class="btn btn-primary">Accept booking</button>
+                      <button (click)="declineBooking(booking._id)" class="btn btn-primary">Decline booking</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </table>
+
+
+
+      </tab>
+      <tab heading="Accepted messages">
+
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <td>
+                <b>Messages to Read</b>
+              </td>
+            </tr>
+          </thead>
+          <div class="table table-hover table-custom" *ngFor="let booking of booking.bookingHelper">
+            <div class="table table-hover table-custom" *ngIf="booking.accepted === true">
+
+              <tr>
+                <td class="cursor-change-custom" (click)="lgModal.show()">
+                  From: <b> {{ booking.customer.name }} </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;About: {{ booking.mainSubject }} - {{ booking.subSubject }} &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; Subject: <b>{{ booking.issue }}</b> <span class="small"> - &nbsp;&nbsp;&nbsp;{{ booking.message.substring(0,50) }}...</span><span style="float:right">at: <b>{{ booking.created_at }}</b> </span>
+                </td>
+              </tr>
+              <div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h4 class="modal-title pull-left">Subject: {{ booking.issue }}</h4>
+                      <button type="button" class="close pull-right" (click)="lgModal.hide()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <h4 style="float:right;">About: {{ booking.mainSubject }} - {{ booking.subSubject }}</h4><br><br>
+                      <h4>Message from: {{ booking.customer.name }}</h4><br>
+                      {{ booking.message }}
+                      <br><br>
+                      <div style="float:right;">at: <b>{{ booking.created_at }}</b></div><br><br>
+                      <hr><br>
+                      <textarea class="form-control" placeholder="Your response" rows="8"></textarea><br>
+                      <button class="btn btn-primary">Reply</button>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </table>
+
+
+
+      </tab>
+
+      <tab heading="Declined messages">
+
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <td>
+                <b>Messages to Read</b>
+              </td>
+            </tr>
+          </thead>
+          <div class="table table-hover table-custom" *ngFor="let booking of booking.bookingHelper">
+            <div class="table table-hover table-custom" *ngIf="booking.declined === true">
+
+              <tr>
+                <td class="cursor-change-custom" (click)="lgModal.show()">
+                  From: <b> {{ booking.customer.name }} </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;About: {{ booking.mainSubject }} - {{ booking.subSubject }} &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; Subject: <b>{{ booking.issue }}</b> <span class="small"> - &nbsp;&nbsp;&nbsp;{{ booking.message.substring(0,50) }}...</span><span style="float:right">at: <b>{{ booking.created_at }}</b> </span>
+                </td>
+              </tr>
+              <div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h4 class="modal-title pull-left">Subject: {{ booking.issue }}</h4>
+                      <button type="button" class="close pull-right" (click)="lgModal.hide()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <h4 style="float:right;">About: {{ booking.mainSubject }} - {{ booking.subSubject }}</h4><br><br>
+                      <h4>Message from: {{ booking.customer.name }}</h4><br>
+                      {{ booking.message }}
+                      <br><br>
+                      <div style="float:right;">at: <b>{{ booking.created_at }}</b></div><br><br>
+                      <hr><br>
+                      <textarea class="form-control" placeholder="Your response" rows="8"></textarea><br>
+                      <button class="btn btn-primary">Reply</button>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </table>
+
+
+
+      </tab>
+
+
+    </tabset>
+
+
+
+  </div>
+
 
 </div>
