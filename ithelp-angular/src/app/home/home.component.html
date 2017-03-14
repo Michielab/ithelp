@@ -17,29 +17,29 @@
             <input type="text" id="search" class="form-control input-lg-custom" placeholder="Where do you need it?"><br><br>
 
             <div style="display:inline-block;">
-              <label><img class="icon-custom" src="http://localhost:3000/icons/computer.png" alt="computer">&nbsp;&nbsp;&nbsp;
-                <input value="Computer" type="checkbox"
-                (click)="$event.target.checked? addFilters($event) : removeFilters($event)">&nbsp;&nbsp;&nbsp; Computer
+              <label><input value="Computer" type="checkbox"
+              (click)="$event.target.checked? addFilters($event) : removeFilters($event)">&nbsp;&nbsp;&nbsp;<img class="icon-custom" src="http://localhost:3000/icons/computer.png" alt="computer">&nbsp;&nbsp;&nbsp;
+               Computer
               </label>&nbsp;&nbsp;&nbsp;
             </div>
             <div style="display:inline-block;">
-              <label><img class="icon-custom" src="http://localhost:3000/icons/internet.png" alt="computer">&nbsp;&nbsp;&nbsp;
-                <input value="Internet" type="checkbox"
-                (click)="$event.target.checked? addFilters($event) : removeFilters($event)">&nbsp;&nbsp;&nbsp; Internet
-              </label>&nbsp;&nbsp;&nbsp;
-            </div>
-            <div style="display:inline-block;">
-
-              <label><img class="icon-custom" src="http://localhost:3000/icons/phone.png" alt="computer">&nbsp;&nbsp;&nbsp;
-                <input value="Phone" type="checkbox"
-                (click)="$event.target.checked? addFilters($event) : removeFilters($event)">&nbsp;&nbsp;&nbsp; Phone
+              <label><input value="Internet" type="checkbox"
+              (click)="$event.target.checked? addFilters($event) : removeFilters($event)">&nbsp;&nbsp;&nbsp;<img class="icon-custom" src="http://localhost:3000/icons/internet.png" alt="computer">&nbsp;&nbsp;&nbsp;
+               Internet
               </label>&nbsp;&nbsp;&nbsp;
             </div>
             <div style="display:inline-block;">
 
-              <label><img class="icon-custom" src="http://localhost:3000/icons/tv.png" alt="computer">&nbsp;&nbsp;&nbsp;
-                <input value="TV" type="checkbox"
-                (click)="$event.target.checked? addFilters($event) : removeFilters($event)">&nbsp;&nbsp;&nbsp; TV
+              <label><input value="Phone" type="checkbox"
+              (click)="$event.target.checked? addFilters($event) : removeFilters($event)">&nbsp;&nbsp;&nbsp;<img class="icon-custom" src="http://localhost:3000/icons/phone.png" alt="computer">&nbsp;&nbsp;&nbsp;
+               Phone
+              </label>&nbsp;&nbsp;&nbsp;
+            </div>
+            <div style="display:inline-block;">
+
+              <label><input value="TV" type="checkbox"
+              (click)="$event.target.checked? addFilters($event) : removeFilters($event)">&nbsp;&nbsp;&nbsp;<img class="icon-custom" src="http://localhost:3000/icons/tv.png" alt="computer">&nbsp;&nbsp;&nbsp;
+                TV
               </label>
             </div>
             <div style="display:inline-block;">
@@ -50,7 +50,7 @@
               </label>
 
             </div><br><br>
-            <button class="btn btn-success btn-custom"><a (click)="goToSearch()" style="text-decoration:none; color:white;">Search!</a></button><br><br>
+            <button class="btn btn-success btn-custom" (click)="goToSearch()">Search!</button><br><br>
           </div>
         </div>
       </div>

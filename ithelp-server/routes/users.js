@@ -53,16 +53,15 @@ router.post('/', upload.single('file'), (req, res, next) => {
     role : req.body.role,
     phoneNumber : req.body.phoneNumber,
     status : req.body.status,
+    price : req.body.price,
     speciality : req.body.speciality,
     profilePic:  `http://localhost:3000/uploads/${req.file.filename}`
   }
 
-  console.log(userToUpdate)
 
   var userId = req.body._id.toString();
   userId = mongoose.Types.ObjectId(userId)
 
-  console.log(userId)
   User.findByIdAndUpdate(userId, userToUpdate, (err, user)=>{
     if (err) {
       console.log("GOT AN ERROR");

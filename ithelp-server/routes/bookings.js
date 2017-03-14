@@ -13,7 +13,6 @@ var jwtOptions = require('../config/jwtOptions');
 // });
 
 router.post('/', (req, res, next) => {
-console.log('testserver')
 
   var  date = req.body.date;
   var  starttime = req.body.starttime;
@@ -25,6 +24,9 @@ console.log('testserver')
   var  helper = req.body.helper;
   var  acceptedByHelper = false;
   var  declinedByHelper = false;
+  var  acceptedByCustomer = false;
+  var  declinedByCustomer = false;
+  console.log("DATE",date);
   // var starttimeNumber = parseInt(starttime);\
 
   var newBooking = Booking({
@@ -38,6 +40,8 @@ console.log('testserver')
     helper,
     acceptedByHelper,
     declinedByHelper,
+    acceptedByCustomer,
+    declinedByCustomer,
   });
 
   newBooking.save((err, booking) => {
@@ -75,7 +79,6 @@ console.log('testserver')
 
 
 router.get('/:id', (req, res, next) => {
-  console.log(req.params.id)
        User
       .findOne({_id: req.params.id})
       .populate("bookings")
@@ -106,9 +109,6 @@ router.get('/:id', (req, res, next) => {
               }
 
 
-            console.log("users", users)
-            console.log("booking", bookingCustomer)
-            console.log("helper", bookingHelper)
             res.json({bookingHelper,bookingCustomer, users});
 
           });
@@ -154,15 +154,30 @@ router.get('/:id', (req, res, next) => {
 
 router.post('/:bookingId', (req, res, next) => {
 
+console.log("HEEEYYYYYYY");
   let bookingId = req.params.bookingId;
 
-  let bookingToUpdate = {
-    acceptedByHelper: req.body.accepted,
-    declinedByHelper: req.body.declined
+  let acceptedByHelper = req.body.acceptedHelper
+  let declinedByHelper = req.body.declined
+  let acceptedByCustomer = req.body.acceptedCustomer
+  let hours = req.body.hours
+  let reply = req.body.reply
 
-  }
+if (hours === undefined) {
+  hours = 0;
+}
 
-  Booking.findByIdAndUpdate(bookingId, bookingToUpdate, (err, booking)=>{
+let newBooking = {
+  acceptedByHelper,
+  declinedByHelper,
+  acceptedByCustomer,
+  hours,
+  reply
+}
+  console.log(newBooking);
+  console.log("HEEEYYY");
+
+  Booking.findByIdAndUpdate(bookingId, newBooking, (err, booking)=>{
     if (err) {
       console.log("GOT AN ERROR");
       next(err)

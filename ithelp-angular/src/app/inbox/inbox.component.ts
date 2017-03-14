@@ -16,10 +16,19 @@ import { UserService } from '../user.service';
 export class InboxComponent implements OnInit {
   user: Object;
   booking: any = {};
+  today: any;
 
-  acceptBooking = {
-    accepted: true
+  acceptHelperBooking = {
+    acceptedHelper: true,
+    reply: '',
+    hours: 0
    };
+
+   acceptCustomerBooking = {
+     acceptedCustomer: true,
+     acceptedHelper: true,
+
+    };
 
    rejectBooking = {
      declined: true
@@ -49,10 +58,30 @@ newReview = {
             console.log(this.booking)
             console.log(this.booking.bookingCustomer[0].mainSubject)
         })
+    this.today = new Date();
+    console.log(this.today)
+    console.log(typeof(this.today))
   }
 
-  confirmBooking(id) {
-    this.userService.confirmBooking(this.acceptBooking, id)
+  confirmHelperBooking(id) {
+    this.userService.confirmBooking(this.acceptHelperBooking, id)
+      .subscribe(result => {
+          if (result === true) {
+              // login successful
+              console.log('result ok', result);
+              window.location.reload()
+          } else {
+              console.log('result ko', result);
+              window.location.reload()
+
+              // login failed
+              // this.error = 'Username or password is incorrect';
+          }
+      });
+  }
+
+  confirmCustomerBooking(id) {
+    this.userService.confirmBooking(this.acceptCustomerBooking, id)
       .subscribe(result => {
           if (result === true) {
               // login successful
@@ -69,6 +98,7 @@ newReview = {
   }
 
   declineBooking(id) {
+    console.log(id)
     this.userService.declineBooking(this.rejectBooking, id)
       .subscribe(result => {
           if (result === true) {
