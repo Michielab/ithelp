@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const User = require('../model/user');
 const Booking = require('../model/booking');
+const Review          =  require("../model/review");
 const mongoose = require('mongoose');
 const upload = require('../config/multer');
 var jwt = require('jsonwebtoken');
@@ -26,7 +27,7 @@ console.log('testserver')
   var  acceptedByHelper = false;
   var  declinedByHelper = false;
   // var starttimeNumber = parseInt(starttime);\
-
+console.log("date", date);
   var newBooking = Booking({
     date,
     starttime,
@@ -79,6 +80,7 @@ router.get('/:id', (req, res, next) => {
        User
       .findOne({_id: req.params.id})
       .populate("bookings")
+      .populate("reviews")
       .exec((err, users) => {
         if (err) {
           next(err);
@@ -105,17 +107,38 @@ router.get('/:id', (req, res, next) => {
                 return;
               }
 
+              Review
+              .find({customer: req.params.id})
+              .populate("helper")
+              .populate("customer")
+              .populate("booking")
+              .exec((err, reviewCustomer) => {
+                if (err) {
+                  next(err);
+                  return;
+                }
 
+                Review
+                .find({helper: req.params.id})
+                .populate("helper")
+                .populate("customer")
+                .populate("booking")
+                .exec((err, reviewHelper) => {
+                  if (err) {
+                    next(err);
+                    return;
+                  }
             console.log("users", users)
             console.log("booking", bookingCustomer)
             console.log("helper", bookingHelper)
-            res.json({bookingHelper,bookingCustomer, users});
+            res.json({bookingHelper,bookingCustomer, users,reviewCustomer ,reviewHelper});
 
           });
       });
     });
-})
-
+  });
+});
+});
 //
 // router.get('/booking/:bookingId', auth.checkLoggedIn('You must be login', '/login'), (req, res, next) => {
 //   let bookingId = req.params.bookingId;

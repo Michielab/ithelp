@@ -29,7 +29,7 @@ import { HelperDetailsComponent } from './helper-details/helper-details.componen
 import { TabsModule } from 'ng2-bootstrap/tabs';
 import { ModalModule } from 'ng2-bootstrap/modal';
 import { AlertModule } from 'ng2-bootstrap/alert';
-
+import { RatingModule } from 'ng2-bootstrap/rating';
 
 
 @NgModule({
@@ -54,6 +54,7 @@ import { AlertModule } from 'ng2-bootstrap/alert';
     BrowserModule,
     FormsModule,
     HttpModule,
+    RatingModule.forRoot(),
     TabsModule.forRoot(),
     ModalModule.forRoot(),
     AlertModule.forRoot(),

@@ -3,6 +3,7 @@ var router = express.Router();
 const User = require('../model/user');
 const mongoose = require('mongoose');
 const upload = require('../config/multer');
+const Review          =  require("../model/review");
 
 
 
@@ -11,6 +12,7 @@ router.get('/:format?', (req, res, next) => {
   if (req.query.long && req.query.lat) {
     User.where('location')
     .near({ center: { coordinates: [req.query.long, req.query.lat], type: 'Point' }, maxDistance: 2000 })
+        .populate("reviews")
         .exec((err, Users) => {
           if (err) {
             return res.send(err);

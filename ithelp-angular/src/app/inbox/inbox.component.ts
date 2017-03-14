@@ -14,8 +14,19 @@ import { UserService } from '../user.service';
   providers: [UserService]
 })
 export class InboxComponent implements OnInit {
+    public max:number = 5;
+    public rating:number = 0;
+    public overStar:number;
+    public percent:number;
+
+    public hoveringOver(value:number):void {
+      this.overStar = value;
+      this.percent = 100 * (value / this.max);
+    };
+
   user: Object;
   booking: any = {};
+  reviews: Array<Object> = [];
 
   acceptBooking = {
     accepted: true
@@ -49,6 +60,8 @@ newReview = {
             console.log(this.booking)
             console.log(this.booking.bookingCustomer[0].mainSubject)
         })
+
+
   }
 
   confirmBooking(id) {

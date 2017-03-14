@@ -15,6 +15,7 @@ declare var google: any;
   changeDetection: ChangeDetectionStrategy.Default
 })
 export class SearchResultsComponent implements OnInit {
+  rating: number = 0;
   users: Array<Object> = [];
   pattern: string="";
   searchMethod: string = "name";
@@ -90,6 +91,7 @@ export class SearchResultsComponent implements OnInit {
   }
 
   getUsers() {
+    let infowindow = new google.maps.InfoWindow
     this.userService.getUsers(this.lat, this.lng)
     .subscribe((users) => {
       this.users = users;
@@ -118,8 +120,19 @@ export class SearchResultsComponent implements OnInit {
                 lat: marker.location.coordinates[1],
                 lng: marker.location.coordinates[0]
               };
-
-              var pin = new google.maps.Marker({ position, map, title  });
+              let pin = new google.maps.Marker({ position, map, title  });
+                  // pin.setIcon('http://localhost:3000/icons/computer.png')
+                  let total = 0;
+                marker.reviews.forEach(function(review){
+                    total += review.rating
+                })
+                let average = total / marker.reviews.length
+                let averageNumber = parseInt(average.toFixed(1))
+                let contentString ='<div class="pin-google"><h5>' + marker.name + '</h5>'  + '<h5>' + marker.price + '$/hour</h5>' + '<h5>' + marker.slogan + '</h5>' + '<h5>' + "Average rating: " + averageNumber + '</h5>';
+                      google.maps.event.addListener(pin, 'click', function() {
+                         infowindow.setContent(contentString + '<br>' + '<button class="btn btn-success"><a href="/search/' + marker._id + '">Contact</a></button>' );
+                         infowindow.open(map, this);
+                        });
             }
           })
         })
@@ -147,4 +160,17 @@ export class SearchResultsComponent implements OnInit {
     }
     this.getUsers()
   }
+
+  totalScore(user) {
+    let total = 0;
+    for (let i = 0; i < user.reviews.length; i++ ){
+      total += user.reviews[i].rating
+    }
+    let average = total / user.reviews.length
+    this.rating = parseInt(average.toFixed(1))
+    console.log(typeof this.rating)
+    return parseInt(average.toFixed(1))
+
+}
+
 }

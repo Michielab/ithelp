@@ -45,8 +45,10 @@
             <p> {{ user.description }} </p>
             <p> {{ user.speciality }} </p>
             <p> {{ user.role }} </p>
+            <p>Average of {{totalScore(user)}} out of {{user.reviews.length}} reviews </p>
+            <pre class="card card-block card-header" style="margin:15px 0;">Rate: <b>{{rating}}</b> </pre>
+            <rating [(ngModel)]="rating" [max]="max" [readonly]="true"></rating>
             <p><button class="btn btn-success"><a [routerLink]="['/search', user._id]">Contact</a></button></p>
-
             <hr>
           </div>
         </div>

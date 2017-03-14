@@ -20,7 +20,7 @@ const userSchema = new Schema({
   slogan: String,
   price: String,
   status: String,
-  score: String,
+  Totalscore: Number,
   responseTime: String,
   bookings: [{ type: Schema.Types.ObjectId, ref: 'Booking' }],
   reviews: [{ type: Schema.Types.ObjectId, ref: 'Review' }]
