@@ -29,7 +29,8 @@ export class ProfileComponent implements OnInit {
     description: '',
     slogan: '',
     status: '',
-    speciality: ''
+    speciality: '',
+    price: ''
   };
 
   feedback: string;
@@ -77,6 +78,8 @@ export class ProfileComponent implements OnInit {
     this.newUser.long = user.location.coordinates[0]
     this.newUser.lat = user.location.coordinates[1]
     this.newUser.role = user.role
+    this.newUser.price = user.price
+
 
 
 
@@ -103,6 +106,7 @@ export class ProfileComponent implements OnInit {
       form.append('lat', this.newUser.lat);
       form.append('long', this.newUser.long);
       form.append('_id', this.newUser._id);
+      form.append('price', this.newUser.price);
       form.append('phoneNumber', this.newUser.phoneNumber);
       form.append('slogan', this.newUser.slogan);
       form.append('description', this.newUser.description);

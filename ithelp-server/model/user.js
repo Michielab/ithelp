@@ -18,7 +18,7 @@ const userSchema = new Schema({
   speciality: Array,
   description: String,
   slogan: String,
-  price: String,
+  price: Number,
   status: String,
   Totalscore: Number,
   responseTime: String,

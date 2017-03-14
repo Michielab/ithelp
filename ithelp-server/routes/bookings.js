@@ -14,7 +14,6 @@ var jwtOptions = require('../config/jwtOptions');
 // });
 
 router.post('/', (req, res, next) => {
-console.log('testserver')
 
   var  date = req.body.date;
   var  starttime = req.body.starttime;
@@ -26,6 +25,9 @@ console.log('testserver')
   var  helper = req.body.helper;
   var  acceptedByHelper = false;
   var  declinedByHelper = false;
+  var  acceptedByCustomer = false;
+  var  declinedByCustomer = false;
+  console.log("DATE",date);
   // var starttimeNumber = parseInt(starttime);\
 console.log("date", date);
   var newBooking = Booking({
@@ -39,6 +41,8 @@ console.log("date", date);
     helper,
     acceptedByHelper,
     declinedByHelper,
+    acceptedByCustomer,
+    declinedByCustomer,
   });
 
   newBooking.save((err, booking) => {
@@ -76,7 +80,6 @@ console.log("date", date);
 
 
 router.get('/:id', (req, res, next) => {
-  console.log(req.params.id)
        User
       .findOne({_id: req.params.id})
       .populate("bookings")
@@ -107,6 +110,7 @@ router.get('/:id', (req, res, next) => {
                 return;
               }
 
+<<<<<<< HEAD
               Review
               .find({customer: req.params.id})
               .populate("helper")
@@ -132,6 +136,10 @@ router.get('/:id', (req, res, next) => {
             console.log("booking", bookingCustomer)
             console.log("helper", bookingHelper)
             res.json({bookingHelper,bookingCustomer, users,reviewCustomer ,reviewHelper});
+=======
+
+            res.json({bookingHelper,bookingCustomer, users});
+>>>>>>> 89aaa4d1fafa60500f1de2a61bb9c1e064290b12
 
           });
       });
@@ -177,15 +185,30 @@ router.get('/:id', (req, res, next) => {
 
 router.post('/:bookingId', (req, res, next) => {
 
+console.log("HEEEYYYYYYY");
   let bookingId = req.params.bookingId;
 
-  let bookingToUpdate = {
-    acceptedByHelper: req.body.accepted,
-    declinedByHelper: req.body.declined
+  let acceptedByHelper = req.body.acceptedHelper
+  let declinedByHelper = req.body.declined
+  let acceptedByCustomer = req.body.acceptedCustomer
+  let hours = req.body.hours
+  let reply = req.body.reply
 
-  }
+if (hours === undefined) {
+  hours = 0;
+}
 
-  Booking.findByIdAndUpdate(bookingId, bookingToUpdate, (err, booking)=>{
+let newBooking = {
+  acceptedByHelper,
+  declinedByHelper,
+  acceptedByCustomer,
+  hours,
+  reply
+}
+  console.log(newBooking);
+  console.log("HEEEYYY");
+
+  Booking.findByIdAndUpdate(bookingId, newBooking, (err, booking)=>{
     if (err) {
       console.log("GOT AN ERROR");
       next(err)

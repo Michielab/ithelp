@@ -4,13 +4,16 @@ const Schema   = mongoose.Schema;
 const bookingSchema = new Schema({
   date: Date,
   starttime: String,
-  hours: Number,
+  hours: {
+    type: Number, default: 0
+  },
   mainSubject: String,
   subSubject: String,
   issue: String,
+  reply: String,
   message: String,
-  accepted: Boolean,
-  declined: Boolean,
+  acceptedByCustomer: Boolean,
+  declinedByCustomer: Boolean,
   acceptedByHelper: Boolean,
   declinedByHelper: Boolean,
   price: Number,
