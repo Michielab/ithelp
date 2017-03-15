@@ -162,6 +162,10 @@ export class SearchResultsComponent implements OnInit {
   }
 
   totalScore(user) {
+    if(user.reviews.length === 0) {
+      return
+    }
+    else {
     let total = 0;
     for (let i = 0; i < user.reviews.length; i++ ){
       total += user.reviews[i].rating
@@ -172,5 +176,5 @@ export class SearchResultsComponent implements OnInit {
     return parseInt(average.toFixed(1))
 
 }
-
+}
 }

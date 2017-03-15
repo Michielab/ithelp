@@ -110,7 +110,6 @@ router.get('/:id', (req, res, next) => {
                 return;
               }
 
-<<<<<<< HEAD
               Review
               .find({customer: req.params.id})
               .populate("helper")
@@ -136,10 +135,6 @@ router.get('/:id', (req, res, next) => {
             console.log("booking", bookingCustomer)
             console.log("helper", bookingHelper)
             res.json({bookingHelper,bookingCustomer, users,reviewCustomer ,reviewHelper});
-=======
-
-            res.json({bookingHelper,bookingCustomer, users});
->>>>>>> 89aaa4d1fafa60500f1de2a61bb9c1e064290b12
 
           });
       });
