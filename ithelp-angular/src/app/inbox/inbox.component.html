@@ -124,9 +124,9 @@
                 </tr>
               </thead>
               <div class="table table-hover table-custom" *ngFor="let booking of booking.bookingCustomer">
-                <div class="table table-hover table-custom" *ngIf="booking.acceptedByHelper === true && booking.acceptedByCustomer === true && booking.date > today">
+                <div class="table table-hover table-custom" *ngIf="booking.acceptedByHelper === true && booking.acceptedByCustomer === true && (booking.date | newdate) > today">
                   <tr>
-                    <td class="cursor-change-custom"><button style="float:right;" class="btn btn-primary" (click)="revModal.show()">Write a review</button>
+                    <td class="cursor-change-custom">
                       <span (click)="lgModal.show()">
                         From: <b> {{ booking.helper.name }} </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;About: {{ booking.mainSubject }} - {{ booking.subSubject }} &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; Subject: <b>{{ booking.issue }}</b> </span>
                         <span class="small" (click)="lgModal.show()"> - &nbsp;&nbsp;&nbsp;{{ booking.message.substring(0,50) }}</span>
@@ -193,12 +193,8 @@
                     </td>
                   </tr>
                 </thead>
-                <div *ngFor="let booking of booking.bookingCustomer">
-                  <h1>{{booking.date}} .... {{today}}</h1>
-                </div>
                 <div class="table table-hover table-custom" *ngFor="let booking of booking.bookingCustomer">
-                  <div class="table table-hover table-custom" *ngIf="booking.acceptedByHelper === true && booking.acceptedByCustomer === true && booking.date < today">
-                    {{booking.date}}  ....  {{today}}
+                  <div class="table table-hover table-custom" *ngIf="booking.acceptedByHelper === true && booking.acceptedByCustomer === true && (booking.date | newdate) < today">
                     <tr>
                       <td class="cursor-change-custom">&nbsp;&nbsp;<button style="float:right;" class="btn btn-primary" (click)="revModal.show()">Write a review</button>&nbsp;&nbsp;
                         <button style="float:right; margin-right: 20px;

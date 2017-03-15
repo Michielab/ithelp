@@ -3,6 +3,7 @@ import { FileUploader } from "ng2-file-upload";
 import { SessionService } from '../session.service';
 import { Router } from '@angular/router';
 import { UserService } from '../user.service';
+import { NewDatePipe} from "../pipes/new-date.pipe"
 
 // import * as moment from ‘moment’;
 
