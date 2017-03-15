@@ -15,7 +15,7 @@ declare var google: any;
   changeDetection: ChangeDetectionStrategy.Default
 })
 export class SearchResultsComponent implements OnInit {
-  rating: number = 0;
+  public rate: number = 0;
   users: Array<Object> = [];
   pattern: string="";
   searchMethod: string = "name";
@@ -128,7 +128,7 @@ export class SearchResultsComponent implements OnInit {
                 })
                 let average = total / marker.reviews.length
                 let averageNumber = parseInt(average.toFixed(1))
-                let contentString ='<div class="pin-google"><h5>' + marker.name + '</h5>'  + '<h5>' + marker.price + '$/hour</h5>' + '<h5>' + marker.slogan + '</h5>' + '<h5>' + "Average rating: " + averageNumber + '</h5>';
+                let contentString ='<div class="pin-google"><h5>' + marker.name + '</h5>'  + '<h5>' + marker.price + '$/hour</h5>' + '<h5>' + marker.slogan + '</h5>' + '<h5>' + "Average rating: " + averageNumber + '</h5>' ;
                       google.maps.event.addListener(pin, 'click', function() {
                          infowindow.setContent(contentString + '<br>' + '<button class="btn btn-success"><a href="/search/' + marker._id + '">Contact</a></button>' );
                          infowindow.open(map, this);
@@ -171,8 +171,7 @@ export class SearchResultsComponent implements OnInit {
       total += user.reviews[i].rating
     }
     let average = total / user.reviews.length
-    this.rating = parseInt(average.toFixed(1))
-    console.log(typeof this.rating)
+    this.rate = parseInt(average.toFixed(1))
     return parseInt(average.toFixed(1))
 
 }

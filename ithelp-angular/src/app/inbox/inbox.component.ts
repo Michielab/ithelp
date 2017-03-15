@@ -63,12 +63,14 @@ newReview = {
 
   ngOnInit() {
     let user = JSON.parse(localStorage.getItem("user"))
+      console.log(localStorage) 
     this.userService.inbox(user._id)
         .subscribe((response) => {
             this.booking = response;
             console.log(this.booking)
             console.log(this.booking.bookingCustomer[0].mainSubject)
         })
+
 
     this.today = new Date();
     console.log(this.today)

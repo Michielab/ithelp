@@ -124,7 +124,7 @@
                 </tr>
               </thead>
               <div class="table table-hover table-custom" *ngFor="let booking of booking.bookingCustomer">
-                <div class="table table-hover table-custom" *ngIf="booking.acceptedByHelper === true && booking.acceptedByCustomer === true">
+                <div class="table table-hover table-custom" *ngIf="booking.acceptedByHelper === true && booking.acceptedByCustomer === true ">
                   <tr>
                     <td class="cursor-change-custom"><button style="float:right;" class="btn btn-primary" (click)="revModal.show()">Write a review</button>
                       <span (click)="lgModal.show()">
@@ -153,25 +153,27 @@
                       </td>
                     </tr>
 
-                    <div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div bsModal #revModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                       <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                           <div class="modal-header">
-                            <h4 class="modal-title pull-left">Subject: {{ booking.issue }}</h4>
-                            <button type="button" class="close pull-right" (click)="lgModal.hide()" aria-label="Close">
+                            <h4 class="modal-title pull-left">REVIEW</h4>
+                            <button type="button" class="close pull-right" (click)="revModal.hide()" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                             </button>
                           </div>
                           <div class="modal-body">
-                            <h4 style="float:right;">About: {{ booking.mainSubject }} - {{ booking.subSubject }}</h4>
-                            <h4>Message from: {{ booking.helper.name }}</h4>
-                            {{ booking.message }}
-                            <br>
-                            <div style="float:right;">at: <b>{{ booking.created_at | date:'d/M/yy hh:mm:ss' }}</b></div><br><br>
-                            <hr><br>
-                            <textarea class="form-control" placeholder="Your response" rows="8"></textarea><br>
-                            <button class="btn btn-primary">Reply</button>
+                            <label for="">Rate previous booking:&nbsp;&nbsp;</label><rating [(ngModel)]="newReview.rating" [max]="max"
+                            (onHover)="hoveringOver($event)"
+                            [titles]="['one','two','three']"></rating>
 
+                            <span class="label"
+                            [ngClass]="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}"
+                            [ngStyle]="{display: (overStar && !isReadonly) ? 'inline' : 'none'}">{{percent}}%</span>
+                            <h4>WRITE</h4>
+                            <textarea class="form-control" [(ngModel)]="newReview.evaluation" name="evaluation" placeholder="Your response" rows="8"></textarea><br>
+                            <input  >
+                            <button style="float:right" (click)="createReview(booking.helper._id, booking._id, booking.mainSubject)" class="btn btn-primary">Review</button>
                           </div>
                         </div>
                       </div>
@@ -218,9 +220,16 @@
                                   </button>
                                 </div>
                                 <div class="modal-body">
+                                  <label for="">Rate previous booking:&nbsp;&nbsp;</label><rating [(ngModel)]="newReview.rating" [max]="max"
+                                  (onHover)="hoveringOver($event)" 
+                                  [titles]="['one','two','three']"></rating>
+
+                                  <span class="label"
+                                  [ngClass]="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}"
+                                  [ngStyle]="{display: (overStar && !isReadonly) ? 'inline' : 'none'}">{{percent}}%</span>
                                   <h4>WRITE</h4>
                                   <textarea class="form-control" [(ngModel)]="newReview.evaluation" name="evaluation" placeholder="Your response" rows="8"></textarea><br>
-                                  <label for="">Rating</label>&nbsp;&nbsp;&nbsp;<input [(ngModel)]="newReview.rating" type="number" name="rating" value="">
+                                  <input  >
                                   <button style="float:right" (click)="createReview(booking.helper._id, booking._id, booking.mainSubject)" class="btn btn-primary">Review</button>
                                 </div>
                               </div>
@@ -319,32 +328,32 @@
                 </tr>
               </thead>
               <div class="table table-hover table-custom" *ngFor="let review of booking.reviewCustomer">
-                  <tr>
-                    <td class="cursor-change-custom" (click)="lgModal.show()">
-                      Name: <b> {{ review.helper.name }} </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;About: {{ review.subject }}  &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; Rating: <b>{{ review.rating }}</b> <span class="small"> - &nbsp;&nbsp;&nbsp;{{ review.evaluation.substring(0,50) }}</span><span style="float:right;"> at: <b>{{ review.created_at }}</b> </span>
-                    </td>
-                  </tr>
-                  <div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close pull-right" (click)="lgModal.hide()" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <div class="modal-body">
-                          <h4 style="float:right;">About: {{ review.subject }} </h4>
-                          <h4>Name: {{ review.helper.name }}</h4>
-                          <h4>Stars: {{ review.rating }}</h4>
-                          <rating [(ngModel)]="review.rating" [max]="max" [readonly]="true"></rating>
-                          <br>
-                          <h4>Evaluation: {{ review.evaluation }}</h4>
-                          <div style="float:right;">review created at: <b>{{ review.created_at }}</b></div><br><br>
-                          <hr><br>
-                        </div>
+                <tr>
+                  <td class="cursor-change-custom" (click)="lgModal.show()">
+                    Name: <b> {{ review.helper.name }} </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;About: {{ review.subject }}  &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; Rating: <b>{{ review.rating }}</b> <span class="small"> - &nbsp;&nbsp;&nbsp;{{ review.evaluation.substring(0,50) }}</span><span style="float:right;"> at: <b>{{ review.created_at }}</b> </span>
+                  </td>
+                </tr>
+                <div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close pull-right" (click)="lgModal.hide()" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <h4 style="float:right;">About: {{ review.subject }} </h4>
+                        <h4>Name: {{ review.helper.name }}</h4>
+                        <h4>Stars: {{ review.rating }}</h4>
+                        <rating [(ngModel)]="review.rating" [max]="max" [readonly]="true"></rating>
+                        <br>
+                        <h4>Evaluation: {{ review.evaluation }}</h4>
+                        <div style="float:right;">review created at: <b>{{ review.created_at }}</b></div><br><br>
+                        <hr><br>
                       </div>
                     </div>
                   </div>
+                </div>
               </div>
 
             </table>
@@ -578,32 +587,32 @@
                 </tr>
               </thead>
               <div class="table table-hover table-custom" *ngFor="let review of booking.reviewHelper">
-                  <tr>
-                    <td class="cursor-change-custom" (click)="lgModal.show()">
-                      Reviewed by: <b> {{ review.customer.name }} </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;About: {{ review.subject }}  &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; Rating: <b>{{ review.rating }}</b> <span class="small"> - &nbsp;&nbsp;&nbsp;{{ review.evaluation.substring(0,50) }}</span><span style="float:right;"> at: <b>{{ review.created_at }}</b> </span>
-                    </td>
-                  </tr>
-                  <div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close pull-right" (click)="lgModal.hide()" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <div class="modal-body">
-                          <h4 style="float:right;">About: {{ review.subject }} </h4>
-                          <h4>Name: {{ review.customer.name }}</h4>
-                          <h4>Stars: {{ review.rating }}</h4>
-                          <rating [(ngModel)]="review.rating" [max]="max" [readonly]="true"></rating>
-                          <h4>Evaluation: {{ review.evaluation }}</h4>
-                          <br>
-                          <div style="float:right;">created at: <b>{{ review.created_at }}</b></div><br><br>
-                          <hr><br>
-                        </div>
+                <tr>
+                  <td class="cursor-change-custom" (click)="lgModal.show()">
+                    Reviewed by: <b> {{ review.customer.name }} </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;About: {{ review.subject }}  &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; Rating: <b>{{ review.rating }}</b> <span class="small"> - &nbsp;&nbsp;&nbsp;{{ review.evaluation.substring(0,50) }}</span><span style="float:right;"> at: <b>{{ review.created_at }}</b> </span>
+                  </td>
+                </tr>
+                <div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close pull-right" (click)="lgModal.hide()" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <h4 style="float:right;">About: {{ review.subject }} </h4>
+                        <h4>Name: {{ review.customer.name }}</h4>
+                        <h4>Stars: {{ review.rating }}</h4>
+                        <rating [(ngModel)]="review.rating" [max]="max" [readonly]="true"></rating>
+                        <h4>Evaluation: {{ review.evaluation }}</h4>
+                        <br>
+                        <div style="float:right;">created at: <b>{{ review.created_at }}</b></div><br><br>
+                        <hr><br>
                       </div>
                     </div>
                   </div>
+                </div>
               </div>
             </table>
           </tab>
