@@ -40,6 +40,7 @@
         <div *ngFor="let user of users | filter:filters">
           <div *ngIf="user.role == 'HELPER'">
             <h3> {{ user.name }} </h3>
+            <img [src]="user.profilePic" >
             <p> {{ user.email }} </p>
             <h4> {{ user.slogan }} </h4>
             <p> {{ user.description }} </p>
@@ -47,7 +48,7 @@
             <p> {{ user.role }} </p>
             <p>Average of {{totalScore(user)}} stars out of {{user.reviews.length}} reviews </p>
             <pre class="card card-block card-header" style="margin:15px 0;">Rate: <b>{{rate}}</b> </pre>
-            <rating [(ngModel)]="rate" [max]="max" [readonly]="true"></rating>
+            <rating [ngModel]="totalScore(user)" [max]="max" [readonly]="true"></rating>
             <p><button class="btn btn-success"><a [routerLink]="['/search', user._id]">Contact</a></button></p>
             <hr>
           </div>

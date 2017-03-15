@@ -1,4 +1,4 @@
-
+<img [src]="user.profilePic">
 <h2>{{ user.name }}</h2>
 <h3>{{ user.surname }}</h3>
 <h3>{{ user.slogan }}</h3>
@@ -12,7 +12,19 @@
 
 <br>
 <button class="btn btn-primary" (click)="lgModal.show()">Contact {{ user.name }}</button>
-
+<div *ngFor="let review of reviews" >
+<div class="reviews">
+  <h3>Reviews:</h3>
+  <div class="row">
+    <div class="col-md-2">
+      <img src="https://s-media-cache-ak0.pinimg.com/564x/dd/49/dd/dd49dd83e894321a9402465c98ebc386.jpg" class ="img-responsive img-thumbnail img-reviewer-custom" alt="">
+      <h5>{{review.customer.name}}</h5>
+      <h5>{{review.evaluation}}</h5>
+      <h5>{{review.created_at}}</h5>
+      <rating [(ngModel)]="review.rating" [max]="max" [readonly]="true"></rating>
+    </div>
+</div>
+</div>
 
 <div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">

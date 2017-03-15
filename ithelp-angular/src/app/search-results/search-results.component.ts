@@ -1,5 +1,5 @@
 
-import { Component, OnInit, Input, ChangeDetectionStrategy, NgZone } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy, NgZone, ChangeDetectorRef } from '@angular/core';
 import { UserService } from '../user.service';
 import { Router, ActivatedRoute,Params } from '@angular/router';
 
@@ -38,8 +38,8 @@ export class SearchResultsComponent implements OnInit {
     private userService: UserService,
     private ngZone: NgZone,
     private route: Router,
-    private router: ActivatedRoute
-
+    private router: ActivatedRoute,
+    private _changeDetectionRef : ChangeDetectorRef
 
   ) { }
 
@@ -88,6 +88,7 @@ export class SearchResultsComponent implements OnInit {
         this.getUsers()
       })
     })
+
   }
 
   getUsers() {
@@ -120,8 +121,10 @@ export class SearchResultsComponent implements OnInit {
                 lat: marker.location.coordinates[1],
                 lng: marker.location.coordinates[0]
               };
-              let pin = new google.maps.Marker({ position, map, title  });
-                  // pin.setIcon('http://localhost:3000/icons/computer.png')
+              // let test = '<div style="background-color:blue; width:100px;  heigth:50px;">' + marker.name +'</div>'
+              // let test2 = "test"
+              let pin = new google.maps.Marker({ position, map, title});
+                  // pin.setIcon(test)
                   let total = 0;
                 marker.reviews.forEach(function(review){
                     total += review.rating
@@ -163,7 +166,7 @@ export class SearchResultsComponent implements OnInit {
 
   totalScore(user) {
     if(user.reviews.length === 0) {
-      return
+      return   this.rate = 0
     }
     else {
     let total = 0;
@@ -175,5 +178,6 @@ export class SearchResultsComponent implements OnInit {
     return parseInt(average.toFixed(1))
 
 }
+
 }
 }

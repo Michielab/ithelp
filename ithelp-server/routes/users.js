@@ -36,14 +36,35 @@ router.get('/:id', (req, res) => {
      if (err) {
        return res.send(err);
      }
+    else {
+      User
+      .findOne({_id: req.params.id})
+      .exec((err, users) => {
+        if (err) {
+          next(err);
+          return;
+        }
+        Review
+        .find({helper: req.params.id})
+        .populate("helper")
+        .populate("customer")
+        .exec((err, reviewHelper) => {
+          if (err) {
+            next(err);
+            return;
+          }
 
-     return res.json(Users);
+     return res.json({Users, reviewHelper});
    });
+    });
+}
+});
 });
 
 
 /* EDIT a User. */
 router.post('/', upload.single('file'), (req, res, next) => {
+  console.log("editttttttt", req)
   let userToUpdate = {
     name: req.body.name,
     surname: req.body.surname,
@@ -55,7 +76,7 @@ router.post('/', upload.single('file'), (req, res, next) => {
     role : req.body.role,
     phoneNumber : req.body.phoneNumber,
     status : req.body.status,
-    price : req.body.price,
+    // price : req.body.price,
     speciality : req.body.speciality,
     profilePic:  `http://localhost:3000/uploads/${req.file.filename}`
   }
@@ -63,6 +84,7 @@ router.post('/', upload.single('file'), (req, res, next) => {
 
   var userId = req.body._id.toString();
   userId = mongoose.Types.ObjectId(userId)
+  console.log("this is user ID server" ,userId)
 
   User.findByIdAndUpdate(userId, userToUpdate, (err, user)=>{
     if (err) {
