@@ -6,7 +6,9 @@ const userSchema = new Schema({
   surname: String,
   email: String,
   password: String,
-  profilePic: String, default: '',
+  profilePic: {
+    type: String, default: '/icons/profiletest1.jpg'
+  },
   address: String,
   location: { type: { type: String }, coordinates: [Number] },
   phoneNumber: Number,
