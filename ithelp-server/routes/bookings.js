@@ -15,7 +15,7 @@ var jwtOptions = require('../config/jwtOptions');
 
 router.post('/', (req, res, next) => {
 
-  var  date = req.body.date;
+  var  oldDate = req.body.date;
   var  starttime = req.body.starttime;
   var  mainSubject = req.body.mainSubject;
   var  subSubject = req.body.subSubject;
@@ -27,6 +27,16 @@ router.post('/', (req, res, next) => {
   var  declinedByHelper = false;
   var  acceptedByCustomer = false;
   var  declinedByCustomer = false;
+
+console.log(array);
+
+  var array = oldDate.split("-").reverse()
+  var tempIndex = array[0];
+  array[0] = array[1];
+  array[1] = tempIndex;
+  var date = new Date(array.join(" "))
+
+
   console.log("DATE",date);
   // var starttimeNumber = parseInt(starttime);\
 console.log("date", date);

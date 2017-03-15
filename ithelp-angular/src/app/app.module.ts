@@ -24,7 +24,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { InboxComponent } from './inbox/inbox.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { FilterPipe } from './pipes/filter-search.pipe';
-import { FilterRolePipe } from './pipes/filter-role.pipe';
+import { NewDatePipe } from './pipes/new-date.pipe';
 import { HelperDetailsComponent } from './helper-details/helper-details.component';
 import { TabsModule } from 'ng2-bootstrap/tabs';
 import { ModalModule } from 'ng2-bootstrap/modal';
@@ -47,7 +47,7 @@ import { RatingModule } from 'ng2-bootstrap/rating';
     InboxComponent,
     SearchResultsComponent,
     FilterPipe,
-    FilterRolePipe,
+    NewDatePipe,
     HelperDetailsComponent
   ],
   imports: [
