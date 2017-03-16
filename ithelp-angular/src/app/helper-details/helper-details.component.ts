@@ -12,6 +12,7 @@ export class HelperDetailsComponent implements OnInit {
 	user: any = {};
   customer: any ={};
   field: any;
+  reviews: Array<Object> = [];
 
   newBooking = {
      date: '',
@@ -46,7 +47,8 @@ export class HelperDetailsComponent implements OnInit {
     // this.newBooking.customer = this.customer
     this.userService.get(id)
       .subscribe((user) => {
-        this.user = user;
+        this.user = user.Users;
+        this.reviews = user.reviewHelper
         console.log("user in getDetails: ", user)
       });
   }
@@ -65,6 +67,7 @@ export class HelperDetailsComponent implements OnInit {
         .subscribe(result => {
             if (result === true) {
                 // login successful
+
                 console.log('result ok', result);
                 this.router.navigate(['/inbox']);
             } else {
