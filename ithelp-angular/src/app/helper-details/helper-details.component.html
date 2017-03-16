@@ -1,3 +1,118 @@
+<div class="container container-custom">
+  <div class="row">
+    <div class="col-md-3">
+      <!-- FOTO -->
+      <img class="img-responsive img-circle img-helper-custom" [src]="user.profilePic">
+
+    </div>
+    <div class="col-md-9">
+      <!-- SLOGAN + ADDRESS AND BUTTON -->
+      <div class="row">
+        <div class="col-md-12">
+          <!-- SLOGAN -->
+          <h3>{{ user.slogan }} <span style="float:right;">€{{ user.price }} <span class="small">/hour</span></span></h3>
+          <h4></h4>
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <!-- ADDRESS -->
+          <h5 style="line-height:20px;">{{ user.address }} &nbsp;&nbsp;<img style="width:10px; height:auto;" src="http://www.clker.com/cliparts/B/l/M/x/J/M/map-pin-red-hi.png" alt=""></h5>
+
+        </div>
+        <div class="col-md-4">
+          <!-- PRICE -->
+          <h4></h4>
+
+        </div>
+        <div class="col-md-4">
+          <!-- BUTTON TO BOOK --> <br>
+          <button class="btn btn-primary" style="float:right;" (click)="lgModal.show()">Contact {{ user.name }}</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ user.name }} </h4>
+    </div>
+    <div class="col-md-9">
+      <rating style= "color: #ffd081; font-size: 18px;" [(ngModel)]="rate" [max]="max" [readonly]="true"></rating><span>{{reviews.length}} Reviews</span>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-12">
+      <h4>{{ user.name }} specialities:</h4> {{ user.speciality }}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12"><br>
+      <h4>About {{ user.name }}:</h4>
+      <p>{{ user.description }}</p>
+    </div>
+  </div>
+  <hr>
+
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Reviews about {{ user.name }}</h3><br><br>
+    </div>
+  </div>
+
+  <div *ngFor="let review of reviews" >
+    <div class="reviews">
+      <div class="row">
+        <div class="col-md-2">
+          <img src="https://s-media-cache-ak0.pinimg.com/564x/dd/49/dd/dd49dd83e894321a9402465c98ebc386.jpg" class ="img-responsive img-circle img-reviewer-custom" alt="">
+        </div>
+        <div class="col-md-7">
+          <h4>{{review.customer.name}}</h4>
+          <h5>{{review.evaluation}}</h5>
+          <br>
+          <rating [(ngModel)]="review.rating" [max]="max" [readonly]="true"></rating>&nbsp;&nbsp;<span>{{reviews.length}}</span>&nbsp;&nbsp;<span>Reviews</span>
+        </div>
+        <div class="col-md-3">
+          <h5>{{review.created_at | date:'d/M/yy hh:mm:ss'}}</h5>
+        </div>
+        <br>
+    </div>
+    <hr>
+  </div>
+
+
+<!--
+  <div class="panel-custom-content2 text-justify">
+
+    <div class="col-md-2">
+      <img src="https://s-media-cache-ak0.pinimg.com/564x/dd/49/dd/dd49dd83e894321a9402465c98ebc386.jpg" class ="img-responsive img-thumbnail img-reviewer-custom" alt="">
+    </div>
+    <div class="col-md-7">
+      <h5>{{review.customer.name}}</h5>
+      <h5>{{review.evaluation}}</h5>
+      <rating [(ngModel)]="review.rating" [max]="max" [readonly]="true"></rating>&nbsp;&nbsp;<span>{{reviews.length}}</span>&nbsp;&nbsp;<span>Reviews</span>
+    </div>
+    <div class="col-md-3">
+      <h5>{{review.created_at}}</h5>
+    </div>
+    <hr>
+    <br>
+
+  </div> -->
+
+
+
+</div>
+
+
+
+
+
+
+
 <img [src]="user.profilePic">
 <h2>{{ user.name }}</h2>
 <h3>{{ user.surname }}</h3>
@@ -11,20 +126,7 @@
 <h3>{{ user._id }}</h3>
 
 <br>
-<button class="btn btn-primary" (click)="lgModal.show()">Contact {{ user.name }}</button>
-<div *ngFor="let review of reviews" >
-<div class="reviews">
-  <h3>Reviews:</h3>
-  <div class="row">
-    <div class="col-md-2">
-      <img src="https://s-media-cache-ak0.pinimg.com/564x/dd/49/dd/dd49dd83e894321a9402465c98ebc386.jpg" class ="img-responsive img-thumbnail img-reviewer-custom" alt="">
-      <h5>{{review.customer.name}}</h5>
-      <h5>{{review.evaluation}}</h5>
-      <h5>{{review.created_at}}</h5>
-      <rating [(ngModel)]="review.rating" [max]="max" [readonly]="true"></rating>&nbsp;&nbsp;<span>{{reviews.length}}</span>&nbsp;&nbsp;<span>Reviews</span>
-    </div>
-</div>
-</div>
+
 
 <div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">

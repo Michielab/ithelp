@@ -9,6 +9,7 @@ import { UserService } from '../user.service';
   providers: [UserService]
 })
 export class HelperDetailsComponent implements OnInit {
+  public rate: number = 0;
 	user: any = {};
   customer: any ={};
   field: any;
@@ -50,7 +51,30 @@ export class HelperDetailsComponent implements OnInit {
         this.user = user.Users;
         this.reviews = user.reviewHelper
         console.log("user in getDetails: ", user)
+          console.log("user in getDetails: ", this.user.reviews.length)
+        if(this.user.reviews.length === 0) {
+          return   this.rate = 0
+        }
+        else {
+        let total = 0;
+          console.log("user in getDetails: ", this.user)
+        for (let i = 0; i < this.user.reviews.length; i++ ){
+          total += this.user.reviews[i].rating
+        }
+          console.log("user in getDetails: ", this.user.reviews.length)
+        let average = total / this.user.reviews.length
+        this.rate = parseInt(average.toFixed(1))
+        console.log("LENGTH: ", this.user.reviews.length)
+        return parseInt(average.toFixed(1))
+
+    }
       });
+
+
+
+
+
+
   }
 
   showField(field){
@@ -79,5 +103,6 @@ export class HelperDetailsComponent implements OnInit {
         });
 
     }
+
 
 }

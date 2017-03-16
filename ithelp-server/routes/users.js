@@ -32,14 +32,15 @@ router.get('/:id', (req, res) => {
    return res.status(400).json({ message: 'Specified id is not valid' });
  }
 
- User.findById(req.params.id, (err, Users) => {
+ User.findById(req.params.id, (err, user) => {
      if (err) {
        return res.send(err);
      }
     else {
       User
       .findOne({_id: req.params.id})
-      .exec((err, users) => {
+      .populate("reviews")
+      .exec((err, Users) => {
         if (err) {
           next(err);
           return;
@@ -53,7 +54,7 @@ router.get('/:id', (req, res) => {
             next(err);
             return;
           }
-
+          console.log(Users)
      return res.json({Users, reviewHelper});
    });
     });
