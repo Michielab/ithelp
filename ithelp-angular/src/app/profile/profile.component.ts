@@ -2,15 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { FileUploader } from "ng2-file-upload";
 import { SessionService } from '../session.service';
 import { Router } from '@angular/router';
+import { UserService } from '../user.service';
 declare const google: any;
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  styleUrls: ['./profile.component.css'],
+  providers: [UserService]
 })
 export class ProfileComponent implements OnInit {
   user: Object;
+  bookings: Object;
   uploader: FileUploader = new FileUploader({
     url: `http://localhost:3000/edit`,
     authToken: `JWT ${this.session.token}`
@@ -40,7 +43,8 @@ export class ProfileComponent implements OnInit {
 
   constructor(
     private session: SessionService,
-    private router:  Router
+    private router:  Router,
+    private userService: UserService
   ) {
 
     this.session.isAuth
@@ -80,6 +84,13 @@ export class ProfileComponent implements OnInit {
     this.newUser.role = user.role
     this.newUser.price = user.price
 
+      console.log(localStorage)
+    this.userService.inbox(user._id)
+        .subscribe((response) => {
+            this.bookings = response;
+            console.log(this.bookings)
+
+        })
 
 
 

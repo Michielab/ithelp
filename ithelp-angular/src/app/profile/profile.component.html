@@ -34,7 +34,47 @@
 
         </div>
 
-        <div class="col-md-8">
+        <div *ngIf="user.role === 'HELPER'" class="col-md-8">
+          <!-- PERSONAL INFO AND BOOKINGS -->
+          <div class="user-info-helper-header">
+            <h4>About you</h4>
+          </div>
+          <div class="panel-custom-content text-justify">
+              <p>Description: {{user.description}}</p>
+              <h5>Slogan: {{user.slogan}}</h5>
+              <h5>Speciality: {{user.speciality}}</h5>
+              <h5>Price: {{user.price}}</h5>
+              <h5>Status: {{user.status}}</h5>
+          </div>
+          <br><br>
+          <div *ngIf="user.role === 'CUSTOMER'" class="user-info-helper-header">
+            <h4>People you have booked</h4>
+
+          <div *ngFor="let booking of bookings.bookingCustomer" class="panel-custom-content2 text-justify">
+
+            <div class="col-md-2">
+              <img class="img-responsive img-circle img-helper-custom" [src]='user.profilePic'>
+            </div>
+            <div class="col-md-7">
+              <h5>{{booking.helper.slogan}}</h5>
+              <h5>{{booking.helper.name}}</h5>
+              <rating [(ngModel)]="booking.review.rating" [max]="max" [readonly]="true"></rating>
+            </div>
+            <div class="col-md-3">
+              <h5>{{booking.mainSubject}}</h5>
+              <br>
+              <button style="float:right; margin-right: 20px;
+              " class="btn btn-primary"><a [routerLink]="['/search', booking.helper._id]" style="text-decoration:none; color: white;">Book again</a></button>
+             </div>
+            <hr>
+            <br>
+
+          </div>
+
+        </div>
+        </div>
+
+        <div *ngIf="user.role === 'CUSTOMER'" class="col-md-8">
           <!-- PERSONAL INFO AND BOOKINGS -->
           <div class="user-info-helper-header">
             <h4>HEADER IF YOU ARE HELPER</h4>
@@ -48,31 +88,33 @@
               <h5>STATUS</h5>
           </div>
           <br><br>
-          <div class="user-info-helper-header">
+          <div *ngIf="user.role === 'CUSTOMER'" class="user-info-helper-header">
             <h4>People you have booked</h4>
-          </div>
-          <div class="panel-custom-content2 text-justify">
+
+          <div *ngFor="let booking of bookings.bookingCustomer" class="panel-custom-content2 text-justify">
 
             <div class="col-md-2">
               <img class="img-responsive img-circle img-helper-custom" [src]='user.profilePic'>
             </div>
             <div class="col-md-7">
-              <h5>SLOGAN</h5>
-              <h5>NAME</h5>
-              <h5>RATING</h5>
+              <h5>{{booking.helper.slogan}}</h5>
+              <h5>{{booking.helper.name}}</h5>
+              <rating [(ngModel)]="booking.review.rating" [max]="max" [readonly]="true"></rating>
             </div>
             <div class="col-md-3">
-              <h5>PRICE</h5>
+              <h5>{{booking.mainSubject}}</h5>
               <br>
-              <button class="btn btn-primary">Contact again</button>
-            </div>
+              <button style="float:right; margin-right: 20px;
+              " class="btn btn-primary"><a [routerLink]="['/search', booking.helper._id]" style="text-decoration:none; color: white;">Book again</a></button>
+             </div>
             <hr>
             <br>
 
           </div>
 
-
         </div>
+        </div>
+
 
       </div>
 

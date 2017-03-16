@@ -18,7 +18,8 @@ const bookingSchema = new Schema({
   declinedByHelper: Boolean,
   price: Number,
   helper: { type: Schema.Types.ObjectId, ref: 'User' },
-  customer: { type: Schema.Types.ObjectId, ref: 'User' }
+  customer: { type: Schema.Types.ObjectId, ref: 'User' },
+  review: { type: Schema.Types.ObjectId, ref: 'Review' }
 
 }, {
   timestamps: {

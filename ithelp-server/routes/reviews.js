@@ -101,7 +101,12 @@ router.post('/', (req, res, next) => {
         if (err) {
           console.log("GOT AN ERROR");
           next(err);
-        } else {
+        } else {  Booking.findByIdAndUpdate({_id: booking},{$push: { reviews: review.id,}}, (err) => {
+          if (err) {
+            console.log("GOT AN booking eror");
+            next(err);
+          }
+        else {
           User
           .findOne({_id: req.body.customer})
           .populate("bookings")
@@ -137,6 +142,8 @@ router.post('/', (req, res, next) => {
           ;}
         });
       }
+          });
+        }
     });
   }
 });
