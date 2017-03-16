@@ -23,3 +23,17 @@
 .lenght-input-custom{
   width: 90%;
 }
+
+.img-helper-custom {
+  width: 120px;
+  height: 130px;
+}
+
+hr {
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+}

@@ -21,7 +21,7 @@
       <h5>{{review.customer.name}}</h5>
       <h5>{{review.evaluation}}</h5>
       <h5>{{review.created_at}}</h5>
-      <rating [(ngModel)]="review.rating" [max]="max" [readonly]="true"></rating>
+      <rating [(ngModel)]="review.rating" [max]="max" [readonly]="true"></rating>&nbsp;&nbsp;<span>{{reviews.length}}</span>&nbsp;&nbsp;<span>Reviews</span>
     </div>
 </div>
 </div>
