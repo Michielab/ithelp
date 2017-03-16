@@ -15,8 +15,11 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
 
+        <!-- <li *ngIf="isAuth"><a [routerLink]="['inbox']"><span *ngIf="inboxCounterCustomer === true"><b>You have pending bookings</b></span></a></li> -->
 
-        <li *ngIf="isAuth"><a [routerLink]="['profile']"><span *ngIf="user.role === 'HELPER'"><span *ngIf="!user.description || !user.price || !user.slogan || !user.speciality"><b>Go to the profile page to complete your user information</b></span></span></a></li>
+
+
+        <!-- <li *ngIf="isAuth"><a [routerLink]="['profile']"><span *ngIf="user.role === 'HELPER'"></span><span *ngIf="!user.description || !user.price || !user.slogan || !user.speciality"><b>Go to the profile page to complete your user information</b></span></a></li> -->
 
         <!-- <li *ngIf="isAuth && user.bookings.length > 0"><a [routerLink]="['profile']"><span class="glyphicon" aria-hidden="true"></span>&nbsp;&nbsp; Check your inbox!</a></li> -->
         <li *ngIf="isAuth"><a [routerLink]="['profile']"><span class="glyphicon" aria-hidden="true"></span>&nbsp;&nbsp; Hi {{ user.name }}!</a></li>
