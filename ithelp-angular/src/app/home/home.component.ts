@@ -62,7 +62,7 @@ export class HomeComponent implements OnInit {
   } else {
      filters = this.filters.toString()
   }
-    this.router.navigate(['search'], {queryParams: {lat: lat, lng: lng, filters: filters}})
+    this.router.navigate(['search'], {queryParams: {lat: lat, lng: lng, place: this.place.formatted_address, filters: filters}})
   }
 
 }

@@ -73,3 +73,16 @@
   color: black;
   padding-bottom: 2%;
 }
+
+
+.back-black {
+background-color: #3B3B3B;
+color: gray;
+font-size: 10px;
+padding-top: 2%;
+}
+
+.label-text{
+  color: black;
+  text-shadow: 3px 1px 5px rgba(150, 150, 150, 1);
+}

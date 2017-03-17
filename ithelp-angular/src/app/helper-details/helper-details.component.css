@@ -6,3 +6,20 @@
 .container-custom{
   width: 60%;
 }
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+li {
+    float: left;
+    margin-right: 30px;
+}
+
+.icon-custom{
+  width: 35px;
+  height: auto;
+}

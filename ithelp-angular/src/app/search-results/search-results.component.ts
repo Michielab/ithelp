@@ -32,6 +32,7 @@ export class SearchResultsComponent implements OnInit {
   place: Object;
   lat: any;
   lng: any;
+  address: any;
 
 
   constructor(
@@ -45,6 +46,7 @@ export class SearchResultsComponent implements OnInit {
 
   ngOnInit() {
     this.router.queryParams.subscribe((queryParams)=> {
+      this.address = queryParams.place
       this.lat = parseFloat(queryParams['lat']);
       this.lng = parseFloat(queryParams['lng']);
       let homefilters = queryParams['filters'].split(",");
@@ -131,9 +133,9 @@ export class SearchResultsComponent implements OnInit {
                 })
                 let average = total / marker.reviews.length
                 let averageNumber = parseInt(average.toFixed(1))
-                let contentString ='<div class="pin-google"><h5>' + marker.name + '</h5>'  + '<h5>' + marker.price + '$/hour</h5>' + '<h5>' + marker.slogan + '</h5>' + '<h5>' + "Average rating: " + averageNumber + '</h5>' ;
+                let contentString ='<div class="pin-google"><div class="col-md-5"><img src="' + marker.profilePic + '" class="img-responsive img-circle" style="width:80px; height:auto;"><button class="btn btn-primary" ><a style="text-decoration:none; color:white;" href="/search/' + marker._id + '">Contact</a></button></div><div class="col-md-7"><h5 style="color: #286090 ">' + marker.name + '</h5>'  + '<h5>€' + "15" + '/hour</h5>' + '<h5>' + marker.slogan + '</h5>' + '<h5>' + "Average rating: " + averageNumber + '</h5>' + '</div></div>';
                       google.maps.event.addListener(pin, 'click', function() {
-                         infowindow.setContent(contentString + '<br>' + '<button class="btn btn-success"><a href="/search/' + marker._id + '">Contact</a></button>' );
+                         infowindow.setContent(contentString);
                          infowindow.open(map, this);
                         });
             }
