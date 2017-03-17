@@ -46,7 +46,7 @@ export class SearchResultsComponent implements OnInit {
 
   ngOnInit() {
     this.router.queryParams.subscribe((queryParams)=> {
-      this.address = queryParams.place
+      this.address = queryParams['place']
       this.lat = parseFloat(queryParams['lat']);
       this.lng = parseFloat(queryParams['lng']);
       let homefilters = queryParams['filters'].split(",");

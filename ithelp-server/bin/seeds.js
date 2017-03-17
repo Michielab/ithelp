@@ -21,11 +21,12 @@ const customer = new User({
 
 const helpers = [
   {
-    name: 'Spiderman',
-    surname: 'Parker',
+    name: 'Nicholas',
+    surname: 'Rodman',
     email: 'spiderman@gmail.com',
     password: 'spiderpass',
     role: 'HELPER',
+    profilePic: 'http://localhost:3000/icons/nicholas.jpg',
     location:{
       type:'Point',
       coordinates: [2.154007, 41.390205]
@@ -34,16 +35,17 @@ const helpers = [
     phoneNumber: '+34677798451',
     description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     price: 15,
-    slogan: 'I can fix anything',
+    slogan: "I don't build walls, I fix things!",
     status: 'morning time',
     speciality: ['Computer', 'Internet', 'Phone'],
   },
   {
-    name: 'Batman',
-    surname: 'Wayne',
+    name: 'Alex',
+    surname: 'Olalde',
     email: 'batman@gmail.com',
     password: 'batpass',
     role: 'HELPER',
+    profilePic: 'http://localhost:3000/icons/alex.jpg',
     location:{
       type:'Point',
       coordinates: [2.354007, 42.390205]
@@ -52,16 +54,17 @@ const helpers = [
     phoneNumber: '+34677798451',
     description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     price: 15,
-    slogan: 'Master of Phone',
+    slogan: "I'm a loving neibourgh, and a master with phones",
     status: 'all day',
     speciality: ['Phone'],
   },
   {
-    name: 'Superman',
-    surname: 'Parker',
+    name: 'Doug',
+    surname: 'Christie',
     email: 'superman@gmail.com',
     password: 'superpass',
     role: 'HELPER',
+    profilePic: 'http://localhost:3000/icons/doug.jpg',
     location:{
       type:'Point',
       coordinates: [2.254007, 41.890205]
@@ -70,17 +73,18 @@ const helpers = [
     phoneNumber: '+34677798451',
     description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     price: 15,
-    slogan: 'Photography master',
+    slogan: 'Photography master, overlord lover',
     status: 'only weekends',
-    speciality: ['Printer', 'Computer', 'Other'],
+    speciality: ['Computer', 'Other'],
 
   },
   {
-    name: 'Aquaman',
-    surname: 'Fishy',
+    name: 'Anton',
+    surname: 'Finnish',
     email: 'aquaman@gmail.com',
     password: 'aquapass',
     role: 'HELPER',
+    profilePic: 'http://localhost:3000/icons/anton.jpg',
     location:{
       type:'Point',
       coordinates: [2.154007, 41.990205]
@@ -89,17 +93,18 @@ const helpers = [
     phoneNumber: '+34677798451',
     description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     price: 15,
-    slogan: 'All about hardware',
+    slogan: 'Master in designing logos, and fixing stuff by slapping',
     status: 'only weekend',
     speciality: ['Other', 'Phone'],
 
   },
   {
-    name: 'Ironhacker',
-    surname: 'Coder',
+    name: 'Sergio',
+    surname: 'Tesla',
     email: 'ironhacker@gmail.com',
     password: 'ironpass',
     role: 'HELPER',
+    profilePic: 'http://localhost:3000/icons/sergio.jpg',
     location:{
       type:'Point',
       coordinates: [2.169593099999929, 41.3843889]
@@ -108,17 +113,18 @@ const helpers = [
     phoneNumber: '+34677798451',
     description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     price: 15,
-    slogan: 'All your software problems will be solved',
+    slogan: 'Bitcoin master, and part-time english teacher',
     status: 'only weekend',
     speciality: ['Computer', 'Internet', 'TV'],
 
   },
   {
-    name: 'Darth Vader',
-    surname: 'Skywalker',
+    name: 'Andrea Cornetto',
+    surname: 'Angular',
     email: 'darth@gmail.com',
     password: 'aquapass',
     role: 'HELPER',
+    profilePic: 'http://localhost:3000/icons/andrea.png',
     location:{
       type:'Point',
       coordinates: [-8.523700100000042, 41.405859]
@@ -126,18 +132,19 @@ const helpers = [
     address: 'Beach City',
     phoneNumber: '+34677798451',
     description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-    price: 15,
-    slogan: 'Apple Genius',
+    price: 250,
+    slogan: 'I fix any of your problems, by walking away',
     status: 'only weekend',
     speciality: ['TV', 'Internet'],
 
   },
   {
-    name: 'Luke',
-    surname: 'Skywalker',
+    name: 'Charlie',
+    surname: 'Paella',
     email: 'luke@gmail.com',
     password: 'lukepass',
     role: 'HELPER',
+    profilePic: 'http://localhost:3000/icons/charlie.png',
     location:{
       type:'Point',
       coordinates: [2.1918571999999585, 41.39580509999999]
@@ -146,17 +153,18 @@ const helpers = [
     phoneNumber: '+34677798451',
     description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     price: 15,
-    slogan: 'Code teacher',
+    slogan: 'Code teacher, and paella critic',
     status: 'only weekend',
     speciality: ['Other', 'TV'],
 
   },
   {
-    name: 'Jar Jar',
-    surname: 'Binks',
+    name: 'Amanda',
+    surname: 'Finnish',
     email: 'jarjar@gmail.com',
     password: 'jarpass',
     role: 'HELPER',
+    profilePic: 'http://localhost:3000/icons/amanda.jpg',
     location:{
       type:'Point',
       coordinates: [2.189640700000041, 41.3969391]
@@ -165,17 +173,18 @@ const helpers = [
     phoneNumber: '+34677798451',
     description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     price: 15,
-    slogan: 'Fix all hardware',
+    slogan: 'Fix all computer issues, while bringing you a coffee',
     status: 'only weekend',
-    speciality: ['Printer'],
+    speciality: ['Computer'],
 
   },
   {
-    name: 'Frodo',
-    surname: 'Baggins',
+    name: 'Thor',
+    surname: 'Thundergod',
     email: 'frodo@gmail.com',
     password: 'frodopass',
     role: 'HELPER',
+    profilePic: 'http://localhost:3000/icons/thor.jpg',
     location:{
       type:'Point',
       coordinates: [2.19103419999999, 41.40503289999999]
@@ -184,16 +193,17 @@ const helpers = [
     phoneNumber: '+34677798451',
     description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     price: 15,
-    slogan: 'Graphic design expert',
+    slogan: 'If you dont mind swearing, then I will fix your computer',
     status: 'only weekend',
-    speciality: ['Other', 'Phone'],
+    speciality: ['Computer', 'Phone'],
 
   },
   {
-    name: 'Gollum',
-    surname: 'Precious',
+    name: 'Matias',
+    surname: 'Itlian',
     email: 'gollum@gmail.com',
     password: 'gollumpass',
+    profilePic: 'http://localhost:3000/icons/matias.png',
     role: 'HELPER',
     location:{
       type:'Point',
@@ -203,17 +213,18 @@ const helpers = [
     phoneNumber: '+34677798451',
     description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     price: 15,
-    slogan: 'Software Expert',
+    slogan: 'Computer and Pizza expert',
     status: 'only weekend',
     speciality: ['Computer', 'Phone'],
 
   },
   {
-    name: 'Gandalf',
-    surname: 'Grey',
+    name: 'Ivy',
+    surname: 'Dog',
     email: 'gandalf@gmail.com',
     password: 'gandalfpass',
     role: 'HELPER',
+    profilePic: 'http://localhost:3000/icons/ivy.jpg',
     location:{
       type:'Point',
       coordinates: [2.1887362999999596, 41.39581630000001]
@@ -222,17 +233,18 @@ const helpers = [
     phoneNumber: '+34677798451',
     description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     price: 15,
-    slogan: 'Smartphone Expert',
+    slogan: 'While sitting on your lap, I fix any problem you have',
     status: 'only weekend',
     speciality: ['Phone', 'TV', 'Other'],
 
   },
   {
-    name: 'Ironman',
-    surname: 'Stark',
+    name: 'Marta',
+    surname: 'Us',
     email: 'Ironman@gmail.com',
     password: 'ironpass',
     role: 'HELPER',
+    profilePic: 'http://localhost:3000/icons/marta.jpg',
     location:{
       type:'Point',
       coordinates: [2.1902811999999585, 41.4080056]
@@ -241,17 +253,18 @@ const helpers = [
     phoneNumber: '+34677798451',
     description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     price: 15,
-    slogan: 'I can solve all internet problems',
+    slogan: 'I can solve all internet problems, as long if there is no mostard around',
     status: 'only weekend',
     speciality: ['Computers', 'Internet', 'Phone'],
 
   },
   {
-    name: 'Jaime',
-    surname: 'Lannister',
+    name: 'Roberto',
+    surname: 'Chaval',
     email: 'jaime@gmail.com',
     password: 'jaimepass',
     role: 'HELPER',
+    profilePic: 'http://localhost:3000/icons/roberto.jpg',
     location:{
       type:'Point',
       coordinates: [2.6305170000000544, 39.568009]
@@ -260,17 +273,18 @@ const helpers = [
     phoneNumber: '+34677798451',
     description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     price: 15,
-    slogan: 'Code Instructor',
+    slogan: 'Just say chaval, and I will fix it all',
     status: 'only weekend',
     speciality: ['TV', 'Other'],
 
   },
   {
-    name: 'Tyrion',
-    surname: 'Lannister',
+    name: 'Max',
+    surname: 'Russian',
     email: 'tyrion@gmail.com',
     password: 'tyrionpass',
     role: 'HELPER',
+    profilePic: 'http://localhost:3000/icons/max.jpg',
     location:{
       type:'Point',
       coordinates: [2.1892365999999583, 41.4097037]
@@ -279,9 +293,9 @@ const helpers = [
     phoneNumber: '+34677798451',
     description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     price: 15,
-    slogan: 'Hardware fixer',
+    slogan: 'I fix all your stuff!',
     status: 'only weekend',
-    speciality: ['Computers', 'Printer'],
+    speciality: ['Computers'],
 
   },
 
