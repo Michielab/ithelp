@@ -13,6 +13,7 @@ export class SessionService implements CanActivate {
 
 	BASE_URL: string = 'https://nerdalert.herokuapp.com';
 
+
   constructor(
     private router: Router,
     private ngZone: NgZone,

@@ -52,6 +52,7 @@ router.post("/signup", (req, res, next) => {
   var password = req.body.password;
   var profilePic =  'uploads/profiletest1.jpg';
 
+
   var location = {
   type: 'Point',
   coordinates: [req.body.long, req.body.lat]

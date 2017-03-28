@@ -20,7 +20,9 @@ const userSchema = new Schema({
   speciality: Array,
   description: String,
   slogan: String,
-  price: Number,
+  price: {
+    type: Number, default: 14
+  },
   status: String,
   Totalscore: Number,
   responseTime: String,

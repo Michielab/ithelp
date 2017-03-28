@@ -28,6 +28,7 @@
           <label>
             <input value="TV" [checked]="tvActive" type="checkbox"
             (click)="$event.target.checked? addFilters($event) : removeFilters($event)">  &nbsp;&nbsp;&nbsp;<img class="icon-custom" src="icons/tv.png" alt="computer">&nbsp;&nbsp;&nbsp;TV&nbsp;&nbsp;&nbsp;
+
           </label>
           <label>
             <input value="Other" [checked]="otherActive" type="checkbox"

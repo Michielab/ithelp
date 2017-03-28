@@ -80,6 +80,7 @@ router.post('/', upload.single('file'), (req, res, next) => {
     price : req.body.price,
     speciality : req.body.speciality,
     profilePic:  `uploads/${req.file.filename}`
+
   }
 
 

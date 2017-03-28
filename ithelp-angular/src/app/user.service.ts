@@ -7,6 +7,7 @@ import 'rxjs/add/operator/map';
 export class UserService {
   BASE_URL: string = 'https://nerdalert.herokuapp.com/api';
 
+
   constructor(
     private http: Http,
     private SessionService: SessionService
@@ -22,6 +23,7 @@ export class UserService {
     let headers = new Headers({ 'Authorization': 'JWT ' + this.SessionService.token });
     let options = new RequestOptions({ headers: headers});
     return this.http.get("https://nerdalert.herokuapp.com/api/users?lat=" + locationLat + "&long=" + locationLng ,options)
+
       .map((res) => res.json());
   }
 
@@ -34,6 +36,7 @@ export class UserService {
 
   booking(booking) {
     return this.http.post("https://nerdalert.herokuapp.com/booking", booking)
+
       .map((response) => response.json())
   }
 

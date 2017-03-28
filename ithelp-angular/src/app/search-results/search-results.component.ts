@@ -127,13 +127,14 @@ export class SearchResultsComponent implements OnInit {
               // let test2 = "test"
               let pin = new google.maps.Marker({ position, map, title});
                   pin.setIcon("icons/map-icon.png")
+
                   let total = 0;
                 marker.reviews.forEach(function(review){
                     total += review.rating
                 })
                 let average = total / marker.reviews.length
                 let averageNumber = parseInt(average.toFixed(1))
-                let contentString ='<div class="pin-google"><div class="col-md-5"><img src="' + marker.profilePic + '" class="img-responsive img-circle" style="width:80px; height:auto;"><button class="btn btn-primary" ><a style="text-decoration:none; color:white;" href="/search/' + marker._id + '">Contact</a></button></div><div class="col-md-7"><h5 style="color: #286090 ">' + marker.name + '</h5>'  + '<h5>€' + "15" + '/hour</h5>' + '<h5>' + marker.slogan + '</h5>' + '<h5>' + "Average rating: " + averageNumber + '</h5>' + '</div></div>';
+                let contentString ='<div class="pin-google"><div class="col-md-5"><img src="' + marker.profilePic + '" class="img-responsive img-circle" style="width:80px; height:auto;"><button class="btn btn-primary" ><a style="text-decoration:none; color:white;" href="/search/' + marker._id + '">Contact</a></button></div><div class="col-md-7"><h5 style="color: #286090 ">' + marker.name + '</h5>'  + '<h5>€' + "15" + '/hour</h5>' + '<h5>' + marker.slogan + '</h5>' + '</div></div>';
                       google.maps.event.addListener(pin, 'click', function() {
                          infowindow.setContent(contentString);
                          infowindow.open(map, this);

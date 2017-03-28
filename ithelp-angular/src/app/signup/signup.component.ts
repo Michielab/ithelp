@@ -14,6 +14,7 @@ declare var google: any;
 export class SignupComponent implements OnInit {
   // uploader: FileUploader = new FileUploader({
   //   url: `https://nerdalert.herokuapp.com/signup`
+
   // });
 
   newUser = {
