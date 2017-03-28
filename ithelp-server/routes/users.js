@@ -79,7 +79,7 @@ router.post('/', upload.single('file'), (req, res, next) => {
     status : req.body.status,
     // price : req.body.price,
     speciality : req.body.speciality,
-    profilePic:  `http://localhost:3000/uploads/${req.file.filename}`
+    profilePic:  `uploads/${req.file.filename}`
   }
 
 

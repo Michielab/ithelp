@@ -5,7 +5,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class UserService {
-  BASE_URL: string = 'http://localhost:3000/api';
+  BASE_URL: string = 'mongodb://heroku_tz10h942:fplsc61l4lauj3h1thp4ia4voh@ds133260.mlab.com:33260/heroku_tz10h942/api';
 
   constructor(
     private http: Http,
@@ -21,7 +21,7 @@ export class UserService {
     // + "&filters=" + filter
     let headers = new Headers({ 'Authorization': 'JWT ' + this.SessionService.token });
     let options = new RequestOptions({ headers: headers});
-    return this.http.get("http://localhost:3000/api/users?lat=" + locationLat + "&long=" + locationLng ,options)
+    return this.http.get("mongodb://heroku_tz10h942:fplsc61l4lauj3h1thp4ia4voh@ds133260.mlab.com:33260/heroku_tz10h942/api/users?lat=" + locationLat + "&long=" + locationLng ,options)
       .map((res) => res.json());
   }
 
@@ -33,7 +33,7 @@ export class UserService {
   }
 
   booking(booking) {
-    return this.http.post("http://localhost:3000/booking", booking)
+    return this.http.post("mongodb://heroku_tz10h942:fplsc61l4lauj3h1thp4ia4voh@ds133260.mlab.com:33260/heroku_tz10h942/booking", booking)
       .map((response) => response.json())
   }
 

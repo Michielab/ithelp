@@ -13,7 +13,7 @@ declare var google: any;
 })
 export class SignupComponent implements OnInit {
   // uploader: FileUploader = new FileUploader({
-  //   url: `http://localhost:3000/signup`
+  //   url: `mongodb://heroku_tz10h942:fplsc61l4lauj3h1thp4ia4voh@ds133260.mlab.com:33260/heroku_tz10h942/signup`
   // });
 
   newUser = {

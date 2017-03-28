@@ -126,7 +126,7 @@ export class SearchResultsComponent implements OnInit {
               // let test = '<div style="background-color:blue; width:100px;  heigth:50px;">' + marker.name +'</div>'
               // let test2 = "test"
               let pin = new google.maps.Marker({ position, map, title});
-                  pin.setIcon("http://localhost:3000/icons/map-icon.png")
+                  pin.setIcon("icons/map-icon.png")
                   let total = 0;
                 marker.reviews.forEach(function(review){
                     total += review.rating
