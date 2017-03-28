@@ -13,7 +13,8 @@ declare var google: any;
 })
 export class SignupComponent implements OnInit {
   // uploader: FileUploader = new FileUploader({
-  //   url: `http://localhost:3000/signup`
+  //   url: `https://nerdalert.herokuapp.com/signup`
+
   // });
 
   newUser = {

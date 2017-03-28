@@ -15,7 +15,8 @@
 }
 
 .nerd-banner {
-  background-image: url("http://localhost:3000/icons/BG-nerd-alert.jpg");
+  background-image: url("https://nerdalert.herokuapp.com/icons/BG-nerd-alert.jpg");
+
   /*background-image: url("https://images.unsplash.com/photo-1461773518188-b3e86f98242f?dpr=1&auto=format&fit=crop&w=1199&h=800&q=80&cs=tinysrgb&crop=");*/
   margin-bottom: 0;
   height: 100vh;
@@ -31,6 +32,18 @@
 }
 
 .title {
+  margin-top: 20px;
+  color: #fff;
+  text-shadow: 0 10px 3px #0f0f0f;
+}
+
+.title-box {
+  margin-top: 20px;
+  color: #000;
+  text-shadow: 0 2px 10px #f2f2f2;
+}
+
+.subtitle {
   margin-top: 20px;
   color: #fff;
   text-shadow: 0 1px 3px #0f0f0f;
@@ -60,4 +73,17 @@
   background-color: #ffffff;
   color: black;
   padding-bottom: 2%;
+}
+
+
+.back-black {
+background-color: #3B3B3B;
+color: gray;
+font-size: 10px;
+padding-top: 2%;
+}
+
+.label-text{
+  color: black;
+  text-shadow: 3px 1px 5px rgba(150, 150, 150, 1);
 }

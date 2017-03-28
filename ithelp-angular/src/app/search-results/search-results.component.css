@@ -11,7 +11,7 @@
  .scrolling-custom{
    height: 100vh;
    overflow:auto;
-   height: 90vh;
+   height: 82vh;
 
  }
 
@@ -26,9 +26,9 @@
 
 .img-helper-custom {
   width: 120px;
-  height: 130px;
+  height: 110px;
 }
-
+/*
 hr {
     margin-top: 1em;
     margin-bottom: 0.5em;
@@ -36,4 +36,9 @@ hr {
     margin-right: auto;
     border-style: inset;
     border-width: 1px;
+}*/
+
+.icon-custom{
+  width: 25px;
+  height: auto;
 }

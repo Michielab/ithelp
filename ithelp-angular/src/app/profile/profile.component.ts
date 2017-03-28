@@ -15,7 +15,8 @@ export class ProfileComponent implements OnInit {
   user: Object;
   bookings: Object;
   uploader: FileUploader = new FileUploader({
-    url: `http://localhost:3000/edit`,
+    url: `https://nerdalert.herokuapp.com/edit`,
+
     authToken: `JWT ${this.session.token}`
   });
 
@@ -33,7 +34,6 @@ export class ProfileComponent implements OnInit {
     slogan: '',
     status: '',
     speciality: '',
-    price: ''
   };
 
   feedback: string;
@@ -82,7 +82,6 @@ export class ProfileComponent implements OnInit {
     this.newUser.long = user.location.coordinates[0]
     this.newUser.lat = user.location.coordinates[1]
     this.newUser.role = user.role
-    this.newUser.price = user.price
 
       console.log(localStorage)
     this.userService.inbox(user._id)
@@ -117,7 +116,6 @@ export class ProfileComponent implements OnInit {
       form.append('lat', this.newUser.lat);
       form.append('long', this.newUser.long);
       form.append('_id', this.newUser._id);
-      form.append('price', this.newUser.price);
       form.append('phoneNumber', this.newUser.phoneNumber);
       form.append('slogan', this.newUser.slogan);
       form.append('description', this.newUser.description);
