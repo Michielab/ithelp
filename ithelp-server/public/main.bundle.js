@@ -24,7 +24,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var PhoneService = (function () {
     function PhoneService(http) {
         this.http = http;
-        this.BASE_URL = 'http://localhost:3000/api';
+        this.BASE_URL = 'mongodb://heroku_tz10h942:fplsc61l4lauj3h1thp4ia4voh@ds133260.mlab.com:33260/heroku_tz10h942/api';
     }
     PhoneService.prototype.getList = function () {
         return this.http.get(this.BASE_URL + "/phones")
@@ -43,7 +43,7 @@ var PhoneService = (function () {
             .map(function (res) { return res.json(); });
     };
     PhoneService = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(), 
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
         __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]) === 'function' && _a) || Object])
     ], PhoneService);
     return PhoneService;
@@ -109,7 +109,7 @@ var AddPhoneComponent = (function () {
             selector: 'app-add-phone',
             template: __webpack_require__(674),
             styles: [__webpack_require__(670)]
-        }), 
+        }),
         __metadata('design:paramtypes', [])
     ], AddPhoneComponent);
     return AddPhoneComponent;
@@ -172,7 +172,7 @@ var PhoneDetailsComponent = (function () {
             template: __webpack_require__(676),
             styles: [__webpack_require__(672)],
             providers: [__WEBPACK_IMPORTED_MODULE_2__phone_service__["a" /* PhoneService */]]
-        }), 
+        }),
         __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* Router */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* Router */]) === 'function' && _a) || Object, (typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */]) === 'function' && _b) || Object, (typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__phone_service__["a" /* PhoneService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_2__phone_service__["a" /* PhoneService */]) === 'function' && _c) || Object])
     ], PhoneDetailsComponent);
     return PhoneDetailsComponent;
@@ -217,7 +217,7 @@ var PhoneListComponent = (function () {
             template: __webpack_require__(677),
             styles: [__webpack_require__(673)],
             providers: [__WEBPACK_IMPORTED_MODULE_1__phone_service__["a" /* PhoneService */]]
-        }), 
+        }),
         __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__phone_service__["a" /* PhoneService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__phone_service__["a" /* PhoneService */]) === 'function' && _a) || Object])
     ], PhoneListComponent);
     return PhoneListComponent;
@@ -289,7 +289,7 @@ var AppComponent = (function () {
             selector: 'app-root',
             template: __webpack_require__(675),
             styles: [__webpack_require__(671)]
-        }), 
+        }),
         __metadata('design:paramtypes', [])
     ], AppComponent);
     return AppComponent;
@@ -357,7 +357,7 @@ var AppModule = (function () {
             ],
             providers: [__WEBPACK_IMPORTED_MODULE_9__phone_service__["a" /* PhoneService */]],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* AppComponent */]]
-        }), 
+        }),
         __metadata('design:paramtypes', [])
     ], AppModule);
     return AppModule;

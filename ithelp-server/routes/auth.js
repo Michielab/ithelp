@@ -50,7 +50,7 @@ router.post("/signup", (req, res, next) => {
   var address = req.body.address;
   var role = req.body.role;
   var password = req.body.password;
-  var profilePic =  'http://localhost:3000/uploads/profiletest1.jpg';
+  var profilePic =  'mongodb://heroku_tz10h942:fplsc61l4lauj3h1thp4ia4voh@ds133260.mlab.com:33260/heroku_tz10h942/uploads/profiletest1.jpg';
 
   var location = {
   type: 'Point',

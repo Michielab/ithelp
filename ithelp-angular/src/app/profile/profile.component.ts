@@ -12,7 +12,7 @@ declare const google: any;
 export class ProfileComponent implements OnInit {
   user: Object;
   uploader: FileUploader = new FileUploader({
-    url: `http://localhost:3000/edit`,
+    url: `mongodb://heroku_tz10h942:fplsc61l4lauj3h1thp4ia4voh@ds133260.mlab.com:33260/heroku_tz10h942/edit`,
     authToken: `JWT ${this.session.token}`
   });
 

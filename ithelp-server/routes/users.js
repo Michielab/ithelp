@@ -78,7 +78,7 @@ router.post('/', upload.single('file'), (req, res, next) => {
     phoneNumber : req.body.phoneNumber,
     status : req.body.status,
     speciality : req.body.speciality,
-    profilePic:  `http://localhost:3000/uploads/${req.file.filename}`
+    profilePic:  `mongodb://heroku_tz10h942:fplsc61l4lauj3h1thp4ia4voh@ds133260.mlab.com:33260/heroku_tz10h942/uploads/${req.file.filename}`
   }
 
 

@@ -15,7 +15,7 @@
 }
 
 .nerd-banner {
-  background-image: url("http://localhost:3000/icons/BG-nerd-alert.jpg");
+  background-image: url("/icons/BG-nerd-alert.jpg");
   /*background-image: url("https://images.unsplash.com/photo-1461773518188-b3e86f98242f?dpr=1&auto=format&fit=crop&w=1199&h=800&q=80&cs=tinysrgb&crop=");*/
   margin-bottom: 0;
   height: 100vh;
