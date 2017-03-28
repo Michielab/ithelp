@@ -11,7 +11,7 @@ export class SessionService implements CanActivate {
   public token: string;
   isAuth: EventEmitter<any> = new EventEmitter();
 
-	BASE_URL: string = 'mongodb://heroku_tz10h942:fplsc61l4lauj3h1thp4ia4voh@ds133260.mlab.com:33260/heroku_tz10h942';
+	BASE_URL: string = 'https://nerdalert.herokuapp.com/';
 
   constructor(
     private router: Router,
