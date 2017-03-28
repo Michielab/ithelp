@@ -3,7 +3,7 @@ const bcrypt         = require("bcrypt");
 const bcryptSalt     = 10;
 const User = require('../model/user');
 
-mongoose.connect("mongodb://localhost/it-help");
+mongoose.connect("mongodb://heroku_tz10h942:fplsc61l4lauj3h1thp4ia4voh@ds133260.mlab.com:33260/heroku_tz10h942");
 
 
 const customer = new User({
@@ -26,7 +26,7 @@ const helpers = [
     email: 'spiderman@gmail.com',
     password: 'spiderpass',
     role: 'HELPER',
-    profilePic: 'http://localhost:3000/icons/nicholas.jpg',
+    profilePic: 'https://nerdalert.herokuapp.com/icons/nicholas.jpg',
     location:{
       type:'Point',
       coordinates: [2.154007, 41.390205]
@@ -45,7 +45,7 @@ const helpers = [
     email: 'batman@gmail.com',
     password: 'batpass',
     role: 'HELPER',
-    profilePic: 'http://localhost:3000/icons/alex.jpg',
+    profilePic: 'https://nerdalert.herokuapp.com/icons/alex.jpg',
     location:{
       type:'Point',
       coordinates: [2.354007, 42.390205]
@@ -64,7 +64,7 @@ const helpers = [
     email: 'superman@gmail.com',
     password: 'superpass',
     role: 'HELPER',
-    profilePic: 'http://localhost:3000/icons/doug.jpg',
+    profilePic: 'https://nerdalert.herokuapp.com/icons/doug.jpg',
     location:{
       type:'Point',
       coordinates: [2.254007, 41.890205]
@@ -84,7 +84,7 @@ const helpers = [
     email: 'aquaman@gmail.com',
     password: 'aquapass',
     role: 'HELPER',
-    profilePic: 'http://localhost:3000/icons/anton.jpg',
+    profilePic: 'https://nerdalert.herokuapp.com/icons/anton.jpg',
     location:{
       type:'Point',
       coordinates: [2.154007, 41.990205]
@@ -104,7 +104,7 @@ const helpers = [
     email: 'ironhacker@gmail.com',
     password: 'ironpass',
     role: 'HELPER',
-    profilePic: 'http://localhost:3000/icons/sergio.jpg',
+    profilePic: 'https://nerdalert.herokuapp.com/icons/sergio.jpg',
     location:{
       type:'Point',
       coordinates: [2.169593099999929, 41.3843889]
@@ -124,7 +124,7 @@ const helpers = [
     email: 'darth@gmail.com',
     password: 'aquapass',
     role: 'HELPER',
-    profilePic: 'http://localhost:3000/icons/andrea.png',
+    profilePic: 'https://nerdalert.herokuapp.com/icons/andrea.png',
     location:{
       type:'Point',
       coordinates: [-8.523700100000042, 41.405859]
@@ -144,7 +144,7 @@ const helpers = [
     email: 'luke@gmail.com',
     password: 'lukepass',
     role: 'HELPER',
-    profilePic: 'http://localhost:3000/icons/charlie.png',
+    profilePic: 'https://nerdalert.herokuapp.com/icons/charlie.png',
     location:{
       type:'Point',
       coordinates: [2.1918571999999585, 41.39580509999999]
@@ -164,7 +164,7 @@ const helpers = [
     email: 'jarjar@gmail.com',
     password: 'jarpass',
     role: 'HELPER',
-    profilePic: 'http://localhost:3000/icons/amanda.jpg',
+    profilePic: 'https://nerdalert.herokuapp.com/icons/amanda.jpg',
     location:{
       type:'Point',
       coordinates: [2.189640700000041, 41.3969391]
@@ -184,7 +184,7 @@ const helpers = [
     email: 'frodo@gmail.com',
     password: 'frodopass',
     role: 'HELPER',
-    profilePic: 'http://localhost:3000/icons/thor.jpg',
+    profilePic: 'https://nerdalert.herokuapp.com/icons/thor.jpg',
     location:{
       type:'Point',
       coordinates: [2.19103419999999, 41.40503289999999]
@@ -203,7 +203,7 @@ const helpers = [
     surname: 'Itlian',
     email: 'gollum@gmail.com',
     password: 'gollumpass',
-    profilePic: 'http://localhost:3000/icons/matias.png',
+    profilePic: 'https://nerdalert.herokuapp.com/icons/matias.png',
     role: 'HELPER',
     location:{
       type:'Point',
@@ -224,7 +224,7 @@ const helpers = [
     email: 'gandalf@gmail.com',
     password: 'gandalfpass',
     role: 'HELPER',
-    profilePic: 'http://localhost:3000/icons/ivy.jpg',
+    profilePic: 'https://nerdalert.herokuapp.com/icons/ivy.jpg',
     location:{
       type:'Point',
       coordinates: [2.1887362999999596, 41.39581630000001]
@@ -244,7 +244,7 @@ const helpers = [
     email: 'Ironman@gmail.com',
     password: 'ironpass',
     role: 'HELPER',
-    profilePic: 'http://localhost:3000/icons/marta.jpg',
+    profilePic: 'https://nerdalert.herokuapp.com/icons/marta.jpg',
     location:{
       type:'Point',
       coordinates: [2.1902811999999585, 41.4080056]
@@ -264,7 +264,7 @@ const helpers = [
     email: 'jaime@gmail.com',
     password: 'jaimepass',
     role: 'HELPER',
-    profilePic: 'http://localhost:3000/icons/roberto.jpg',
+    profilePic: 'https://nerdalert.herokuapp.com/icons/roberto.jpg',
     location:{
       type:'Point',
       coordinates: [2.6305170000000544, 39.568009]
@@ -284,7 +284,7 @@ const helpers = [
     email: 'tyrion@gmail.com',
     password: 'tyrionpass',
     role: 'HELPER',
-    profilePic: 'http://localhost:3000/icons/max.jpg',
+    profilePic: 'https://nerdalert.herokuapp.com/icons/max.jpg',
     location:{
       type:'Point',
       coordinates: [2.1892365999999583, 41.4097037]
