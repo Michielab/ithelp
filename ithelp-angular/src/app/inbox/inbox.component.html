@@ -329,20 +329,14 @@
     <!-- HELPER -->
 
 
-    <div *ngIf="user.role === 'HELPER'">HELPEEERRRR
+    <div *ngIf="user.role === 'HELPER'">
 
       <tabset>
 
         <tab heading="Pending Bookings">
 
           <table class="table table-hover">
-            <thead>
-              <tr>
-                <td>
-                  <b>Messages to Read</b>
-                </td>
-              </tr>
-            </thead>
+
             <div class="table table-hover table-custom" *ngFor="let booking of booking.bookingHelper">
               <div class="table table-hover table-custom" *ngIf="booking.acceptedByHelper === false && booking.declinedByHelper === false">
 
@@ -392,13 +386,7 @@
 
 
               <table class="table table-hover">
-                <thead>
-                  <tr>
-                    <td>
-                      <b>Messages to Read</b>
-                    </td>
-                  </tr>
-                </thead>
+
                 <div class="table table-hover table-custom" *ngFor="let booking of booking.bookingHelper">
                   <div class="table table-hover table-custom" *ngIf="booking.acceptedByHelper === true && booking.acceptedByCustomer === false">
 
@@ -441,13 +429,7 @@
 
 
               <table class="table table-hover">
-                <thead>
-                  <tr>
-                    <td>
-                      <b>Messages to Read</b>
-                    </td>
-                  </tr>
-                </thead>
+
                 <div class="table table-hover table-custom" *ngFor="let booking of booking.bookingHelper">
                   <div class="table table-hover table-custom" *ngIf="booking.acceptedByHelper === true && booking.acceptedByCustomer === true">
 
@@ -491,13 +473,7 @@
         <tab heading="Declined Bookings">
 
           <table class="table table-hover">
-            <thead>
-              <tr>
-                <td>
-                  <b>Messages to Read</b>
-                </td>
-              </tr>
-            </thead>
+
             <div class="table table-hover table-custom" *ngFor="let booking of booking.bookingHelper">
               <div class="table table-hover table-custom" *ngIf="booking.declinedByHelper === true">
 
@@ -541,12 +517,7 @@
 
         <tab heading="Reviews">
           <table class="table table-hover">
-            <thead>
-              <tr>
-                <td>
-                </td>
-              </tr>
-            </thead>
+
             <div class="table table-hover table-custom" *ngFor="let review of booking.reviewHelper">
               <tr>
                 <td class="cursor-change-custom" (click)="lgModal.show()">
